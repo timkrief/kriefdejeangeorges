@@ -1,0 +1,102 @@
+% -------- Type de document ------------------
+\documentclass[12pt,a4paper]{article}
+
+% -------- Profondeur du sommaire ------------------
+\setcounter{tocdepth}{3}
+
+% -------- Gestion des annexes ------------------
+\usepackage[toc,page]{appendix}
+\renewcommand{\appendixpagename}{Annexes}
+\renewcommand{\appendixtocname}{Annexes}
+
+% -------- Langage ------------------
+\usepackage[french]{babel}
+\frenchbsetup{StandardLists=true}
+
+% -------- Encodage ------------------
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+
+% -------- Import de code ------------------
+\usepackage{listings}
+\lstset{
+    basicstyle=\ttfamily\footnotesize,
+    frame=shadowbox,
+    inputencoding=utf8,
+    extendedchars=true,
+    literate={á}{{\'a}}1 {ã}{{\~a}}1 {é}{{\'e}}1,
+}
+
+% -------- Mathématiques ------------------
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{empheq}
+
+% -------- Symbole € ------------------
+\usepackage{eurosym}
+\DeclareUnicodeCharacter{20AC}{\euro}
+
+% -------- Inserton de pdf ------------------
+\usepackage{pdfpages}
+
+% -------- Insertion de tex ------------------
+\usepackage{import}
+
+% -------- Acronymes ------------------
+\usepackage[acronym,toc]{glossaries}
+
+% -------- Référencement ------------------
+\usepackage[french,hidelinks]{hyperref}
+
+% -------- Sources externes ------------------
+\usepackage{graphicx}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{rotating}
+\usepackage{pdflscape}
+\graphicspath{{images/}}
+\newcommand*{\sourcedir}{source/}
+\newcommand*{\annexedir}{annexes/}
+
+% -------- Marges ------------------
+\usepackage[left=3cm,right=3cm,top=3cm,bottom=3cm]{geometry}
+
+% -------- Information du rapport ---------------
+\import{\sourcedir}{Variables.tex}
+
+% -------- Mise en page ------------------
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\setlength{\headheight}{14.5pt} 
+\fancyhf{}
+\rhead{\auteurs}
+\lhead{\doctype}
+\cfoot{\thepage}
+
+% -------- Import des acronymes ------------------
+\import{\sourcedir}{Acronymes.tex}
+
+% -------- Import de la bibliographie ------------------
+\usepackage{csquotes}
+\usepackage[backend=biber, style=numeric]{biblatex}
+\addbibresource{source/Papers_database/report_database.bib}
+
+% -------------------------------------------------------
+% ------------------ Début du document ------------------
+% -------------------------------------------------------
+
+\begin{document}
+\import{\sourcedir}{Garde.tex}                                                           % Page de garde
+\import{\sourcedir}{Merci.tex}                                                           % Remerciements
+\import{\sourcedir}{Sommaire.tex}                                                        % Sommaire
+%\import{\sourcedir}{Introduction.tex}                                                    % Introduction
+\import{\sourcedir}{Partie1.tex}                                                         % Présentation du C3N
+%\import{\sourcedir}{Partie2.tex}                                                         % Présentation du projet
+%\import{\sourcedir}{Partie3.tex}                                                         % Résultats du stage
+%\import{\sourcedir}{Partie4.tex}                                                         % Synthèse personelle
+%import{\sourcedir}{Conclusion.tex}                                                      % Conclusion
+%\import{\sourcedir}{Biblio.tex}                                                          % Bibliographie
+%\import{\sourcedir}{Annexe.tex}                                                          % Annexe
+\end{document}

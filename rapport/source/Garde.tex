@@ -1,0 +1,62 @@
+% La page de garde est générée automatiquement. Il n'y pas besoin de modifier le code ci-dessous.
+% S'il s'agit d'un document autre qu'un rapport de stage, on peut éventuellement modifier les trois variables ci-dessous.
+
+
+\def\droite{Professeur encadrant}
+\def\milieu{Auteurs}
+
+\fancypagestyle{titlepage}{
+  \fancyhf{}
+  \fancyhead[L]{}
+  \fancyhead[R]{\classe}
+}
+
+\begin{titlepage}
+\thispagestyle{titlepage}
+	\centering
+	\begin{figure}[h]
+    \centering
+    
+    
+    \begin{subfigure}[b]{0.3\textwidth}
+        \includegraphics[width=\textwidth]{logo_ENSEA.png}
+    \end{subfigure}
+    \end{figure}
+    
+    %\includegraphics[width = 5cm]{logo.png}\\[1.0 cm]
+	\textsc{\Large \ecole}\\[0.5 cm]
+	\textsc{\large \periode}\\[0.5 cm]
+	\rule{\linewidth}{0.2 mm} \\[0.4 cm]
+	{\huge \bfseries \titre}\\
+	\rule{\linewidth}{0.2 mm} \\[0.5 cm]
+	
+	
+	
+	\centering
+	\begin{figure}[h]
+    \centering
+    
+    
+    \begin{subfigure}[b]{1\textwidth}
+        \includegraphics[scale = 0.274]{images/coverUntilTheLastBarrel.png}
+    \end{subfigure}
+    \end{figure}
+    
+	\textsc{\large \emph{\milieu}}\\[0.2 cm]
+	
+    
+    \textsc{\large \auteurs}\\[0.5 cm]
+	
+	\begin{minipage}{0.4\textwidth}
+		\begin{flushleft} \large
+			\emph{\gauche}\\
+			\tuteurs
+		\end{flushleft}
+	\end{minipage}~
+	\begin{minipage}{0.4\textwidth}
+		\begin{flushright} \large
+			\emph{\droite} \\
+			\encadrant
+		\end{flushright}  
+	\end{minipage}\\[2 cm]
+\end{titlepage}

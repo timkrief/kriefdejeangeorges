@@ -469,6 +469,8 @@ gen_class (umlclassnode *node)
         }
     }
 
+/*
+// Setters and getters will be added manually for our project if needed
     print ("// Setters and Getters\n");
     if (node->associations != NULL) {
         umlassoclist assoc = node->associations;
@@ -485,7 +487,7 @@ gen_class (umlclassnode *node)
         umlattrlist umla = node->key->attributes;
         if (!is_valuetype) {
             while (umla != NULL) {
-                if (umla->key.visibility != '2') {
+                if (umla->key.visibility != '2' || umla->key.visibility != '1') {
                     umla = umla->next;
                     continue;
                 }
@@ -499,7 +501,7 @@ gen_class (umlclassnode *node)
             }
         }
     }
-    
+ */
     
     if (node->key->attributes != NULL && is_valuetype) {
         umlattrlist umla = node->key->attributes;

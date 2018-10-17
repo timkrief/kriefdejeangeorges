@@ -2,3 +2,7 @@
 build
 bin
 nbproject
+*.h
+.kdev4
+*.kdev4
+.buildconfig

@@ -35,12 +35,19 @@ Sur le champ de bataille se trouveront les QGs des joueurs, leurs unités, des v
 Les bâtiments peuvent être capturés par les joueurs afin d'obtenir plus de ressources et autres avantages. Les puits de pétroles et les villes générent à chaque début de tour, respectivement du pétrol et de l'argent. Lorsqu'il veut jouer une carte le joueur peut placer des infanteries sur les villes et des unités motorisés sur les usines.
 
 
+
 \subsubsection{Les ressources}
 
 \paragraph{Les cartes}
 
 Chaque joueur dispose d'un deck de carte duquel il pioche une carte à chaque début de tour. Une carte dispose d'un prix, qu'il est nécessaire de payer pour la jouer sur le champ de bataille, d'un type, de la description de ses effets. \n
-Il existe différents type de cartes: les cartes d'unités qui permettent d'invoquer l'unité décrite sur le champ bataille, les pièges qui se placent sur une tuile et déclenchent un effet quand une unité se déplace dessus, les équipements qui donnent des bonus à des unités déjà sur le champ de bataille, les soutiens qui ont des effets variés à usage unique sur le champ de bataille.
+\begin{itemize}
+    \item \textbf{Les cartes unités} permettent pour un prix indiqué sur la carte d'invoquer sur le champ de bataille la dite unité. Dans le cadre des blindés, ceux-ci ne peuvent être invoqués qu'à proximité des usines.
+    \item \textbf{Les cartes soutiens} se résolvent immédiatement sur n'importe quelle cible valide. Il peut s'agir d'un tir d'artillerie qui endommage des unités, à des soin ou encore de faire piocher le joueur.
+    \item \textbf{Les cartes équipements} permettent d'améliorer les caractéristiques d'une unité alliée déjà présente sur le champ de bataille. 
+    \item \textbf{Les cartes installations} sont un type de carte dont la fonction est de modifier les tuiles du champ de bataille. Il s'agit alors de pièges, bunker, pont, etc, afin de modifier le champ de bataille à son avantage. Les installations sont déployées à partir de certaines unités ayant la capacité nécessaire pour déployer l'installation voulue.
+
+\end{itemize}
 
 
 \paragraph{L'argent}
@@ -62,12 +69,12 @@ De les unités de base ont :
     \item De la portée. Combien de tuiles peuvent être entre l'unité attaquante et l'unité attaquée.
     \item Des avantages face à certaines unités
     \item Des capacités spéciales
-    \item Des équipements (ahoutés par d'autres cartes d'équipements)
+    \item Des équipements (ajoutés par d'autres cartes d'équipements)
 \end{itemize}
 
 
 \newpage
-\section{Ressources}
+\subsection{Ressources}
 
 Afin de pourvoir représenter les différentes unités, tuiles et autres éléments du jeu, nous avons crée par nous même des sprites. Nous utilisons une platte de 32 couleurs.
 
@@ -91,6 +98,114 @@ Afin de pourvoir représenter les différentes unités, tuiles et autres éléme
     \caption{Sprite des bâtiments}
     \label{fig:Advance Wars}
 \end{figure}
-%\subsubsection{Les tuiles}
+
+\clearpage
+
+\section{Description et conception des états}
+
+\subsection{Description des etats}
+
+Un état du jeu est descrit par des éléments fixes (le champs de bataille), par un ensemble d'éléments mobiles (unités) et par les ressources des joueurs. Il existe aussi un compteur de tour afin de déterminer quel joueur peut jouer. On a donc:
+
+\begin{itemize}
+    \item Des coordonnées (x,y) pour les tuiles et les unités sur le champ de bataille
+    \item Des classes différenciant les tuiles et les unités
+    \item Des objets pour les joueurs déterminant les cartes, l'argent et le pétrole qu'ils possèdent.
+    \item Un compteur pour les tours
+\end{itemize}
+
+
+\subsubsection{Eléments fixes}
+
+Le champs de bataille est formé par une grille d'éléments nommé tuiles ou cases. La taille de la grille est fixée au démarrage de la partie. Les types de cases sont:
+
+\begin{itemize}
+    \item Les cases d'eau, de montagne et de forêt. Infranchissable par n'importe quelle unité.
+    \item Les cases d'herbes qui permettent un déplacement standard.
+    \item Les cases chemins qui permettent un déplacement plus rapide que celles d'herbe.
+    \item Les cases routes qui permettent un déplacement plus rapide que celles d'herbe.
+    \item Les ponts permettent de passer au dessus des cases d'eau et possèdent les mêmes caractéristiques que les chemins ou routes. Il existe.
+    \item Les bâtiments se trouvent sur la carte. Ils peuvent soit être neutre, soit appartenir à un joueur. Parmis eux il existe: le QG, les usines, les villes et villages, et les puits de pétrole.
+    \item Les installations sont des modifications du champs de bataille par les joueurs. Il peut s'agir de construire un pont, installer une barricade ou d'autres lignes de défence.
+\end{itemize}
 
 \newpage
+
+
+\subsubsection{Eléments mobiles}
+Les éléments mobiles autrement dit les unités possèdent une direction, un status fatigué, des points de mouvements, une position, des équipements, des PVs, un niveau, une spécialité. Les cartes sont elles aussi des éléments mobiles. En effet un joueur jouant une carte la fait passer de sa main au champs de bataille. \n
+Il existe aussi des états intermédiaires quand le joueur décide de déplacer une unité ou jouer une carte.
+
+\begin{itemize}
+    \item Les points de mouvements autorise les déplacement selon le type de terrain. A zéro, l'unité est immobile.
+    \item Le status "fatigué" (exhausted) pour savoir si l'unité peut entreprendre des actions ou non.
+    \item Les PVs détermine si l'unité est en vie. A zéro l'unité est détruite et retirée du champs de bataille. 
+    \item Le niveau est un état fixe qui détermine la puissance d'attaque de l'unité.
+    \item Les équipements sont susceptibles de modifier les statistiques de l'unité équipé.
+    
+\end{itemize}
+
+
+\subsubsection{Etat général}
+
+Il existe quelques caractéristiques générales:
+
+\begin{itemize}
+    \item Un compteur de tour pour déterminer le joueur actif
+    \item Un status "victoire" qui affiche au vainqueur et au vaincu la fin du jeu ainsi que son résultat.
+\end{itemize}
+
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[scale =0.65]{images/etatsDeJeu.png}
+    \caption{Diagramme du tour}
+    \label{fig:Advance Wars}
+\end{figure}
+
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[scale =0.17]{images/UMLstate.png}
+    \caption{Diagramme UML de l'état}
+    \label{fig:Advance Wars}
+\end{figure}
+
+\begin{tabularx}{15 cm}{|c|X|}
+\hline
+Classe & Rôle \\
+\hline
+Game & A pour but de décrire le jeu à son origine \newline Attribut(s): Joueurs, Carte \newline Méthode(s): game(),\\ 
+%\hline
+%Carte & Attribut(s): Tile, size \newline Méthode(s):\\
+%\hline
+%Joueur &\newline Attribut(s): Deck, oil, money  \newline Méthode(s)\\
+%\hline
+%Nouvelle classe & Rôle \newline Attribut(s) \newline Méthode(s)\\
+%\hline
+%Nouvelle classe & Rôle \newline Attribut(s) \newline Méthode(s)\\
+%\hline
+%Nouvelle classe & Rôle \newline Attribut(s) \newline Méthode(s)\\
+%\hline
+%Nouvelle classe & Rôle \newline Attribut(s) \newline Méthode(s)\\
+%\hline
+%Nouvelle classe & Rôle \newline Attribut(s) \newline Méthode(s)\\
+%\hline
+%Nouvelle classe & Rôle \newline Attribut(s) \newline Méthode(s)\\
+%\hline
+%Nouvelle classe & Rôle \newline Attribut(s) \newline Méthode(s)\\
+%\hline
+%Nouvelle classe & Rôle \newline Attribut(s) \newline Méthode(s)\\
+%\hline
+%Nouvelle classe & Rôle \newline Attribut(s) \newline Méthode(s)\\
+%\hline
+%Nouvelle classe & Rôle \newline Attribut(s) \newline Méthode(s)\\
+
+\end{tabularx}
+
+
+
+
+
+
+

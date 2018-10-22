@@ -1,0 +1,74 @@
+%YAML 1.2
+---
+
+cards:
+  0:
+    type: UNIT
+    unitType: SOLDIER
+    title:
+      string:
+        en: infantryman
+        fr: fantassin
+    cost: 100
+    level: 1
+    strengths: 
+      - SOLDIER
+  1:
+    type: UNIT
+    unitType: TANK
+    title:
+      string:
+        en: standard tank 
+        fr: tank standard
+    cost: 500
+    level: 7
+    strengths:
+      - SOLDIER
+      - TANK
+  2:
+    type: UNIT
+    unitType: SOLDIER
+    title:
+      string:
+        en: bazooka 
+        fr: bazooka
+    cost: 300
+    level: 3 
+    strengths:
+      - TANK
+  3:
+    type: UNIT
+    unitType: SOLDIER
+    title:
+      string:
+        en: elite soldier 
+        fr: soldat d'élite
+    cost: 400
+    level: 5
+    strengths:
+      - TANK
+      - SOLDIER
+  4:
+    type: UNIT
+    unitType: TANK
+    title:
+      string:
+        en: AAD 
+        fr: DCA
+    cost: 500
+    level: 5
+    strengths:
+      - PLANE
+  5:
+    type: UNIT
+    unitType: PLANE
+    title:
+      string:
+        en: bomber
+        fr: bombardier
+    cost: 1000
+    level: 10
+    strengths:
+      - SOLDIER
+      - TANK
+  

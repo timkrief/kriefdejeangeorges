@@ -365,6 +365,14 @@ FILE * open_outfile (char *filename, batch *b)
 
 
 int
+is_enum_class_stereo (char *stereo)
+{
+    return (!strcasecmp(stereo, "enum class") ||
+            !strcasecmp (stereo, "enumeration class") ||
+            !strcmp (stereo, "CORBAEnumClass"));
+}
+
+int
 is_enum_stereo (char *stereo)
 {
     return (!strcasecmp(stereo, "enum") ||

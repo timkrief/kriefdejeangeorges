@@ -4,24 +4,28 @@
 cards:
   0:
     type: UNIT
-    unitType: SOLDIER
     title:
       string:
         en: infantryman
         fr: fantassin
     cost: 100
+    unitType: SOLDIER
     level: 1
+    movesByTurn: 3
+    oilCost: 0
     strengths: 
       - SOLDIER
   1:
     type: UNIT
-    unitType: TANK
     title:
       string:
         en: standard tank 
         fr: tank standard
     cost: 500
+    unitType: TANK
     level: 7
+    movesByTurn: 5
+    oilCost: 50
     strengths:
       - SOLDIER
       - TANK
@@ -30,45 +34,102 @@ cards:
     unitType: SOLDIER
     title:
       string:
-        en: bazooka 
-        fr: bazooka
+        en: bazooka soldier
+        fr: soldat bazooka
     cost: 300
     level: 3 
+    movesByTurn: 2
+    oilCost: 0
     strengths:
       - TANK
   3:
     type: UNIT
-    unitType: SOLDIER
     title:
       string:
         en: elite soldier 
         fr: soldat d'élite
     cost: 400
+    unitType: SOLDIER
     level: 5
+    movesByTurn: 3
+    oilCost: 0
     strengths:
       - TANK
       - SOLDIER
   4:
     type: UNIT
-    unitType: TANK
     title:
       string:
         en: AAD 
         fr: DCA
     cost: 500
+    unitType: TANK
     level: 5
+    movesByTurn: 4
+    oilCost: 100
     strengths:
       - PLANE
   5:
     type: UNIT
-    unitType: PLANE
     title:
       string:
         en: bomber
         fr: bombardier
     cost: 1000
+    unitType: PLANE
     level: 10
+    movesByTurn: 10
+    oilCost: 100
     strengths:
       - SOLDIER
       - TANK
+  6:
+    type: EQUIPMENT
+    title:
+      string:
+        en: rocket launcher
+        fr: lance-roquette
+    cost: 200
+    level: 1
+    oilCost: 100
+    headCount: 1
+    strengths:
+      - TANK
+  7:
+    type: INSTALLATION
+    title:
+      string:
+        en: standard trap
+        fr: piège standard
+    cost: 250
+    stopOpponent: true
+    damage: 2
+    iterations: 2
+  
+  8:
+    type: SUPPORT
+    title:
+      string:
+        en: direct hit
+        fr: coup direct
+    cost: 1000
+    damage: 2
+    heal: 0
+    moneyLoss: 0
+    moneyGain: 0
+    oilLoss: 0
+    oilGain: 0
+  8:
+    type: SUPPORT
+    title:
+      string:
+        en: treasury bill
+        fr: bon du trésor
+    cost: 0
+    damage: 0
+    heal: 0
+    moneyLoss: 0
+    moneyGain: 1000
+    oilLoss: 0
+    oilGain: 0
   

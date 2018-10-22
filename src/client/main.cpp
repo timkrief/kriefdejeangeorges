@@ -18,7 +18,7 @@ using namespace state;
 void testPlayer() {
 	// Card import is not yet implemented, this file path is just here for exemple purposes.
 	// creation of a fake card list to test the Player class
-	Cards cards("res/cards.txt");
+	Cards cards("res/cards.yaml");
 	
 	cout << "Test of the static counter of the Player class:" << endl;
 	

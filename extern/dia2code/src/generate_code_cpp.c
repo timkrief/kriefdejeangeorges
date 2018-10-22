@@ -593,6 +593,25 @@ gen_decl (declaration *d)
         print ("const %s %s = %s;\n\n", cppname (umla->key.type), name,
                                                  umla->key.value);
 
+    } else if (is_enum_class_stereo (stype)) {
+        print ("enum class %s {\n", name);
+        indentlevel++;
+        while (umla != NULL) {
+            char *literal = umla->key.name;
+            check_umlattr (&umla->key, name);
+            if (strlen (umla->key.type) > 0)
+                fprintf (stderr, "%s/%s: ignoring type\n", name, literal);
+            print ("%s", literal);
+            if (strlen (umla->key.value) > 0)
+                print (" = %s", umla->key.value);
+            if (umla->next)
+                emit (",");
+            emit ("\n");
+            umla = umla->next;
+        }
+        indentlevel--;
+        print ("};\n\n");
+
     } else if (is_enum_stereo (stype)) {
         print ("enum %s {\n", name);
         indentlevel++;
@@ -788,6 +807,9 @@ void print_include_stdlib(struct stdlib_includes* si,char* name) {
        if (!si->sfmlGraphics 
        && (strstr(name,"sf::RenderWindow")
        ||  strstr(name,"sf::VertexArray")
+       ||  strstr(name,"sf::Vector2f")
+       ||  strstr(name,"sf::Vector2u")
+       ||  strstr(name,"sf::Sprite")
        ||  strstr(name,"sf::Texture"))) {
            print ("#include <SFML/Graphics.hpp>\n");
            si->sfmlGraphics = 1;

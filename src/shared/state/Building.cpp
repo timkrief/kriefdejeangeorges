@@ -1,4 +1,6 @@
 #include "Building.h"
+#include "Player.h"
+#include "GameState.h"
 
 namespace state {
   Building::Building(){
@@ -6,12 +8,11 @@ namespace state {
   }
 
 
-  void Building::captured (int besiegingPlayer){
-    //change the owner of the building and the ownedFieldObject of the previous
-    //owner player 
-    //TO DO
-    //owner ownerFieldObject remove this fieldobject
-    //END TO DO
+  void Building::captured (int besiegingPlayer, GameState &gamestate){
+    
+    gamestate.getPlayer(owner).removeOwnedFieldObject(this);
+    gamestate.getPlayer(besiegingPlayer).addOwnedFieldObject(this);
+    //threadable
     owner = besiegingPlayer;
 
 

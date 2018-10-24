@@ -1,5 +1,7 @@
 #include "Player.h"
-
+#include <iostream>
+#include <vector>
+#include <algorithm>
 
 
 namespace state {
@@ -30,6 +32,29 @@ namespace state {
 		}
 	}
 	
+	void Player::addOwnedFieldObject(FieldObject* newFieldObject){
+		auto match = std::find(ownedFieldObjects.begin(), ownedFieldObjects.end(), newFieldObject);
+ 
+  		if(match != ownedFieldObjects.end()) {
+    		std::cout << "This FieldObject already belong to this player" << std::endl;
+  		} 
+		else {
+			ownedFieldObjects.push_back(newFieldObject);
+  		}
+	}
+	void Player::removeOwnedFieldObject(FieldObject* deletedFieldObject){
+		auto match = std::find(ownedFieldObjects.begin(), ownedFieldObjects.end(), deletedFieldObject);
+ 
+  		if(match != ownedFieldObjects.end()) {
+    		ownedFieldObjects.erase(match);
+  		} 
+		else {
+    		std::cout << "This FieldObject does not belong to this player" << std::endl;
+  		}
+
+	}
+
+
    	int Player::getOil (){
 		return int(oil);
 	}

@@ -13,6 +13,13 @@ namespace state {
       moneyProduction=0;
     }
   }
+
+
+
+  int Headquarter::getMoneyProduction()  {
+    return( moneyProduction );
+
+  }  
   void Headquarter::captured (int besiegingPlayer){
     //change the owner of the building and the ownedFieldObject of the previous
     //owner player 

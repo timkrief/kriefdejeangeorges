@@ -8,12 +8,17 @@ namespace state {
 		owner = -1;
   }
 
-
-//  void FieldObject::setObjectype(string type){
-    //sprite = ;//associated sprite
-    //type = ;//associated sprite
-//  }
+  void FieldObject::setObjectType (ObjectType selectedType){
+      //sprite = ;//associated sprite
   
+    type = selectedType;//associated type
+  }
+
+  sf::Vector2f FieldObject::getPosition(){
+    return(position);
+  }
+
+
   void FieldObject::setOwner (int playerId){
     owner = playerId;
   }

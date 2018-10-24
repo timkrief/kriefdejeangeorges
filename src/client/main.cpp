@@ -15,10 +15,9 @@ void testSFML() {
 using namespace std;
 using namespace state;
 
-void testPlayer() {
+void testPlayer(Cards cards) {
 	// Card import is not yet implemented, this file path is just here for exemple purposes.
 	// creation of a fake card list to test the Player class
-	Cards cards("res/cards.yaml");
 	
 	cout << "Test of the static counter of the Player class:" << endl;
 	
@@ -52,8 +51,11 @@ void testPlayer() {
 
 int main(int argc,char* argv[]) 
 {
-	testSFML();
-	testPlayer();
+	//testSFML();
+	
+	Cards cards("res/cards.yaml","fr");
+	
+	//testPlayer(cards);
 	
     cout << "Hello world !" << endl;
 

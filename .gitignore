@@ -2,7 +2,8 @@
 build
 bin
 nbproject
-src/**/*.h
+src/shared/*.h
+src/shared/*/*.h
 .kdev4
 *.kdev4
 .buildconfig

@@ -28,5 +28,5 @@ namespace state {
 		std::cout << "---------" << std::endl << std::endl;
 	}
 	
-    void EquipmentCard::playCard () { }
+    void EquipmentCard::playCard () { } 
 };

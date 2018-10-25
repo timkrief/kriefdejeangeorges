@@ -153,7 +153,9 @@ Il existe quelques caractéristiques générales:
 \begin{itemize}
     \item Un compteur de tour pour déterminer le joueur actif
     \item Un status "victoire" qui affiche au vainqueur et au vaincu la fin du jeu ainsi que son résultat.
+    \item Une liste de joueurs ainsi qu'une liste des objets sur le champs de bataille.
 \end{itemize}
+
 
 
 \begin{figure}[h]
@@ -164,44 +166,84 @@ Il existe quelques caractéristiques générales:
 \end{figure}
 
 
+
+\newpage
+\phantom{Texte invisible parce que j'ai pas trouvé d'autre méthode pour mettre le tableau à la ligne.}
+
+\begin{tabularx}{15 cm}{|X|X|}
+\hline
+\textbf{GameState} \newline A pour but de décrire l'état du jeu & Attributs: map, players, existingCards, turn, allFieldObjects \newline Méthodes: GameState, getMap, EndTurn, Newturn, GenerateRessource, getPlayer\\ 
+\hline
+\textbf{FieldObjects} \newline C'est la liste qui contient tout les objets du champs de bataille & Attribut: fieldObjects(vecteur de FieldObject) \\
+\hline
+\textbf{FieldObject} \newline C'est la classe qui décrit tout les objets du champs de bataille: leur emplacement, l'image associée, le propriétaire et le type  & Attributs: position, sprite, owner, type \newline Méthodes: FieldObject, setOwner, getPosition, setObjectType\\
+\hline
+\textbf{Building} \newline Un bâtiment peut être capturé par des unités afin qu'un joueur en prenne le contrôle & Attribut: health \newline Méthode: Building, captured\\
+\hline
+\textbf{ObjectType} \newline C'est une classe dénumération des types possibles que peut prendre un FieldObject & Attributs: HEADQUARTER, TOWN, FACTORY, OILWELL, INSTALLATION, UNIT \newline \\
+\hline
+\textbf{Headquarter} & Attribut: moneyProduction \newline Méthodes: Headquarter, setMoneyProduction, captured, setMoneyProduction, getMoneyProduction\\
+\hline
+\textbf{Town} & Attribut: moneyProduction \newline Méthode:Town, Town (un deuxième constructeur), setMoneyProduction, setMoneyProduction, getMoneyProduction\\
+\hline
+\textbf{Factory} &  
+\newline\\
+\hline
+\textbf{OilWell} & Attribut:oilProduction \newline Méthodes: OilWell, setOilProduction\\
+\hline
+\textbf{Installation} & Attribut: sourceCard \newline\\
+\hline
+\textbf{Unit} & Attributs: equipments, headcount, sourceCard \newline Méthodes:getHeadCount, move, attack, defence, capture\\
+
+\hline
+\textbf{Direction} \newline C'est une classe d'énumation qui permettra de changer les sprites en fonction des mouvements des unités & Attributs: UP, RIGHT, DOWN, LEFT \newline \\
+\hline
+
+\end{tabularx}
+
+
+
+\begin{tabularx}{15 cm}{|X|X|}
+\hline
+\textbf{Map} & Attributs: tiles, size  \newline Méthodes: Map, Map (un deuxième constructeur)\\
+\hline
+\textbf{Tile} & Attributs: Speed  \newline Méthodes: Tile\\
+\hline
+\textbf{Tiles} & Attributs: tiles  \newline Méthodes: Tiles\\
+
+\hline
+\textbf{Player} & Attributs: deck, hand, money, oil, name, ownedFieldObjects, id, count  \newline Méthodes: Player, getMoney, setMoney, getOil, setOil, getId, addOwnedFieldObject, removeOwnedFieldObject\\
+\hline
+\textbf{Deck} & Attributs: cards  \newline Méthodes: Deck, Deck (deuxième constructeurs), pull, remove\\
+\hline
+\textbf{Cards} & Attributs: cards  \newline Méthodes: Cards, getCard\\
+\hline
+\textbf{Card} & Attributs: id, title, cost, decription, type  \newline Méthodes: Card, Card (un deuxième constructeur), playCard\\
+\hline
+\textbf{CardType} \newline Classe d'énumération pour différencier les types de cartes & Attributs: UNIT, EQUIPMENT, INSTALLATION, SUPPORT  \newline \\
+\hline
+\textbf{EquipmentCard} & Attributs: level, strengths, headCount  \newline Méthodes: EquipmentCard, playCard\\
+\hline
+\textbf{UnitCard} & Attributs:level, unitType, strengths, movesByTurn, oilCost  \newline Méthodes: UnitCard, playCard\\
+\hline
+\textbf{InstallationCard} & Attributs: stopOpponent, damage, iterations \newline Méthodes: InstallationCard, playCard\\
+\hline
+\textbf{SupportCard} & Attributs: damage, heal, moneyLoss, moneyGain, oilLoss, oilGain  \newline Méthodes: SupportCard, playCard\\
+\hline
+\end{tabularx}
+
+\newpage
+
 \begin{figure}[h]
     \centering
-    \includegraphics[scale =0.17]{images/UMLstate.png}
+    \includegraphics[angle=270,origin=c,scale =0.12]{images/state.jpeg}
     \caption{Diagramme UML de l'état}
     \label{fig:Advance Wars}
 \end{figure}
 
-\begin{tabularx}{15 cm}{|c|X|}
-\hline
-Classe & Rôle \\
-\hline
-Game & A pour but de décrire le jeu à son origine \newline Attribut(s): Joueurs, Carte \newline Méthode(s): game(),\\ 
-%\hline
-%Carte & Attribut(s): Tile, size \newline Méthode(s):\\
-%\hline
-%Joueur &\newline Attribut(s): Deck, oil, money  \newline Méthode(s)\\
-%\hline
-%Nouvelle classe & Rôle \newline Attribut(s) \newline Méthode(s)\\
-%\hline
-%Nouvelle classe & Rôle \newline Attribut(s) \newline Méthode(s)\\
-%\hline
-%Nouvelle classe & Rôle \newline Attribut(s) \newline Méthode(s)\\
-%\hline
-%Nouvelle classe & Rôle \newline Attribut(s) \newline Méthode(s)\\
-%\hline
-%Nouvelle classe & Rôle \newline Attribut(s) \newline Méthode(s)\\
-%\hline
-%Nouvelle classe & Rôle \newline Attribut(s) \newline Méthode(s)\\
-%\hline
-%Nouvelle classe & Rôle \newline Attribut(s) \newline Méthode(s)\\
-%\hline
-%Nouvelle classe & Rôle \newline Attribut(s) \newline Méthode(s)\\
-%\hline
-%Nouvelle classe & Rôle \newline Attribut(s) \newline Méthode(s)\\
-%\hline
-%Nouvelle classe & Rôle \newline Attribut(s) \newline Méthode(s)\\
 
-\end{tabularx}
+
+\newpage
 
 
 

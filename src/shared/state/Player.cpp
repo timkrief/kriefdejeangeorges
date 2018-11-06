@@ -32,6 +32,23 @@ namespace state {
 		}
 	}
 	
+   	int Player::getOil (){
+		return int(oil);
+	}
+   	void Player::setOil (float amount){
+		if (amount >= 0.f){
+			oil = amount;
+		}
+		else{
+			oil = 0.f;
+		}
+	}
+	int Player::getId(){
+		return id;
+
+	}
+
+
 	void Player::addOwnedFieldObject(FieldObject* newFieldObject){
 		auto match = std::find(ownedFieldObjects.begin(), ownedFieldObjects.end(), newFieldObject);
  
@@ -55,19 +72,4 @@ namespace state {
 	}
 
 
-   	int Player::getOil (){
-		return int(oil);
-	}
-   	void Player::setOil (float amount){
-		if (amount >= 0.f){
-			oil = amount;
-		}
-		else{
-			oil = 0.f;
-		}
-	}
-	int Player::getId(){
-		return id;
-
-	}
 };

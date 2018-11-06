@@ -1,9 +1,14 @@
 #include "Headquarter.h"
-
+#include "Player.h"
+#include "GameState.h"
+#include "Town.h"
 namespace state {
   Headquarter::Headquarter(){
   
     moneyProduction = 0;
+  }
+  Headquarter::~Headquarter(){
+
   }
   void Headquarter::setMoneyProduction (int amount){
     if (moneyProduction>=0){
@@ -20,15 +25,18 @@ namespace state {
     return( moneyProduction );
 
   }  
-  void Headquarter::captured (int besiegingPlayer){
-    //change the owner of the building and the ownedFieldObject of the previous
-    //owner player 
+  void Headquarter::captured (int besiegingPlayer, GameState &gamestate){
+    gamestate.getPlayer(owner).removeOwnedFieldObject(this);
+    Town(this, besiegingPlayer, gamestate);
+    
+    
     //TO DO
-    //owner ownerFieldObject remove this fieldobject
+    //Delete this headquarter
+    //~Headquarter();
+    //MODIFY THE GAMESTATE SOMEHOW TO MAKE THE BESIEGED PLAYER LOOSE
     //END TO DO
-    owner = besiegingPlayer;
-
 
   }
+
 
 };

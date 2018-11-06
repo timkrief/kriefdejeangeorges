@@ -5,9 +5,11 @@ namespace state {
   
     moneyProduction = 0;
   }
-  Town::Town(Headquarter formerHeadquarter, int besiegingPlayer ){
-    position = formerHeadquarter.getPosition();
-    moneyProduction = formerHeadquarter.getMoneyProduction();
+  Town::Town(Headquarter *formerHeadquarter, int besiegingPlayer, GameState &gamestate ){
+    position = &formerHeadquarter->getPosition();
+    moneyProduction = &formerHeadquarter->getMoneyProduction();
+
+    gamestate.getPlayer(besiegingPlayer).addOwnedFieldObject(this);
     owner = besiegingPlayer;
 
   }

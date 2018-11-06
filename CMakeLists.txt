@@ -20,9 +20,22 @@ IF(CMAKE_COMPILER_IS_GNUCC)
 	SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -std=c++11 -pthread -g")
 ENDIF(CMAKE_COMPILER_IS_GNUCC)
 
-
 # Generate headers
 set(DIA2CODE "${PROJECT_SOURCE_DIR}/bin/dia2code")
+  
+#if(${PROJECT_SOURCE_DIR}/src/state.dia IS_NEWER_THAN ${PROJECT_SOURCE_DIR}/src/shared/state.h)
+#  message("New dia")
+#  
+#  execute_process(COMMAND rm -f ${PROJECT_SOURCE_DIR}/src/shared/state.h)
+#  execute_process(
+#    COMMAND find ${PROJECT_SOURCE_DIR}/src/shared/state/ -name "*.h"
+#    COMMAND xargs rm -f
+#  )
+#  
+#  exec_program(${DIA2CODE} ARGS -ns state  -d ../src/shared -t cpp ../src/state.dia)
+#  
+#endif()
+
 exec_program(${DIA2CODE} ARGS -ns state  -d ../src/shared -t cpp ../src/state.dia)
 #exec_program(${DIA2CODE} ARGS -ns render -d ../src/client -t cpp ../src/render.dia)
 #exec_program(${DIA2CODE} ARGS -ns engine -d ../src/shared -t cpp ../src/engine.dia)
@@ -39,15 +52,19 @@ file(GLOB_RECURSE shared_sources src/shared/*.cpp)
 #include_directories ("${PROJECT_SOURCE_DIR}/extern/jsoncpp-1.8.0")
 #file(GLOB_RECURSE jsoncpp_sources extern/jsoncpp-1.8.0/*.cpp)
 
+add_executable(client ${client_sources} ${shared_sources})
+
 #yamlcpp
-include_directories ("${PROJECT_SOURCE_DIR}/extern/yaml-cpp-master/include")
-file(GLOB_RECURSE yamlcpp_sources extern/yaml-cpp-master/src/*.cpp)
+include_directories(${PROJECT_SOURCE_DIR}/extern/yaml-cpp/include)
+find_library(YAML_CPP_LIB NAMES yaml-cpp HINTS ${PROJECT_SOURCE_DIR}/lib/)
+if(NOT YAML_CPP_LIB)
+  add_subdirectory(${PROJECT_SOURCE_DIR}/extern/yaml-cpp)
+  set(YAML_CPP_LIB yaml-cpp)
+endif()
+target_link_libraries(client ${YAML_CPP_LIB})
 
-
-# Executables
-add_executable(client ${client_sources} ${shared_sources} ${yamlcpp_sources})
-#add_executable(server ${server_sources} ${shared_sources} ${jsoncpp_sources})
 #add_executable(server ${server_sources} ${shared_sources} ${yamlcpp_sources})
+
 
 # SFML
 if(WIN32)

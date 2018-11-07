@@ -62,4 +62,8 @@ int testMapLoaded(Map map) { // rendererPrototype
 
     window.close();
     return 0;
+
+
+
+
 }

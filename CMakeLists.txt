@@ -37,7 +37,7 @@ set(DIA2CODE "${PROJECT_SOURCE_DIR}/bin/dia2code")
 #endif()
 
 exec_program(${DIA2CODE} ARGS -ns state  -d ../src/shared -t cpp ../src/state.dia)
-#exec_program(${DIA2CODE} ARGS -ns render -d ../src/client -t cpp ../src/render.dia)
+exec_program(${DIA2CODE} ARGS -ns render -d ../src/client -t cpp ../src/render.dia)
 #exec_program(${DIA2CODE} ARGS -ns engine -d ../src/shared -t cpp ../src/engine.dia)
 #exec_program(${DIA2CODE} ARGS -ns ai     -d ../src/shared -t cpp ../src/ai.dia)
 #exec_program(${DIA2CODE} ARGS -ns client -d ../src/client -t cpp ../src/module.dia)

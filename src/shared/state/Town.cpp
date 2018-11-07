@@ -1,4 +1,8 @@
 #include "Town.h"
+#include "Headquarter.h"
+
+#include "GameState.h"
+
 
 namespace state {
   Town::Town(){
@@ -6,8 +10,8 @@ namespace state {
     moneyProduction = 0;
   }
   Town::Town(Headquarter *formerHeadquarter, int besiegingPlayer, GameState &gamestate ){
-    position = &formerHeadquarter->getPosition();
-    moneyProduction = &formerHeadquarter->getMoneyProduction();
+    position = formerHeadquarter->getPosition();
+    moneyProduction = formerHeadquarter->getMoneyProduction();
 
     gamestate.getPlayer(besiegingPlayer).addOwnedFieldObject(this);
     owner = besiegingPlayer;

@@ -157,6 +157,8 @@ Il existe quelques caractéristiques générales:
 \end{itemize}
 
 
+\newpage
+
 
 \begin{figure}[h]
     \centering
@@ -164,6 +166,78 @@ Il existe quelques caractéristiques générales:
     \caption{Diagramme du tour}
     \label{fig:Advance Wars}
 \end{figure}
+
+
+\begin{tabularx}{15 cm}{|X|X|}
+
+\hline
+
+\textbf{Description de l'état}  &  \textbf{Description de la transition} \\
+\hline
+
+
+
+\textbf{Splash screen} \newline Ecran d'acceuil & On peut accèder au \textbf{ Réglages du logiciel} ou au \textbf{Choix de map} grâce à un clic sur des icônes correspondantes \\
+\hline
+\textbf{Réglages logiciel} \newline Cela permettra de régler l'affichage et d'autres caractéristiques de la fenêtre & On peut retourner au \textbf{ Splash screen} via un clic sur un bouton retour. \\
+\hline
+
+\hline
+\textbf{Choix de map} \newline C'est la liste des différentes maps concues que le joueur peut sélectionner. & On peut retourner au \textbf{ Splash screen} via un bouton retour ou arriver dans le \textbf{Choix des options} en confirmant son choix de map. \\
+\hline
+\textbf{Choix des options} \newline C'est ici qu'on peut régler différentes options comme la difficulté de l'IA etc... & On peut retourner au \textbf{ Choix de map } via un boutton retour, ou bien lancer la partie en commençant le premier \textbf{ Tour} \\
+\hline
+\textbf{Tour} \newline Le \textbf{Tour} permet à un joueur d'effectuer toutes les actions du jeu & 
+Via la souris il peut: 
+\newline -maintenir le clic droit pour avoir la \textbf{Description de carte} de l'une de celle qu'il a en main. Relâcher le clic fera revenir à l'état \textbf{Tour} précédent le clic.
+\newline -avec le clic gauche sélectionner une de ses \textbf{Placement} (unité, équipement, installation) ou \textbf{Utilisation de soutien}, cette action peut être annulée par un clic droit. 
+\newline -avec le clic gauche sélectionner une unité pour effectuer un \textbf{Déplacement d'unité} 
+\newline -si le joueur adverse n'a plus de QG, la \textbf{Fin du jeu} est déclenchée.
+\newline -la fin du tour qui voit un nouveau \textbf{Tour} se lancer avec un autre joueur aux commandes. \\
+
+
+\hline
+\textbf{Placement d'unité} \newline Suite à la sélection d'unte carte d'unité, le joueur peut décider de la faire jouer sur une case autorisée. & Un clic gauche sur une case autorisé fera apparaître l'unité de la carte sur le champs de bataille, et la carte sera alors défaussée. On retourne alors à \textbf{Tour}. \\
+\hline
+
+\textbf{Placement d'équipement} \newline Suite à la sélection d'unte carte d'équipement, le joueur peut décider de la faire jouer sur une unité autorisée. & Un clic gauche sur une unité autorisé fera apparaître l'équipement de la carte dans les caractéristiques de l'unité, et la carte sera alors défaussée. On retourne alors à \textbf{Tour}. \\
+\hline
+
+\textbf{Placement d'installation} \newline Suite à la sélection d'unte carte d'installation, le joueur peut décider de la faire jouer sur une case autorisée. & Un clic gauche sur une case autorisé fera apparaître l'installation de la carte sur le champs de bataille, et la carte sera alors défaussée. On retourne alors à \textbf{Tour}. \\
+\hline
+
+\end{tabularx}
+
+\begin{tabularx}{15 cm}{|X|X|}
+
+\hline
+
+\textbf{Utilisation de soutien} \newline Suite à la sélection d'unte carte de soutien, le joueur peut décider de la faire jouer sur une case ou une unité autorisée. & Un clic gauche sur l'entitée autorisé déclenchera l'effet de la carte sur le champs de bataille, et la carte sera alors défaussée. On retourne alors à \textbf{Tour}. \\
+
+\hline
+\textbf{Déplacement d'unité} \newline On a sélectionnée une unité dans le but de la déplacer. Les cases où elle pourra se déplacer en fonction de ses points de mouvements & Un clic gauche permettra à l'unité de se diriger vers la case sélectionnée. Une fois le déplacement effectué, l'unité pourra effectuer une action dans \textbf{Choix d'action d'unité} \\
+
+\hline
+\textbf{Choix d'action d'unité} \newline On a déplacé l'unité on souhaite maintenant qu'elle effectue une action dans le tour. & Un clic droit fera revenir à \textbf{Tour} et l'unité n'effectuera aucune action. Un clic gauche sur un bâtiment lancera la \textbf{Capture} si l'unité est sur un bâtiment ennemi. Un clic gauche sur une unité adverse à portée déclenchera une \textbf{Attaque}.\\
+
+\hline
+\textbf{Attaque} \newline Un combat est lancé entre l'unité attaquante et l'unité attaquée & Une fois la résolution des dégâts terminée, on reprends le \textbf{Tour} \\
+
+
+\hline
+\textbf{Capture} \newline Une unité a commencé à capturer un bâtiment adverse. & Une fois le siège mis en place, le \textbf{Tour} reprendra automatiquement. \\
+
+\hline
+\textbf{Fin du jeu} & Une fois Celle-ci déclenchée, on revient au \textbf{Choix de map}  \\
+
+\hline
+
+\end{tabularx}
+
+
+
+
+
 
 
 
@@ -241,7 +315,8 @@ Il existe quelques caractéristiques générales:
     \label{fig:Advance Wars}
 \end{figure}
 
-
+%\paragraph{Test pour voir la mise en page si je ré-écris du test en dessous  }
+%et du coup ça marche
 
 \newpage
 

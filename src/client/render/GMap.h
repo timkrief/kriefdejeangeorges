@@ -3,10 +3,20 @@
 #define RENDER__GMAP__H
 
 
+namespace state {
+  class GameState;
+};
+namespace sf {
+  class Drawable;
+}
+
+#include "state/GameState.h"
+
 namespace render {
 
   /// class GMap - 
-  class GMap {
+  class GMap : public sf::Drawable {
+    // Associations
     // Operations
   public:
     GMap ();

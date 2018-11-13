@@ -3,11 +3,17 @@
 #define RENDER__GSTATE__H
 
 
+namespace state {
+  class GameState;
+  class FieldObjects;
+};
 namespace render {
   class GMap;
   class GFieldObject;
 }
 
+#include "state/GameState.h"
+#include "state/FieldObjects.h"
 #include "GMap.h"
 #include "GFieldObject.h"
 

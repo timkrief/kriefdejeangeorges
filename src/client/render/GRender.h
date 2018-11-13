@@ -3,10 +3,17 @@
 #define RENDER__GRENDER__H
 
 
+namespace state {
+  class GameState;
+}
+
+#include "state/GameState.h"
+
 namespace render {
 
   /// class GRender - 
   class GRender {
+    // Associations
     // Operations
   public:
     GRender ();

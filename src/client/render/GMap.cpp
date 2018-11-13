@@ -1,19 +1,10 @@
 #include "GMap.h"
-#include <SFML/Graphics.hpp>
 
 namespace render {
 
-  /// class GMap - 
-  class GMap {
-    // Operations
-  GMap::Gmap(){
+  GMap::GMap(){
     
   }
 
-  
-  //void draw (state::GState state);
-    
-  
-  //};
-
 };
+

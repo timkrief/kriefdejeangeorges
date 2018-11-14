@@ -4,9 +4,10 @@
 
 
 namespace state {
+
+    SupportCard::SupportCard() : Card() {}
 	
     SupportCard::SupportCard (
-		int id, 
 		std::string title, 
 		int cost, 
 		std::string description, 
@@ -17,7 +18,7 @@ namespace state {
 		int oilLoss, 
 		int oilGain
 	) :
-		Card(id, title, cost, description, CardType::SUPPORT) , 
+		Card(title, cost, description, CardType::SUPPORT) , 
 		damage(damage), 
 		heal(heal), 
 		moneyLoss(moneyLoss), 
@@ -26,7 +27,6 @@ namespace state {
 		oilGain(oilGain)
 	{ 
 		std::cout << std::endl << "---------" << std::endl;
-		std::cout << "id: " << id << std::endl;
 		std::cout << "title: " << title << std::endl;
 		std::cout << "cost: " << cost << std::endl;
 		std::cout << "description: " << description << std::endl;

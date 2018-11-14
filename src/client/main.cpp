@@ -11,17 +11,13 @@ int main(int argc,char* argv[])
 {
 	testSFML();
 	
-	Cards cards("res/cards.yaml","fr");
+	Cards cards("./res/cards.yaml","fr");
+	
 	testPlayer(cards);
 	
-	Map map("res/maps/map.json");
-		
+	Map map("./res/maps/map.json", "field");
 	
-  cout << "Hello world !" << endl;
-
-  return testMapLoaded(map);
-
-
-	return 0;
-
+    cout << "Hello world !" << endl;
+    
+    return testMapLoaded(map);
 }

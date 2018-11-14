@@ -1,6 +1,5 @@
 #include "Cards.h"
 #include "yaml-cpp/yaml.h"
-#include <iostream>
 
 #include "Card.h"
 
@@ -10,6 +9,7 @@
 #include "SupportCard.h"
 
 #include "CardType.h"
+#include <iostream>
 
 namespace state {
 	
@@ -20,6 +20,15 @@ namespace state {
 		YAML::Node cardTypeStr2Int = parsedCardsFile["CardType"];
 		YAML::Node unitTypeStr2Int = parsedCardsFile["UnitType"];
 		YAML::Node parsedCardList = parsedCardsFile["cards"];
+		
+		size = 0;
+		
+		for(YAML::const_iterator it = parsedCardList.begin(); it != parsedCardList.end(); ++it) {
+		    unsigned int knownSize = it->first.as<unsigned int>() + 1;
+			size = std::max(size, knownSize);
+		}
+		
+		cards.resize(size);
 		
 		for(YAML::const_iterator it = parsedCardList.begin(); it != parsedCardList.end(); ++it) {
 			
@@ -62,7 +71,6 @@ namespace state {
 			
 			switch (type) {
 				case CardType::EQUIPMENT: {
-					std::cout << "EquipmentCard" << std::endl;
 					
 					// Level
 					int level = it->second["level"] ? 
@@ -72,10 +80,10 @@ namespace state {
 					// Strengths
 					const std::size_t strengthsListSize = it->second["strengths"] ? it->second["strengths"].size() : 0;
 						
-					UnitType strengths[strengthsListSize];
+					std::vector<UnitType> strengths;
 					
 					for (std::size_t i = 0; i < strengthsListSize; i++) {
-						strengths[i] = (UnitType)unitTypeStr2Int[it->second["strengths"][i].as<std::string>()].as<int>();
+						strengths.push_back((UnitType)unitTypeStr2Int[it->second["strengths"][i].as<std::string>()].as<int>());
 					}
 					
 					// Head Count
@@ -83,12 +91,10 @@ namespace state {
 						it->second["headCount"].as<int>() :
 						0; // 0 headcount by default
 						
-					EquipmentCard card(id, title, cost, description, level, strengths, headCount);
-					cards.push_back(card);
+					cards[id] = std::make_shared<EquipmentCard>(title, cost, description, level, strengths, headCount);
 					
 					break;
 				} case CardType::INSTALLATION: {
-					std::cout << "InstallationCard" << std::endl;
 					
 					// Stop Opponent
 					bool stopOpponent = it->second["stopOpponent"] ? 
@@ -104,13 +110,11 @@ namespace state {
 					int iterations = it->second["iterations"] ? 
 						it->second["iterations"].as<int>() :
 						1; // 1 iteration by default
-						
-					InstallationCard card(id, title, cost, description, stopOpponent, damage, iterations);
-					cards.push_back(card);
+						 
+					cards[id] = std::make_shared<InstallationCard>(title, cost, description, stopOpponent, damage, iterations);
 					
 					break;
 				} case CardType::SUPPORT: {
-					std::cout << "SupportCard" << std::endl;
 					
 					// Damage
 					float damage = it->second["damage"] ? 
@@ -142,12 +146,10 @@ namespace state {
 						it->second["oilGain"].as<int>() :
 						0; // 0 oil gain by default
 						
-					SupportCard card(id, title, cost, description, damage, heal, moneyLoss, moneyGain, oilLoss, oilGain);
-					cards.push_back(card);
+					cards[id] = std::make_shared<SupportCard>(title, cost, description, damage, heal, moneyLoss, moneyGain, oilLoss, oilGain);
 					
 					break;
 				} default: { // UNIT
-					std::cout << "UnitCard" << std::endl;
 					
 					// Level
 					int level = it->second["level"] ? 
@@ -164,10 +166,10 @@ namespace state {
 					// Strengths
 					const std::size_t strengthsListSize = it->second["strengths"] ? it->second["strengths"].size() : 0;
 						
-					UnitType strengths[strengthsListSize];
+					std::vector<UnitType> strengths;
 					
 					for (std::size_t i = 0; i < strengthsListSize; i++) {
-						strengths[i] = (UnitType)unitTypeStr2Int[it->second["strengths"][i].as<std::string>()].as<int>();
+						strengths.push_back((UnitType)unitTypeStr2Int[it->second["strengths"][i].as<std::string>()].as<int>());
 					}
 					
 					// Moves by turn
@@ -179,21 +181,21 @@ namespace state {
 					int oilCost = it->second["oilCost"] ? 
 						it->second["oilCost"].as<int>() :
 						0; // 1 movesByTurn by default
-					UnitCard card(id, title, cost, description, level, unitType, strengths, movesByTurn, oilCost);
-					cards.push_back(card);
+					
+					cards[id] = std::make_shared<UnitCard>(title, cost, description, level, unitType, strengths, movesByTurn, oilCost);
 	
 					break;
 				}
 			}
 			
-			//~ cards[id] = Card(
-				//~ id,
-				//~ it->second["title"]["string"]["fr"].as<std::string>(),
-				
 		}
 	}
 	
-    Card* Cards::getCard (int id){
-		return &cards[id];
+    std::shared_ptr<Card> Cards::getCard (int id){
+		return cards[id];
+	}
+	
+	Cards::~Cards(){
+	
 	}
 }

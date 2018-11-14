@@ -10,8 +10,6 @@ void testSFML() {
 
 
 void testPlayer(Cards cards) {
-	// Card import is not yet implemented, this file path is just here for exemple purposes.
-	// creation of a fake card list to test the Player class
 	cout << "Test of the static counter of the Player class:" << endl;
 	Player player(cards);
 	cout << "Player n°" << player.getId() << endl;
@@ -46,14 +44,15 @@ int testMapLoaded(Map map) { // rendererPrototype
         
         for(unsigned int x = 0; x < map.getSize().x; x++){
             for(unsigned int y = 0; y < map.getSize().y; y++){
-                if(map.getData()[x + map.getSize().x * y] != 95){
-                    sf::RectangleShape rect;
-                    rect.setSize(sf::Vector2f((float)width / (float)map.getSize().x, (float)height / (float)map.getSize().y));
-                    rect.setPosition((float)x / (float)map.getSize().x * width , (float)y / (float)map.getSize().y * height);
-                    rect.setFillColor(sf::Color::White);
+                float speed = map.getTile(x,y)->getSpeed();
+                sf::RectangleShape rect;
+                rect.setSize(sf::Vector2f((float)width / (float)map.getSize().x, (float)height / (float)map.getSize().y));
+                rect.setPosition((float)x / (float)map.getSize().x * width , (float)y / (float)map.getSize().y * height);
+                
+                int luminosity = speed * 255.f;
+                rect.setFillColor(sf::Color(luminosity, luminosity, luminosity));
 
-                    window.draw(rect);
-                }
+                window.draw(rect);
             }
         }
         
@@ -61,9 +60,6 @@ int testMapLoaded(Map map) { // rendererPrototype
     }
 
     window.close();
+    
     return 0;
-
-
-
-
 }

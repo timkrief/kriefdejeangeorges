@@ -48,7 +48,6 @@ namespace state {
 
 	}
 
-
 	void Player::addOwnedFieldObject(FieldObject* newFieldObject){
 		auto match = std::find(ownedFieldObjects.begin(), ownedFieldObjects.end(), newFieldObject);
  
@@ -59,6 +58,7 @@ namespace state {
 			ownedFieldObjects.push_back(newFieldObject);
   		}
 	}
+	
 	void Player::removeOwnedFieldObject(FieldObject* deletedFieldObject){
 		auto match = std::find(ownedFieldObjects.begin(), ownedFieldObjects.end(), deletedFieldObject);
  

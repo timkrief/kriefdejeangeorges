@@ -3,18 +3,19 @@
 #include <iostream>
 
 namespace state {
+    UnitCard::UnitCard() : Card() {}
+    
 	UnitCard::UnitCard (
-		int id, 
 		std::string title, 
 		int cost, 
 		std::string description, 
 		int level, 
 		UnitType unitType, 
-		UnitType* strengths, 
+		std::vector<UnitType> strengths, 
 		int movesByTurn, 
 		int oilCost
 	) :
-		Card(id, title, cost, description, CardType::UNIT) , 
+		Card(title, cost, description, CardType::UNIT) , 
 		level(level), 
 		unitType(unitType),
 		strengths(strengths), 
@@ -22,7 +23,6 @@ namespace state {
 		oilCost(oilCost) 
 	{ 
 		std::cout << std::endl << "---------" << std::endl;
-		std::cout << "id: " << id << std::endl;
 		std::cout << "title: " << title << std::endl;
 		std::cout << "cost: " << cost << std::endl;
 		std::cout << "description: " << description << std::endl;

@@ -13,6 +13,17 @@ UnitType:
   PLANE: 2
 
 cards:
+  6:
+    type: EQUIPMENT
+    title:
+      en: rocket launcher
+      fr: lance-roquette
+    cost: 200
+    level: 1
+    oilCost: 100
+    headCount: 1
+    strengths:
+      - TANK
   0:
     type: UNIT
     title:
@@ -87,17 +98,6 @@ cards:
     oilCost: 100
     strengths:
       - SOLDIER
-      - TANK
-  6:
-    type: EQUIPMENT
-    title:
-      en: rocket launcher
-      fr: lance-roquette
-    cost: 200
-    level: 1
-    oilCost: 100
-    headCount: 1
-    strengths:
       - TANK
   7:
     type: INSTALLATION

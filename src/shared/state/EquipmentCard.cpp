@@ -4,22 +4,22 @@
 #include <iostream>
 
 namespace state {
+    EquipmentCard::EquipmentCard() : Card() {}
+    
     EquipmentCard::EquipmentCard (
-		int id, 
 		std::string title, 
 		int cost, 
 		std::string description, 
 		int level,
-		UnitType* strengths, 
+		std::vector<UnitType> strengths, 
 		int headCount
 	) :
-		Card(id, title, cost, description, CardType::EQUIPMENT) , 
+		Card(title, cost, description, CardType::EQUIPMENT) , 
 		level(level), 
-		strengths(strengths), 	
+		strengths(strengths),
 		headCount(headCount)
 	{ 
 		std::cout << std::endl << "---------" << std::endl;
-		std::cout << "id: " << id << std::endl;
 		std::cout << "title: " << title << std::endl;
 		std::cout << "cost: " << cost << std::endl;
 		std::cout << "description: " << description << std::endl;

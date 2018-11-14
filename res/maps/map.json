@@ -44,7 +44,7 @@
  "tilesets":[
         {
          "firstgid":1,
-         "source":"..\/tilesets\/mapTileset.tsx"
+         "source":"..\/tilesets\/mapTileset.json"
         }, 
         {
          "firstgid":170,

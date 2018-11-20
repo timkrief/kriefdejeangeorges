@@ -24,6 +24,31 @@ void testPlayer(Cards cards) {
 	cout << "Player's money: " << player.getMoney() << endl << endl;
 }
 
+int testRender(GameState& state){
+    GRender my_render;
+    
+    sf::RenderWindow& renderWindow = my_render.window;
+    auto sharedState= std::make_shared<GameState>(state);
+    render::GState gstate(sharedState);
+    
+    bool displayWindow = true;
+    sf::Event event;
+
+     while(displayWindow){
+        while (renderWindow.pollEvent(event)){
+            if (event.type == sf::Event::Closed){
+                displayWindow = false;
+            }
+        
+            renderWindow.clear();
+            my_render.display(gstate);
+        }
+
+    }
+    return 0;
+}
+
+
 
 int testMapLoaded(Map map) { // rendererPrototype
     int width = 800;

@@ -25,7 +25,7 @@ namespace render {
     // Operations
   public:
     GRender ();
-    void display (GState g);
+    void display (GState& g);
   };
 
 };

@@ -2,6 +2,7 @@
 #ifndef RENDER__GMAP__H
 #define RENDER__GMAP__H
 
+#include <memory>
 
 namespace sf {
   class Drawable;
@@ -17,10 +18,13 @@ namespace render {
   /// class GMap - 
   class GMap : public sf::Drawable {
     // Associations
+    // Attributes
+  private:
+    std::shared_ptr<state::Map> map;
     // Operations
   public:
-    GMap ();
-    void draw (sf::RenderTarget& target, sf::RenderStates states);
+    GMap (std::shared_ptr<state::Map> map);
+    void draw (sf::RenderTarget& target, sf::RenderStates states) const;
   };
 
 };

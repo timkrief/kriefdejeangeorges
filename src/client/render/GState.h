@@ -2,19 +2,22 @@
 #ifndef RENDER__GSTATE__H
 #define RENDER__GSTATE__H
 
+#include <memory>
 
+namespace render {
+  class GMap;
+};
 namespace state {
   class GameState;
   class FieldObjects;
 };
 namespace render {
-  class GMap;
   class GFieldObject;
 }
 
+#include "GMap.h"
 #include "state/GameState.h"
 #include "state/FieldObjects.h"
-#include "GMap.h"
 #include "GFieldObject.h"
 
 namespace render {
@@ -23,12 +26,15 @@ namespace render {
   class GState {
     // Associations
     // Attributes
+  public:
+    GMap gmap;
   private:
-    state::GameState state;
+    std::shared_ptr<state::GameState> state;
     state::FieldObjects fieldobjects;
     // Operations
   public:
-    GState (state::GameState state);
+    GState (std::shared_ptr<state::GameState> state);
+    GMap& getGMap ();
   };
 
 };

@@ -4,12 +4,12 @@
 #include "GState.h"
 #include "state/GameState.h"
 #include "state/ObjectType.h"
-
+#include "GMap.h"
 
 namespace render {
 
   GRender::GRender():
-  window(sf::VideoMode(600, 800), "Until last barrel")
+  window(sf::VideoMode(800, 600), "Until last barrel")
   
   {
     window.setFramerateLimit(60);
@@ -19,9 +19,11 @@ namespace render {
 
 
 
-  void GRender::display (GState g){
+  void GRender::display (GState& g){
       //window.clear();
-      //window.draw(g::state::map);
+      //GMap gmap(std::make_shared<state::Map>(g.getState().getMap()));
+
+      window.draw(g.getGMap());
 
       window.display();    
 

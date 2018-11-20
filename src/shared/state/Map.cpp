@@ -58,4 +58,7 @@ namespace state {
     std::shared_ptr<Tile> Map::getTile(int x, int y){
         return tileset.getTile(data[x + size.x * y]);
     }
+    Tileset Map::getTileset(){
+        return tileset;
+    }
 };

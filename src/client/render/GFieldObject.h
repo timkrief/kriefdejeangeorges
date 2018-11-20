@@ -4,10 +4,17 @@
 
 #include <SFML/Graphics.hpp>
 
+namespace state {
+  class FieldObject;
+}
+
+#include "state/FieldObject.h"
+
 namespace render {
 
   /// class GFieldObject - 
   class GFieldObject {
+    // Associations
     // Attributes
   private:
     sf::Vector2f position;
@@ -16,8 +23,8 @@ namespace render {
     // Operations
   public:
     GFieldObject ();
-    void setSprite (state::FieldObject fieldobject);
-    void setPosition (state::FieldObject fieldobject);
+    void setSprite (state::FieldObject * fieldobject);
+    void setPosition (state::FieldObject * fieldobject);
   };
 
 };

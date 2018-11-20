@@ -3,11 +3,11 @@
 #define RENDER__GMAP__H
 
 
-namespace state {
-  class GameState;
-};
 namespace sf {
   class Drawable;
+};
+namespace state {
+  class GameState;
 }
 
 #include "state/GameState.h"
@@ -20,7 +20,7 @@ namespace render {
     // Operations
   public:
     GMap ();
-    void draw (state::GameState state);
+    void draw (sf::RenderTarget& target, sf::RenderStates states);
   };
 
 };

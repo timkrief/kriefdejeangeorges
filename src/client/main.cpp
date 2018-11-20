@@ -14,10 +14,10 @@ int main(int argc,char* argv[])
 	Cards cards("./res/cards.yaml","fr");
 	
 	testPlayer(cards);
-	
-	Map map("./res/maps/map.json", "field");
-	
-    cout << "Hello world !" << endl;
     
-    return testMapLoaded(map);
+    GameState state("./res/maps/map.json", "fr");
+    
+    testMapLoaded(state.getMap());
+    
+    return 0;
 }

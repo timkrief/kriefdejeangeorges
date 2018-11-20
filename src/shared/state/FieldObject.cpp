@@ -3,25 +3,28 @@
 
 namespace state {
 
-  FieldObject::FieldObject(){
-		position = sf::Vector2f(0.f, 0.f);
-		owner = -1;
-  }
+    FieldObject::FieldObject(){
+        position = sf::Vector2f(0.f, 0.f);
+        owner = -1;
+    }
 
-  void FieldObject::setObjectType (ObjectType selectedType){
-      //sprite = ;//associated sprite
-  
-    type = selectedType;//associated type
-  }
+    void FieldObject::setObjectType (ObjectType selectedType){
+        //sprite = ;//associated sprite
 
-  sf::Vector2f FieldObject::getPosition(){
-    return(position);
-  }
+        type = selectedType;//associated type
+    }
+
+    sf::Vector2f FieldObject::getPosition(){
+        return position;
+    }
 
 
-  void FieldObject::setOwner (int playerId){
-    owner = playerId;
-  }
+    void FieldObject::setOwner (int playerId){
+        owner = playerId;
+    }
 
+    ObjectType FieldObject::getObjectType(){
+        return type;
+    }
 
 };

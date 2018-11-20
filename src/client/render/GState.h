@@ -28,7 +28,7 @@ namespace render {
     state::FieldObjects fieldobjects;
     // Operations
   public:
-    GState (state::GameState s);
+    GState (state::GameState state);
   };
 
 };

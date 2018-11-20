@@ -2,11 +2,16 @@
 #ifndef RENDER__GRENDER__H
 #define RENDER__GRENDER__H
 
+#include <SFML/Graphics.hpp>
 
+namespace render {
+  class GState;
+};
 namespace state {
   class GameState;
 }
 
+#include "GState.h"
 #include "state/GameState.h"
 
 namespace render {
@@ -14,10 +19,13 @@ namespace render {
   /// class GRender - 
   class GRender {
     // Associations
+    // Attributes
+  public:
+    sf::RenderWindow window;
     // Operations
   public:
     GRender ();
-    void display (state::GameState s);
+    void display (GState g);
   };
 
 };

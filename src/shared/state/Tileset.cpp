@@ -21,7 +21,14 @@ namespace state {
 		std::cout << resourcePath << std::endl;
 		
 		columns = parsedTilesetFile["columns"].as<int>();
-		tileheight = parsedTilesetFile["tileheight"].as<int>();
+		tileSize = sf::Vector2u(
+		    parsedTilesetFile["tileheight"].as<int>(),
+		    parsedTilesetFile["tilewidth"].as<int>()
+		);
+		resourceSize = sf::Vector2u(
+		    parsedTilesetFile["imageheight"].as<int>(),
+		    parsedTilesetFile["imagewidth"].as<int>()
+		);
 		
 		YAML::Node tileproperties = parsedTilesetFile["tileproperties"];
 		tiles.resize(parsedTilesetFile["tilecount"].as<int>(), std::make_shared<Tile>(0.f));
@@ -38,17 +45,36 @@ namespace state {
 		}
     }
     
-    std::shared_ptr<Tile> Tileset::getTile (int id){
+    std::shared_ptr<Tile> Tileset::getTile (unsigned int id){
 		return tiles[id];
 	}
 	
     std::string Tileset::getResourcePath () {
         return resourcePath;    
     }
-    int Tileset::getColumns () {
+    unsigned int Tileset::getColumns () {
         return columns;    
     }
-    int Tileset::getTileheight () {
-        return tileheight;    
+    unsigned int Tileset::getTileheight () {
+        return tileSize.x;    
+    }
+    sf::Vector2u Tileset::getTileSize () {
+        return tileSize;    
+    }
+    sf::Vector2u Tileset::getTilePosition(unsigned int id){
+        return sf::Vector2u(
+            tileSize.x * (id % getColumns()), 
+            tileSize.y * ((int)(id / getColumns()))
+        );
+    }
+    sf::IntRect Tileset::getTileIntRect(unsigned int id){
+        sf::Vector2u tilePosition = getTilePosition(id);
+        sf::Vector2u tileSize = getTileSize();
+        return sf::IntRect(
+            tilePosition.x,
+            tilePosition.y,
+            tileSize.x,
+            tileSize.y
+        );
     }
 };

@@ -39,10 +39,8 @@ namespace state {
         data = (unsigned int*) calloc(dataLen, sizeof(unsigned int)); // we may check for failure here
         
         for(size_t i = 0; i < dataLen; i++) {
-            data[i] = layer["data"][i].as<int>();
+            data[i] = layer["data"][i].as<int>() - 1;
         }
-        
-        std::cout << data[4] << std::endl;
     }
     
     Map::~Map() {

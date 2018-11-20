@@ -42,17 +42,35 @@ int testMapLoaded(Map map) { // rendererPrototype
         }
         window.clear();
         
+        sf::Texture texture;
+        Tileset tileset = map.getTileset();
+        texture.loadFromFile(tileset.getResourcePath());
+        
+        sf::Sprite sprite;
+        sprite.setTexture(texture);
+        
+        int tileWidth = texture.getSize().x/tileset.getColumns();
         for(unsigned int x = 0; x < map.getSize().x; x++){
             for(unsigned int y = 0; y < map.getSize().y; y++){
-                float speed = map.getTile(x,y)->getSpeed();
-                sf::RectangleShape rect;
-                rect.setSize(sf::Vector2f((float)width / (float)map.getSize().x, (float)height / (float)map.getSize().y));
-                rect.setPosition((float)x / (float)map.getSize().x * width , (float)y / (float)map.getSize().y * height);
+                float speed = map.getTile(sf::Vector2u(x,y))->getSpeed();
                 
-                int luminosity = speed * 255.f;
-                rect.setFillColor(sf::Color(luminosity, luminosity, luminosity));
+                
+                sprite.setTextureRect(
+                    sf::IntRect(
+                        (map.getData(sf::Vector2u(x,y))%tileset.getColumns()-1)* tileWidth, 
+                        (int)(map.getData(sf::Vector2u(x,y))/tileset.getColumns())*tileset.getTileheight(), 
+                        tileWidth,
+                        tileset.getTileheight()
+                    )
+                );
+                
+                //sprite.setSize(sf::Vector2f((float)width / (float)map.getSize().x, (float)height / (float)map.getSize().y));
+                sprite.setPosition(x * tileWidth, y * tileset.getTileheight());
+                
+                //int luminosity = speed * 255.f;
+                //sprite.setColor(sf::Color(luminosity, luminosity, luminosity));
 
-                window.draw(rect);
+                window.draw(sprite);
             }
         }
         

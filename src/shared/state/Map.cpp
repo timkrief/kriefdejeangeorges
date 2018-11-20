@@ -55,8 +55,11 @@ namespace state {
     unsigned int* Map::getData () {
         return data;
     }
-    std::shared_ptr<Tile> Map::getTile(int x, int y){
-        return tileset.getTile(data[x + size.x * y]);
+    unsigned int Map::getData (sf::Vector2u pos) {
+        return data[pos.x + size.x * pos.y];
+    }
+    std::shared_ptr<Tile> Map::getTile(sf::Vector2u pos){
+        return tileset.getTile(data[pos.x + size.x * pos.y]);
     }
     Tileset Map::getTileset(){
         return tileset;

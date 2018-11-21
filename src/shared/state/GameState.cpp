@@ -13,4 +13,7 @@ namespace state {
   std::shared_ptr<Player> GameState::getPlayer(int id){
     return players[id] ;
   }
+  std::shared_ptr<FieldObjects> GameState::getFieldObjects(){
+    return fieldObjects;
+  }
 };

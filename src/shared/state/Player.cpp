@@ -5,7 +5,7 @@
 
 
 namespace state {
-	int Player::count = 0;	
+	unsigned int Player::count = 0;	
 	
 	Player::Player (Cards existingCards){
 		id = count;
@@ -43,9 +43,8 @@ namespace state {
 			oil = 0.f;
 		}
 	}
-	int Player::getId(){
+	unsigned int Player::getId(){
 		return id;
-
 	}
 
 	void Player::addOwnedFieldObject(FieldObject* newFieldObject){
@@ -71,5 +70,9 @@ namespace state {
 
 	}
 
+
+	unsigned int Player::getCount(){
+		return count;
+	}
 
 };

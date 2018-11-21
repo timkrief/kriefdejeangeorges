@@ -13,7 +13,7 @@ namespace state {
     position = formerHeadquarter->getPosition();
     moneyProduction = formerHeadquarter->getMoneyProduction();
 
-    gamestate.getPlayer(besiegingPlayer).addOwnedFieldObject(this);
+    gamestate.getPlayer(besiegingPlayer)->addOwnedFieldObject(this);
     owner = besiegingPlayer;
 
   }

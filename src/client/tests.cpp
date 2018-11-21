@@ -74,7 +74,6 @@ int testMapLoaded(Map map) { // rendererPrototype
         sf::Sprite sprite;
         sprite.setTexture(texture);
         
-        int tileWidth = texture.getSize().x/tileset.getColumns();
         for(unsigned int x = 0; x < map.getSize().x; x++){
             for(unsigned int y = 0; y < map.getSize().y; y++){
                 //float speed = map.getTile(sf::Vector2u(x,y))->getSpeed();

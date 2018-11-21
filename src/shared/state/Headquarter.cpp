@@ -7,9 +7,11 @@ namespace state {
   
     moneyProduction = 0;
   }
+  
   Headquarter::~Headquarter(){
 
   }
+  
   void Headquarter::setMoneyProduction (int amount){
     if (moneyProduction>=0){
     moneyProduction = amount;
@@ -26,7 +28,7 @@ namespace state {
 
   }  
   void Headquarter::captured (int besiegingPlayer, GameState &gamestate){
-    gamestate.getPlayer(owner).removeOwnedFieldObject(this);
+    gamestate.getPlayer(owner)->removeOwnedFieldObject(this);
     Town(this, besiegingPlayer, gamestate);
     
     

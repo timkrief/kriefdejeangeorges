@@ -2,15 +2,15 @@
 
 namespace state {
   GameState::GameState(std::string mapPath, std::string lang) : 
-    map(mapPath, "field"), 
-    existingCards("res/cards.yaml",lang){
-    
+    map(std::make_shared<Map>(mapPath, "field")), 
+    existingCards(std::make_shared<Cards>("res/cards.yaml", lang)){
+    turn = 0;
   }
 
-  Map GameState::getMap(){
+  std::shared_ptr<Map> GameState::getMap(){
     return map;
   }
-  Player GameState::getPlayer(int id){
+  std::shared_ptr<Player> GameState::getPlayer(int id){
     return players[id] ;
   }
 };

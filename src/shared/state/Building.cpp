@@ -10,8 +10,8 @@ namespace state {
 
   void Building::captured (int besiegingPlayer, GameState &gamestate){
     
-    gamestate.getPlayer(owner).removeOwnedFieldObject(this);
-    gamestate.getPlayer(besiegingPlayer).addOwnedFieldObject(this);
+    gamestate.getPlayer(owner)->removeOwnedFieldObject(this);
+    gamestate.getPlayer(besiegingPlayer)->addOwnedFieldObject(this);
     //threadable
     owner = besiegingPlayer;
 

@@ -2,13 +2,16 @@
 #include <SFML/Graphics.hpp>
 #include "state.h"
 #include "render.h"
+#include "engine.h"
 using namespace std;
 using namespace state;
 using namespace render;
-void testSFML();
+using namespace engine;
 
+void testSFML();
 
 int testRender(GameState& state);
 void testPlayer(Cards cards);
-int testMapLoaded(Map map); // rendererPrototype
+int testMapLoaded(Map map);
+void testEngine(GameState& state);
 int testsprite();

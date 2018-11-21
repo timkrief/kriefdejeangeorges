@@ -1,4 +1,5 @@
 #include "GameState.h"
+#include <iostream>
 
 namespace state {
   GameState::GameState(std::string mapPath, std::string lang) : 
@@ -15,5 +16,9 @@ namespace state {
   }
   std::shared_ptr<FieldObjects> GameState::getFieldObjects(){
     return fieldObjects;
+  }
+  void GameState::endTurn(){
+    turn++;
+    std::cout << "nouveau tour: " << turn << std::endl;
   }
 };

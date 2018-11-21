@@ -18,6 +18,7 @@ int main(int argc,char* argv[])
     GameState state("./res/maps/map.json", "fr");
     
     //testMapLoaded(state.getMap());
-    testRender(state);
+    //testRender(state);
+    testEngine(state);
     return 0;
 }

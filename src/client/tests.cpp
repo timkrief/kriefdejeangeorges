@@ -99,3 +99,13 @@ int testMapLoaded(Map map) { // rendererPrototype
     
     return 0;
 }
+
+void testEngine(GameState& state){
+    GameEngine engine(state);
+    
+    for(int i=0; i<10; i++){
+         engine.addCommand(make_shared<CommandEndTurn>());
+    }
+    
+    engine.update();
+}

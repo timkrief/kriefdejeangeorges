@@ -1,7 +1,7 @@
 #include "OilWell.h"
 
 namespace state {
-  OilWell::OilWell(){
+  OilWell::OilWell(): Building(){
   
     oilProduction = 0;
   }

@@ -24,6 +24,11 @@ namespace render {
       //GMap gmap(std::make_shared<state::Map>(g.getState().getMap()));
 
       window.draw(g.getGMap());
+      
+      std::vector<GPlayer> players = g.getPlayers();
+      for(auto player: players){
+        window.draw(player);
+      }
 
       window.display();    
 

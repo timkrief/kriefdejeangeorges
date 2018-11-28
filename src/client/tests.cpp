@@ -9,11 +9,11 @@ void testSFML() {
 }
 
 
-void testPlayer(Cards cards) {
+void testPlayer() {
 	cout << "Test of the static counter of the Player class:" << endl;
-	Player player(cards);
+	Player player;
 	cout << "Player n°" << player.getId() << endl;
-	Player player2(cards);
+	Player player2;
 	cout << "Player n°" << player2.getId() << endl << endl;
 	cout << "Test of Player's money getters and setters (oil ones are similar):" << endl;
 	cout << "Setting player's money to -5 (no negative value allowed)" << endl;

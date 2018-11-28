@@ -11,7 +11,7 @@ using namespace engine;
 void testSFML();
 
 int testRender(GameState& state);
-void testPlayer(Cards cards);
+void testPlayer();
 int testMapLoaded(Map map);
 void testEngine(GameState& state);
 int testsprite();

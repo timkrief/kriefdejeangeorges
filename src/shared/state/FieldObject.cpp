@@ -4,7 +4,7 @@
 namespace state {
 
     FieldObject::FieldObject(){
-        position = sf::Vector2f(0.f, 0.f);
+        position = sf::Vector2i(0, 0);
         owner = -1;
     }
 
@@ -14,8 +14,12 @@ namespace state {
         type = selectedType;//associated type
     }
 
-    sf::Vector2f FieldObject::getPosition(){
+    sf::Vector2i FieldObject::getPosition(){
         return position;
+    }
+
+    void FieldObject::setPosition(sf::Vector2i pos){
+        position = pos;
     }
 
 

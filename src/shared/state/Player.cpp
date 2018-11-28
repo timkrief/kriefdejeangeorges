@@ -7,12 +7,19 @@
 namespace state {
 	unsigned int Player::count = 0;	
 	
-	Player::Player (Cards existingCards){
+	void Player::InitPlayer(){
 		id = count;
 		count++;
 		oil = 0.f;
 		money = 0.f;
 		name = "Player "+std::to_string(count);
+	}
+	
+	Player::Player (){
+	    InitPlayer();
+	}
+	Player::Player (std::shared_ptr<Cards> existingCards, std::string deckPath){
+	    InitPlayer();
 	}
 	
 	Player::~Player(){
@@ -46,8 +53,15 @@ namespace state {
 	unsigned int Player::getId(){
 		return id;
 	}
+	std::string Player::getName(){
+		return name;
+	}
 
-	void Player::addOwnedFieldObject(FieldObject* newFieldObject){
+	std::vector<std::shared_ptr<FieldObject>> Player::getOwnedFieldObjects(){
+	    return ownedFieldObjects;
+	}
+	
+	void Player::addOwnedFieldObject(std::shared_ptr<FieldObject> newFieldObject){
 		auto match = std::find(ownedFieldObjects.begin(), ownedFieldObjects.end(), newFieldObject);
  
   		if(match != ownedFieldObjects.end()) {
@@ -58,7 +72,7 @@ namespace state {
   		}
 	}
 	
-	void Player::removeOwnedFieldObject(FieldObject* deletedFieldObject){
+	void Player::removeOwnedFieldObject(std::shared_ptr<FieldObject> deletedFieldObject){
 		auto match = std::find(ownedFieldObjects.begin(), ownedFieldObjects.end(), deletedFieldObject);
  
   		if(match != ownedFieldObjects.end()) {

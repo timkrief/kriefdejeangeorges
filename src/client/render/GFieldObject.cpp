@@ -9,11 +9,17 @@
 
 namespace render {
 
-  GFieldObject::GFieldObject (){
-      position.x = 0.f;
-      position.y =  0.f;
-  }
+    GFieldObject::GFieldObject (std::shared_ptr<state::FieldObject> fieldObject):
+        fieldObject(fieldObject){
+    }
 
+    void GFieldObject::draw(sf::RenderTarget& target, sf::RenderStates states) const {
+        sf::RectangleShape rect(sf::Vector2f(16,16));
+        rect.setPosition(sf::Vector2f(fieldObject->getPosition() * 16));
+        rect.setFillColor(sf::Color::Red);
+        target.draw(rect);
+    }
+/*
 
     void GFieldObject::setSprite (state::FieldObject* fieldObject){
         sf::Texture texture;
@@ -76,7 +82,7 @@ namespace render {
   void GFieldObject::setPosition (state::FieldObject* fieldobject){
       position = fieldobject->getPosition();
   }
-  
+  */
 
 };
 

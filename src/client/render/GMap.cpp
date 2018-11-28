@@ -6,7 +6,6 @@ namespace render {
 
   GMap::GMap(std::shared_ptr<state::Map> map):
     map(map)
-  
   {
     
     TextureManager::loadTexture("mapTexture", "./res/sprites/mapTileset.png");

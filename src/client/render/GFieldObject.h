@@ -2,29 +2,24 @@
 #ifndef RENDER__GFIELDOBJECT__H
 #define RENDER__GFIELDOBJECT__H
 
-#include <SFML/Graphics.hpp>
+#include <memory>
 
-namespace state {
-  class FieldObject;
+namespace sf {
+  class Drawable;
 }
 
-#include "state/FieldObject.h"
 
 namespace render {
 
   /// class GFieldObject - 
-  class GFieldObject {
-    // Associations
+  class GFieldObject : public sf::Drawable {
     // Attributes
-  private:
-    sf::Vector2f position;
-    sf::Sprite sprite;
-    int id;
+  public:
+    std::shared_ptr<state::FieldObject> fieldObject;
     // Operations
   public:
-    GFieldObject ();
-    void setSprite (state::FieldObject * fieldobject);
-    void setPosition (state::FieldObject * fieldobject);
+    GFieldObject (std::shared_ptr<state::FieldObject> fieldObject);
+    void draw (sf::RenderTarget& target, sf::RenderStates states) const;
   };
 
 };

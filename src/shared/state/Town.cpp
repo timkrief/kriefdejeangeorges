@@ -5,20 +5,9 @@
 
 
 namespace state {
-  Town::Town(){
-  
+  Town::Town() : Building(){
     moneyProduction = 0;
   }
-  Town::Town(Headquarter *formerHeadquarter, int besiegingPlayer, GameState &gamestate ){
-    position = formerHeadquarter->getPosition();
-    moneyProduction = formerHeadquarter->getMoneyProduction();
-
-    gamestate.getPlayer(besiegingPlayer)->addOwnedFieldObject(this);
-    owner = besiegingPlayer;
-
-  }
-
-
   void Town::setMoneyProduction (int amount){
     if (moneyProduction >= 0){
       moneyProduction = amount;

@@ -6,6 +6,7 @@
 
 namespace state {
   Town::Town() : Building(){
+    setObjectType(ObjectType::TOWN);
     moneyProduction = 0;
   }
   void Town::setMoneyProduction (int amount){

@@ -18,24 +18,5 @@ namespace render {
         for(auto gfieldObject: gfieldObjects){
             target.draw(gfieldObject);
         }
-        
-        // text test
-        int height = 24;
-        
-        sf::Text playerName;
-        
-        sf::Font font;
-        
-        if (!font.loadFromFile("src/army1.ttf")){
-            std::cout << "Font not found" << std::endl;
-        }
-        
-        playerName.setFont(font);
-        playerName.setString(player->getName());
-        playerName.setCharacterSize(height); 
-        playerName.setFillColor(sf::Color::White);
-        playerName.setStyle(sf::Text::Bold);
-        playerName.setPosition(10, height + player->getId() * height * 2);
-        target.draw(playerName);
     }
 };

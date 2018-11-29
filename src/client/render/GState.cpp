@@ -12,8 +12,11 @@ namespace render {
   GMap& GState::getGMap(){
     return gmap;
   }
-  std::vector<GPlayer>& GState::getPlayers(){
+  std::vector<GPlayer>& GState::getGPlayers(){
     return gplayers;
+  }
+  unsigned int GState::getTurn(){
+    return state->getTurn();
   }
   
 };

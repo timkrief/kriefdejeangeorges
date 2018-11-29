@@ -33,17 +33,16 @@ int testRender(GameState& state){
     
     bool displayWindow = true;
     sf::Event event;
-
+    
      while(displayWindow){
         while (renderWindow.pollEvent(event)){
             if (event.type == sf::Event::Closed){
                 displayWindow = false;
             }
-        
-            renderWindow.clear();
-            my_render.display(gstate);
         }
 
+        renderWindow.clear();
+        my_render.display(gstate);
     }
     return 0;
 }
@@ -100,7 +99,7 @@ int testMapLoaded(Map map) { // rendererPrototype
     return 0;
 }
 
-void testEngine(GameState& state){
+void testEngine(std::shared_ptr<GameState> state){
     GameEngine engine(state);
     
     for(int i=0; i<10; i++){

@@ -32,7 +32,8 @@ namespace render {
   public:
     GState (std::shared_ptr<state::GameState> state);
     GMap& getGMap ();
-    std::vector<GPlayer>& getPlayers ();
+    std::vector<GPlayer>& getGPlayers ();
+    unsigned int getTurn ();
   };
 
 };

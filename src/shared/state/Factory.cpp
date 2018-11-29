@@ -2,7 +2,7 @@
 
 namespace state {
   Factory::Factory(): Building() {
-  
+    setObjectType(ObjectType::FACTORY);
   }
 };
 

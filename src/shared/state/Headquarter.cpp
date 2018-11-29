@@ -4,6 +4,7 @@
 #include "Town.h"
 namespace state {
   Headquarter::Headquarter() : Building(){
+    setObjectType(ObjectType::HEADQUARTER);
   
     moneyProduction = 0;
   }

@@ -19,13 +19,15 @@ namespace state {
     players.push_back(player);
   }
   std::shared_ptr<Player> GameState::getPlayer(int id){
-    return players[id] ;
+    return players[id + 1] ;
   }
   unsigned int GameState::getPlayerCount(){
-    return Player::getCount();
+    return Player::getCount() - 1;
+  }
+  unsigned int GameState::getTurn(){
+    return turn;
   }
   void GameState::endTurn(){
     turn++;
-    std::cout << "nouveau tour: " << turn << std::endl;
   }
 };

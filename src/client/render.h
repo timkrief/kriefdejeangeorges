@@ -8,4 +8,5 @@
 #include "render/GState.h"
 #include "render/GRender.h"
 #include "render/TextureManager.h"
+#include "render/EventController.h"
 #endif

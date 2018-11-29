@@ -1,7 +1,7 @@
 #include "Command.h"
 
 namespace engine {
-    void Command::execute (state::GameState& state){
+    void Command::execute (std::shared_ptr<state::GameState> state){
 
     }
 };

@@ -2,7 +2,7 @@
 
 namespace state {
   OilWell::OilWell(): Building(){
-  
+    setObjectType(ObjectType::OILWELL);
     oilProduction = 0;
   }
   void OilWell::setOilProduction (int amount){

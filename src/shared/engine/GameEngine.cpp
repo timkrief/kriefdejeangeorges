@@ -1,14 +1,14 @@
 #include "GameEngine.h"
 
 namespace engine {
-    GameEngine::GameEngine (state::GameState& state) :
+    GameEngine::GameEngine (std::shared_ptr<state::GameState> state) :
         currentState(state) {
     
     }
     GameEngine::~GameEngine () {
     
     }
-    state::GameState& GameEngine::getState () const{
+    std::shared_ptr<state::GameState> GameEngine::getState () const{
         return currentState;
     }
     void GameEngine::update () {

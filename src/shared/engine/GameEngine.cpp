@@ -13,7 +13,9 @@ namespace engine {
     }
     void GameEngine::update () {
         while (!commands.empty()){
-            commands.front()->execute(currentState);
+            if(commands.front()->getPlayerTriggeringId() == currentState->getPlayerTurnId()){
+                commands.front()->execute(currentState);
+            }
             commands.pop();
         }
     }

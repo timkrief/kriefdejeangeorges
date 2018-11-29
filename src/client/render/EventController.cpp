@@ -8,7 +8,7 @@ namespace render {
         
     }
     
-    void EventController::handle (sf::Event& event, engine::GameEngine& engine, sf::RenderWindow& window, bool& displayWindow){
+    void EventController::handle (sf::Event& event, std::shared_ptr<engine::GameEngine> engine, sf::RenderWindow& window, bool& displayWindow){
         switch (event.type){
             // fenêtre fermée
             case sf::Event::Closed:
@@ -22,19 +22,19 @@ namespace render {
                         displayWindow = false;
                         break;  
                     case sf::Keyboard::Return:
-                        engine.addCommand(std::make_shared<engine::CommandEndTurn>());
+                        engine->addCommand(std::make_shared<engine::CommandEndTurn>(0));
                         break;  
                     case sf::Keyboard::Up:
-                        engine.addCommand(std::make_shared<engine::CommandMove>(0));
+                        engine->addCommand(std::make_shared<engine::CommandMove>(0, 0));
                         break;  
                     case sf::Keyboard::Right:
-                        engine.addCommand(std::make_shared<engine::CommandMove>(1));
+                        engine->addCommand(std::make_shared<engine::CommandMove>(1, 0));
                         break;  
                     case sf::Keyboard::Down:
-                        engine.addCommand(std::make_shared<engine::CommandMove>(2));
+                        engine->addCommand(std::make_shared<engine::CommandMove>(2, 0));
                         break;  
                     case sf::Keyboard::Left:
-                        engine.addCommand(std::make_shared<engine::CommandMove>(3));
+                        engine->addCommand(std::make_shared<engine::CommandMove>(3, 0));
                         break;  
                     default:
                         break;

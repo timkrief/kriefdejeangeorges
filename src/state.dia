@@ -895,7 +895,7 @@
         <dia:point val="53.2641,-49.3854"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="53.2141,-49.4354;72.2941,-37.1354"/>
+        <dia:rectangle val="53.2141,-49.4354;72.2941,-36.3354"/>
       </dia:attribute>
       <dia:attribute name="elem_corner">
         <dia:point val="53.2641,-49.3854"/>
@@ -904,7 +904,7 @@
         <dia:real val="18.98"/>
       </dia:attribute>
       <dia:attribute name="elem_height">
-        <dia:real val="12.199999999999999"/>
+        <dia:real val="13"/>
       </dia:attribute>
       <dia:attribute name="name">
         <dia:string>#GameState#</dia:string>
@@ -1411,6 +1411,36 @@
         <dia:composite type="umloperation">
           <dia:attribute name="name">
             <dia:string>#getTurn#</dia:string>
+          </dia:attribute>
+          <dia:attribute name="stereotype">
+            <dia:string>##</dia:string>
+          </dia:attribute>
+          <dia:attribute name="type">
+            <dia:string>#unsigned int#</dia:string>
+          </dia:attribute>
+          <dia:attribute name="visibility">
+            <dia:enum val="0"/>
+          </dia:attribute>
+          <dia:attribute name="comment">
+            <dia:string>##</dia:string>
+          </dia:attribute>
+          <dia:attribute name="abstract">
+            <dia:boolean val="false"/>
+          </dia:attribute>
+          <dia:attribute name="inheritance_type">
+            <dia:enum val="2"/>
+          </dia:attribute>
+          <dia:attribute name="query">
+            <dia:boolean val="false"/>
+          </dia:attribute>
+          <dia:attribute name="class_scope">
+            <dia:boolean val="false"/>
+          </dia:attribute>
+          <dia:attribute name="parameters"/>
+        </dia:composite>
+        <dia:composite type="umloperation">
+          <dia:attribute name="name">
+            <dia:string>#getPlayerTurnId#</dia:string>
           </dia:attribute>
           <dia:attribute name="stereotype">
             <dia:string>##</dia:string>
@@ -10608,10 +10638,10 @@
     </dia:object>
     <dia:object type="Standard - Text" version="1" id="O54">
       <dia:attribute name="obj_pos">
-        <dia:point val="62.7541,-43.2854"/>
+        <dia:point val="62.7541,-42.8854"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="62.7541,-43.8804;62.7541,-43.1329"/>
+        <dia:rectangle val="62.7541,-43.4804;62.7541,-42.7329"/>
       </dia:attribute>
       <dia:attribute name="text">
         <dia:composite type="text">
@@ -10625,7 +10655,7 @@
             <dia:real val="0.80000000000000004"/>
           </dia:attribute>
           <dia:attribute name="pos">
-            <dia:point val="62.7541,-43.2854"/>
+            <dia:point val="62.7541,-42.8854"/>
           </dia:attribute>
           <dia:attribute name="color">
             <dia:color val="#000000ff"/>
@@ -10639,7 +10669,7 @@
         <dia:enum val="3"/>
       </dia:attribute>
       <dia:connections>
-        <dia:connection handle="0" to="O3" connection="34"/>
+        <dia:connection handle="0" to="O3" connection="36"/>
       </dia:connections>
       <dia:childnode parent="O0"/>
     </dia:object>

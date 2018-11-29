@@ -2,6 +2,7 @@
 #ifndef RENDER__EVENTCONTROLLER__H
 #define RENDER__EVENTCONTROLLER__H
 
+#include <memory>
 #include <SFML/Graphics.hpp>
 
 namespace engine {
@@ -18,7 +19,7 @@ namespace render {
     // Operations
   public:
     EventController ();
-    void handle (sf::Event& event, engine::GameEngine& engine, sf::RenderWindow& window, bool& displayWindow);
+    void handle (sf::Event& event, std::shared_ptr<engine::GameEngine> engine, sf::RenderWindow& window, bool& displayWindow);
   };
 
 };

@@ -1,11 +1,13 @@
 #include "CommandMove.h"
 
 namespace engine {
-    CommandMove::CommandMove (unsigned int dir) : Command(), direction(dir % 4){
+    CommandMove::CommandMove (unsigned int dir, unsigned int playerTriggeringId) : 
+        Command(playerTriggeringId), 
+        direction(dir % 4){
     }
     
     void CommandMove::execute (std::shared_ptr<state::GameState> state){
-        for(auto objet: state->getPlayer(state->getTurn() % state->getPlayerCount())->getOwnedFieldObjects()){
+        for(auto objet: state->getPlayer(playerTriggeringId)->getOwnedFieldObjects()){
             sf::Vector2i pos(objet->getPosition());
             sf::Vector2i newpos(
                 abs(

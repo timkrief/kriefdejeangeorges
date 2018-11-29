@@ -103,7 +103,7 @@ void testEngine(std::shared_ptr<GameState> state){
     GameEngine engine(state);
     
     for(int i=0; i<10; i++){
-         engine.addCommand(make_shared<CommandEndTurn>());
+         engine.addCommand(make_shared<CommandEndTurn>(0));
     }
     
     engine.update();

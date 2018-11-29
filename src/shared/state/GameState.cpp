@@ -27,6 +27,9 @@ namespace state {
   unsigned int GameState::getTurn(){
     return turn;
   }
+  unsigned int GameState::getPlayerTurnId(){
+    return getTurn() % getPlayerCount();
+  }
   void GameState::endTurn(){
     turn++;
   }

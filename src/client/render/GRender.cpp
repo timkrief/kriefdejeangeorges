@@ -42,7 +42,7 @@ namespace render {
         turnCount.setFont(font);
         turnCount.setString("Turn number " + std::to_string(g.getTurn()));
         turnCount.setCharacterSize(height); 
-        turnCount.setFillColor(sf::Color::White);
+        //turnCount.setFillColor(sf::Color::White);
         turnCount.setStyle(sf::Text::Bold);
         turnCount.setPosition(10, height * 2);
         window.draw(turnCount);

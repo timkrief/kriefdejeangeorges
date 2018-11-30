@@ -16,10 +16,16 @@ namespace render {
   /// class EventController - 
   class EventController {
     // Associations
+    // Attributes
+  public:
+    bool shiftPressed;
+    bool controlPressed;
+    bool altPressed;
     // Operations
   public:
     EventController ();
     void handle (sf::Event& event, std::shared_ptr<engine::GameEngine> engine, sf::RenderWindow& window, bool& displayWindow);
+    void zoomViewAt (sf::Vector2i pixel, sf::RenderWindow&  window, float zoom);
   };
 
 };

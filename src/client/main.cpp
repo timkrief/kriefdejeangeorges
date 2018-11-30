@@ -91,7 +91,7 @@ int main(int argc,char* argv[])
         
         engine->update();
 
-        window.clear();
+        window.clear(sf::Color(44, 146, 206));
         grender.display(gstate);
     }
     return 0;

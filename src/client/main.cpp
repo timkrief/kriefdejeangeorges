@@ -29,21 +29,21 @@ int main(int argc,char* argv[])
     player1->addOwnedFieldObject(town);
     
     
-    std::shared_ptr<Unit> unit(new Unit);
+    std::shared_ptr<Headquarter> unit(new Headquarter);
     unit->setPosition(sf::Vector2i(15,25));
     
     std::shared_ptr<Player> player2(new Player);
     player2->addOwnedFieldObject(unit);
     
     
-    std::shared_ptr<Unit> unit2(new Unit);
+    std::shared_ptr<OilWell> unit2(new OilWell);
     unit2->setPosition(sf::Vector2i(35,10));
     
     std::shared_ptr<Player> player3(new Player);
     player3->addOwnedFieldObject(unit2);
     
     
-    std::shared_ptr<Unit> unit3(new Unit);
+    std::shared_ptr<Factory> unit3(new Factory);
     unit3->setPosition(sf::Vector2i(30,20));
     
     std::shared_ptr<Player> player4(new Player);
@@ -51,7 +51,7 @@ int main(int argc,char* argv[])
     // end of Creation of players -------
     
     
-    std::shared_ptr<GameState> state(new GameState("./res/maps/map.json", "fr"));
+    std::shared_ptr<GameState> state(new GameState("./res/maps/map2.json", "fr"));
     state->addPlayer(player1);
     state->addPlayer(player2);
     state->addPlayer(player3);
@@ -69,21 +69,19 @@ int main(int argc,char* argv[])
     CPU cpu2(state, engine, 2);
     CPU cpu3(state, engine, 3);
     
-    GRender grender;
-    EventController enventController;
+    std::shared_ptr<GRender> render(new GRender);
     
-    sf::RenderWindow& window = grender.window;
+    EventController enventController;
     
     GState gstate(state);
     
     bool displayWindow = true;
     sf::Event event;
     
-     while(displayWindow){
-     
-        while (window.pollEvent(event)){
-            enventController.handle(event, engine, window, displayWindow);
-        }
+    render->initTextures();
+    
+    while(displayWindow){
+        enventController.handle(event, engine, render, displayWindow);
         
         cpu1.run();
         cpu2.run();
@@ -91,8 +89,7 @@ int main(int argc,char* argv[])
         
         engine->update();
 
-        window.clear(sf::Color(44, 146, 206));
-        grender.display(gstate);
+        render->display(gstate);
     }
     return 0;
 }

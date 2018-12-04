@@ -7,17 +7,45 @@
 #include "state/GameState.h"
 #include "GFieldObject.h"
 
+#include "TextureManager.h"
+#include "state/Tileset.h"
+#include <chrono> 
+
 namespace render {
 
     GFieldObject::GFieldObject (std::shared_ptr<state::FieldObject> fieldObject):
-        fieldObject(fieldObject){
+        fieldObject(fieldObject),
+        buildingsTileset("./res/tilesets/buildings.json"){
     }
 
     void GFieldObject::draw(sf::RenderTarget& target, sf::RenderStates states) const {
-        sf::RectangleShape rect(sf::Vector2f(16,16));
-        rect.setPosition(sf::Vector2f(fieldObject->getPosition() * 16));
-        rect.setFillColor(sf::Color::Red);
-        target.draw(rect);
+        auto time = std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::system_clock::now().time_since_epoch()).count();
+        
+        int tileId = -1;
+        
+        if((int)fieldObject->getObjectType()<4){
+            unsigned int tmpNbTiles = buildingsTileset.getColumns() * buildingsTileset.getRows();
+            for(unsigned int i = 0; i < tmpNbTiles; i++){
+                std::shared_ptr<state::Tile> tile = buildingsTileset.getTile(i);
+                if(tile->attributes["objectType"] == (int)fieldObject->getObjectType() && tile->attributes["player"] == 1){
+                    tileId = i;
+                    break;
+                }
+            }
+            if(tileId != -1){
+                sf::IntRect rectangle = buildingsTileset.getTileIntRect(tileId, time);
+                sf::Sprite sprite(*(TextureManager::getTexture("buildings")), rectangle);
+                
+                sprite.setPosition(sf::Vector2f(fieldObject->getPosition() * 16));
+                target.draw(sprite);
+            }
+        }
+        if(tileId == -1){
+            sf::RectangleShape rect(sf::Vector2f(16,16));
+            rect.setPosition(sf::Vector2f(fieldObject->getPosition() * 16));
+            rect.setFillColor(sf::Color::Blue);
+            target.draw(rect);
+        }
     }
 /*
 

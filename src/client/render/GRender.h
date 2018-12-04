@@ -2,6 +2,7 @@
 #ifndef RENDER__GRENDER__H
 #define RENDER__GRENDER__H
 
+#include <memory>
 #include <SFML/Graphics.hpp>
 
 namespace render {
@@ -20,12 +21,22 @@ namespace render {
   class GRender {
     // Associations
     // Attributes
-  public:
-    sf::RenderWindow window;
+  private:
+    std::shared_ptr<sf::RenderWindow> window;
+    sf::Vector2u cursor;
+    sf::Vector2f cameraPosition;
+    sf::Vector2f cameraZoom;
     // Operations
   public:
     GRender ();
+    void initTextures ();
+    std::shared_ptr<sf::RenderWindow> getWindow ();
+    void setCursor (sf::Vector2u newCursor);
     void display (GState& g);
+    sf::Vector2f getCameraPosition ();
+    void updateCameraPosition (sf::Vector2f position);
+    sf::Vector2f getCameraZoom ();
+    void updateCameraZoom (sf::Vector2f zoom);
   };
 
 };

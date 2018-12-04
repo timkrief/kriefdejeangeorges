@@ -25,7 +25,7 @@ namespace engine {
                     )
                 )
             );
-            if(state->getMap()->getTile(sf::Vector2u(newpos.x, newpos.y))->getSpeed() > 0){
+            if(state->getMap()->getTile(sf::Vector2u(newpos.x, newpos.y))->attributes["speed"] > 0){
                 objet->setPosition(newpos);
             }
         }

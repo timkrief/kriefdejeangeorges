@@ -14,9 +14,7 @@ namespace render {
         
         for(auto fieldObject: player->getOwnedFieldObjects()){
             gfieldObjects.push_back(fieldObject);
-        }
-        for(auto gfieldObject: gfieldObjects){
-            target.draw(gfieldObject);
+            target.draw(gfieldObjects.back());
         }
     }
 };

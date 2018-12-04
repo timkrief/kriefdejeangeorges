@@ -1,5 +1,6 @@
 #include "GameEngine.h"
-
+#include <unistd.h>
+        
 namespace engine {
     GameEngine::GameEngine (std::shared_ptr<state::GameState> state) :
         currentState(state) {
@@ -14,6 +15,7 @@ namespace engine {
     void GameEngine::update () {
         while (!commands.empty()){
             if(commands.front()->getPlayerTriggeringId() == currentState->getPlayerTurnId()){
+                //if(commands.front()->getPlayerTriggeringId() > 0) usleep(100000);
                 commands.front()->execute(currentState);
             }
             commands.pop();

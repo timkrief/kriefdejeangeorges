@@ -6,7 +6,7 @@
  "name":"mapTileset",
  "spacing":0,
  "terrains":[
-        {   
+        {
          "name":"sol",
          "tile":0
         }, 
@@ -20,15 +20,15 @@
     {
      "0":
         {
-         "speed":0.4
+         "speed":4
         },
      "1":
         {
-         "speed":0.75
+         "speed":7
         },
      "10":
         {
-         "speed":0.75
+         "speed":7
         },
      "105":
         {
@@ -52,7 +52,7 @@
         },
      "11":
         {
-         "speed":0.5
+         "speed":5
         },
      "110":
         {
@@ -68,7 +68,7 @@
         },
      "12":
         {
-         "speed":0.5
+         "speed":5
         },
      "120":
         {
@@ -88,7 +88,7 @@
         },
      "13":
         {
-         "speed":0.333
+         "speed":3
         },
      "131":
         {
@@ -116,7 +116,7 @@
         },
      "14":
         {
-         "speed":0.75
+         "speed":7
         },
      "144":
         {
@@ -144,7 +144,7 @@
         },
      "15":
         {
-         "speed":0.75
+         "speed":7
         },
      "157":
         {
@@ -160,7 +160,7 @@
         },
      "16":
         {
-         "speed":0.75
+         "speed":7
         },
      "160":
         {
@@ -176,159 +176,159 @@
         },
      "17":
         {
-         "speed":0.75
+         "speed":7
         },
      "18":
         {
-         "speed":0.75
+         "speed":7
         },
      "19":
         {
-         "speed":0.75
+         "speed":7
         },
      "2":
         {
-         "speed":0.75
+         "speed":7
         },
      "20":
         {
-         "speed":0.75
+         "speed":7
         },
      "21":
         {
-         "speed":0.75
+         "speed":0
         },
      "22":
         {
-         "speed":0.75
+         "speed":0
         },
      "23":
         {
-         "speed":0.75
+         "speed":0
         },
      "24":
         {
-         "speed":0.75
+         "speed":0
         },
      "25":
         {
-         "speed":0.5
+         "speed":5
         },
      "26":
         {
-         "speed":0.333
+         "speed":3
         },
      "27":
         {
-         "speed":1
+         "speed":10
         },
      "28":
         {
-         "speed":1
+         "speed":10
         },
      "29":
         {
-         "speed":1
+         "speed":10
         },
      "3":
         {
-         "speed":0.75
+         "speed":7
         },
      "30":
         {
-         "speed":1
+         "speed":10
         },
      "31":
         {
-         "speed":1
+         "speed":10
         },
      "32":
         {
-         "speed":1
+         "speed":10
         },
      "33":
         {
-         "speed":1
+         "speed":10
         },
      "34":
         {
-         "speed":1
+         "speed":10
         },
      "35":
         {
-         "speed":1
+         "speed":10
         },
      "36":
         {
-         "speed":1
+         "speed":10
         },
      "37":
         {
-         "speed":1
+         "speed":10
         },
      "38":
         {
-         "speed":0.5
+         "speed":5
         },
      "39":
         {
-         "speed":0.333
+         "speed":3
         },
      "4":
         {
-         "speed":0.75
+         "speed":7
         },
      "40":
         {
-         "speed":1
+         "speed":10
         },
      "41":
         {
-         "speed":1
+         "speed":10
         },
      "42":
         {
-         "speed":1
+         "speed":10
         },
      "43":
         {
-         "speed":1
+         "speed":10
         },
      "44":
         {
-         "speed":1
+         "speed":10
         },
      "45":
         {
-         "speed":1
+         "speed":10
         },
      "46":
         {
-         "speed":1
+         "speed":10
         },
      "47":
         {
-         "speed":1
+         "speed":0
         },
      "48":
         {
-         "speed":1
+         "speed":0
         },
      "49":
         {
-         "speed":1
+         "speed":0
         },
      "5":
         {
-         "speed":0.75
+         "speed":7
         },
      "50":
         {
-         "speed":1
+         "speed":0
         },
      "51":
         {
-         "speed":0.5
+         "speed":5
         },
      "53":
         {
@@ -356,19 +356,19 @@
         },
      "59":
         {
-         "speed":0.33
+         "speed":3
         },
      "6":
         {
-         "speed":0.75
+         "speed":7
         },
      "60":
         {
-         "speed":0.1
+         "speed":1
         },
      "64":
         {
-         "speed":0.5
+         "speed":5
         },
      "66":
         {
@@ -388,7 +388,7 @@
         },
      "7":
         {
-         "speed":0.75
+         "speed":7
         },
      "70":
         {
@@ -404,7 +404,7 @@
         },
      "8":
         {
-         "speed":0.75
+         "speed":7
         },
      "80":
         {
@@ -428,7 +428,7 @@
         },
      "9":
         {
-         "speed":0.75
+         "speed":7
         },
      "92":
         {
@@ -459,439 +459,439 @@
     {
      "0":
         {
-         "speed":"float"
+         "speed":"int"
         },
      "1":
         {
-         "speed":"float"
+         "speed":"int"
         },
      "10":
         {
-         "speed":"float"
+         "speed":"int"
         },
      "105":
         {
-         "speed":"float"
+         "speed":"int"
         },
      "106":
         {
-         "speed":"float"
+         "speed":"int"
         },
      "107":
         {
-         "speed":"float"
+         "speed":"int"
         },
      "108":
         {
-         "speed":"float"
+         "speed":"int"
         },
      "109":
         {
-         "speed":"float"
+         "speed":"int"
         },
      "11":
         {
-         "speed":"float"
+         "speed":"int"
         },
      "110":
         {
-         "speed":"float"
+         "speed":"int"
         },
      "118":
         {
-         "speed":"float"
+         "speed":"int"
         },
      "119":
         {
-         "speed":"float"
+         "speed":"int"
         },
      "12":
         {
-         "speed":"float"
+         "speed":"int"
         },
      "120":
         {
-         "speed":"float"
+         "speed":"int"
         },
      "121":
         {
-         "speed":"float"
+         "speed":"int"
         },
      "122":
         {
-         "speed":"float"
+         "speed":"int"
         },
      "123":
         {
-         "speed":"float"
+         "speed":"int"
         },
      "13":
         {
-         "speed":"float"
+         "speed":"int"
         },
      "131":
         {
-         "speed":"float"
+         "speed":"int"
         },
      "132":
         {
-         "speed":"float"
+         "speed":"int"
         },
      "133":
         {
-         "speed":"float"
+         "speed":"int"
         },
      "134":
         {
-         "speed":"float"
+         "speed":"int"
         },
      "135":
         {
-         "speed":"float"
+         "speed":"int"
         },
      "136":
         {
-         "speed":"float"
+         "speed":"int"
         },
      "14":
         {
-         "speed":"float"
+         "speed":"int"
         },
      "144":
         {
-         "speed":"float"
+         "speed":"int"
         },
      "145":
         {
-         "speed":"float"
+         "speed":"int"
         },
      "146":
         {
-         "speed":"float"
+         "speed":"int"
         },
      "147":
         {
-         "speed":"float"
+         "speed":"int"
         },
      "148":
         {
-         "speed":"float"
+         "speed":"int"
         },
      "149":
         {
-         "speed":"float"
+         "speed":"int"
         },
      "15":
         {
-         "speed":"float"
+         "speed":"int"
         },
      "157":
         {
-         "speed":"float"
+         "speed":"int"
         },
      "158":
         {
-         "speed":"float"
+         "speed":"int"
         },
      "159":
         {
-         "speed":"float"
+         "speed":"int"
         },
      "16":
         {
-         "speed":"float"
+         "speed":"int"
         },
      "160":
         {
-         "speed":"float"
+         "speed":"int"
         },
      "161":
         {
-         "speed":"float"
+         "speed":"int"
         },
      "162":
         {
-         "speed":"float"
+         "speed":"int"
         },
      "17":
         {
-         "speed":"float"
+         "speed":"int"
         },
      "18":
         {
-         "speed":"float"
+         "speed":"int"
         },
      "19":
         {
-         "speed":"float"
+         "speed":"int"
         },
      "2":
         {
-         "speed":"float"
+         "speed":"int"
         },
      "20":
         {
-         "speed":"float"
+         "speed":"int"
         },
      "21":
         {
-         "speed":"float"
+         "speed":"int"
         },
      "22":
         {
-         "speed":"float"
+         "speed":"int"
         },
      "23":
         {
-         "speed":"float"
+         "speed":"int"
         },
      "24":
         {
-         "speed":"float"
+         "speed":"int"
         },
      "25":
         {
-         "speed":"float"
+         "speed":"int"
         },
      "26":
         {
-         "speed":"float"
+         "speed":"int"
         },
      "27":
         {
-         "speed":"float"
+         "speed":"int"
         },
      "28":
         {
-         "speed":"float"
+         "speed":"int"
         },
      "29":
         {
-         "speed":"float"
+         "speed":"int"
         },
      "3":
         {
-         "speed":"float"
+         "speed":"int"
         },
      "30":
         {
-         "speed":"float"
+         "speed":"int"
         },
      "31":
         {
-         "speed":"float"
+         "speed":"int"
         },
      "32":
         {
-         "speed":"float"
+         "speed":"int"
         },
      "33":
         {
-         "speed":"float"
+         "speed":"int"
         },
      "34":
         {
-         "speed":"float"
+         "speed":"int"
         },
      "35":
         {
-         "speed":"float"
+         "speed":"int"
         },
      "36":
         {
-         "speed":"float"
+         "speed":"int"
         },
      "37":
         {
-         "speed":"float"
+         "speed":"int"
         },
      "38":
         {
-         "speed":"float"
+         "speed":"int"
         },
      "39":
         {
-         "speed":"float"
+         "speed":"int"
         },
      "4":
         {
-         "speed":"float"
+         "speed":"int"
         },
      "40":
         {
-         "speed":"float"
+         "speed":"int"
         },
      "41":
         {
-         "speed":"float"
+         "speed":"int"
         },
      "42":
         {
-         "speed":"float"
+         "speed":"int"
         },
      "43":
         {
-         "speed":"float"
+         "speed":"int"
         },
      "44":
         {
-         "speed":"float"
+         "speed":"int"
         },
      "45":
         {
-         "speed":"float"
+         "speed":"int"
         },
      "46":
         {
-         "speed":"float"
+         "speed":"int"
         },
      "47":
         {
-         "speed":"float"
+         "speed":"int"
         },
      "48":
         {
-         "speed":"float"
+         "speed":"int"
         },
      "49":
         {
-         "speed":"float"
+         "speed":"int"
         },
      "5":
         {
-         "speed":"float"
+         "speed":"int"
         },
      "50":
         {
-         "speed":"float"
+         "speed":"int"
         },
      "51":
         {
-         "speed":"float"
+         "speed":"int"
         },
      "53":
         {
-         "speed":"float"
+         "speed":"int"
         },
      "54":
         {
-         "speed":"float"
+         "speed":"int"
         },
      "55":
         {
-         "speed":"float"
+         "speed":"int"
         },
      "56":
         {
-         "speed":"float"
+         "speed":"int"
         },
      "57":
         {
-         "speed":"float"
+         "speed":"int"
         },
      "58":
         {
-         "speed":"float"
+         "speed":"int"
         },
      "59":
         {
-         "speed":"float"
+         "speed":"int"
         },
      "6":
         {
-         "speed":"float"
+         "speed":"int"
         },
      "60":
         {
-         "speed":"float"
+         "speed":"int"
         },
      "64":
         {
-         "speed":"float"
+         "speed":"int"
         },
      "66":
         {
-         "speed":"float"
+         "speed":"int"
         },
      "67":
         {
-         "speed":"float"
+         "speed":"int"
         },
      "68":
         {
-         "speed":"float"
+         "speed":"int"
         },
      "69":
         {
-         "speed":"float"
+         "speed":"int"
         },
      "7":
         {
-         "speed":"float"
+         "speed":"int"
         },
      "70":
         {
-         "speed":"float"
+         "speed":"int"
         },
      "71":
         {
-         "speed":"float"
+         "speed":"int"
         },
      "79":
         {
-         "speed":"float"
+         "speed":"int"
         },
      "8":
         {
-         "speed":"float"
+         "speed":"int"
         },
      "80":
         {
-         "speed":"float"
+         "speed":"int"
         },
      "81":
         {
-         "speed":"float"
+         "speed":"int"
         },
      "82":
         {
-         "speed":"float"
+         "speed":"int"
         },
      "83":
         {
-         "speed":"float"
+         "speed":"int"
         },
      "84":
         {
-         "speed":"float"
+         "speed":"int"
         },
      "9":
         {
-         "speed":"float"
+         "speed":"int"
         },
      "92":
         {
-         "speed":"float"
+         "speed":"int"
         },
      "93":
         {
-         "speed":"float"
+         "speed":"int"
         },
      "94":
         {
-         "speed":"float"
+         "speed":"int"
         },
      "95":
         {
-         "speed":"float"
+         "speed":"int"
         },
      "96":
         {
-         "speed":"float"
+         "speed":"int"
         },
      "97":
         {
-         "speed":"float"
+         "speed":"int"
         }
     },
  "tiles":
@@ -899,6 +899,14 @@
      "0":
         {
          "terrain":[0, 0, 0, 0]
+        },
+     "11":
+        {
+         "probability":0.100000001490116
+        },
+     "12":
+        {
+         "probability":0.100000001490116
         },
      "13":
         {
@@ -943,6 +951,22 @@
      "147":
         {
          "terrain":[1, 1, 0, 1]
+        },
+     "25":
+        {
+         "probability":0.100000001490116
+        },
+     "37":
+        {
+         "probability":0.100000001490116
+        },
+     "38":
+        {
+         "probability":0.100000001490116
+        },
+     "51":
+        {
+         "probability":0.100000001490116
         },
      "79":
         {

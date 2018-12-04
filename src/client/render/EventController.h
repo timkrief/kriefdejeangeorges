@@ -7,9 +7,13 @@
 
 namespace engine {
   class GameEngine;
+};
+namespace render {
+  class GRender;
 }
 
 #include "engine/GameEngine.h"
+#include "GRender.h"
 
 namespace render {
 
@@ -24,8 +28,9 @@ namespace render {
     // Operations
   public:
     EventController ();
-    void handle (sf::Event& event, std::shared_ptr<engine::GameEngine> engine, sf::RenderWindow& window, bool& displayWindow);
-    void zoomViewAt (sf::Vector2i pixel, sf::RenderWindow&  window, float zoom);
+    void handle (sf::Event& event, std::shared_ptr<engine::GameEngine> engine,  std::shared_ptr<GRender>  render, bool& displayWindow);
+    void updateCursor (sf::Vector2i pixel, std::shared_ptr<GRender> render);
+    void zoomViewAt (sf::Vector2i pixel, std::shared_ptr<sf::RenderWindow> window, float zoom);
   };
 
 };

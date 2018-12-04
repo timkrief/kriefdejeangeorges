@@ -5,6 +5,7 @@
 #include <string>
 #include <map>
 #include <SFML/Graphics.hpp>
+#include <vector>
 
 namespace render {
 
@@ -13,7 +14,7 @@ namespace render {
     // Attributes
   private:
     static  std::map<std::string, sf::Texture*> textures;
-     static std::vector<std::string> order;
+    static std::vector<std::string> order;
     // Operations
   public:
     TextureManager ();

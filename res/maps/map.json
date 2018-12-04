@@ -52,7 +52,7 @@
         }, 
         {
          "firstgid":426,
-         "source":"..\/tilesets\/buildings.tsx"
+         "source":"..\/tilesets\/buildings.json"
         }],
  "tilewidth":16,
  "type":"map",

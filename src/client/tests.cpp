@@ -27,7 +27,7 @@ void testPlayer() {
 int testRender(GameState& state){
     GRender my_render;
     
-    sf::RenderWindow& renderWindow = my_render.window;
+    std::shared_ptr<sf::RenderWindow> renderWindow = my_render.getWindow();
     auto sharedState= std::make_shared<GameState>(state);
     render::GState gstate(sharedState);
     
@@ -35,13 +35,13 @@ int testRender(GameState& state){
     sf::Event event;
     
      while(displayWindow){
-        while (renderWindow.pollEvent(event)){
+        while (renderWindow->pollEvent(event)){
             if (event.type == sf::Event::Closed){
                 displayWindow = false;
             }
         }
 
-        renderWindow.clear();
+        renderWindow->clear();
         my_render.display(gstate);
     }
     return 0;
@@ -79,7 +79,7 @@ int testMapLoaded(Map map) { // rendererPrototype
                 
                 unsigned int tileId = map.getData(sf::Vector2u(x,y));
                 
-                sprite.setTextureRect(tileset.getTileIntRect(tileId));
+                sprite.setTextureRect(tileset.getTileIntRect(tileId, 0));
                 
                 //sprite.setSize(sf::Vector2f((float)width / (float)map.getSize().x, (float)height / (float)map.getSize().y));
                 sprite.setPosition(x * tileset.getTileSize().x, y * tileset.getTileSize().y);

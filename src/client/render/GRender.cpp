@@ -23,6 +23,7 @@ namespace render {
     void GRender::initTextures(){
         TextureManager::loadTexture("mapTexture", "./res/sprites/mapTileset.png");
         TextureManager::loadTexture("buildings", "./res/sprites/buildings.png");
+        TextureManager::loadTexture("units", "./res/sprites/units.png");
     }
     
     std::shared_ptr<sf::RenderWindow> GRender::getWindow(){
@@ -86,7 +87,7 @@ namespace render {
         }
 
         turnCount.setFont(font);
-        turnCount.setString("Turn number " + std::to_string(g.getTurn()/4));
+        turnCount.setString("Turn number " + std::to_string(g.getTurn()/g.getPlayerCount()));
         turnCount.setCharacterSize(height); 
         //turnCount.setFillColor(sf::Color::White);
         turnCount.setStyle(sf::Text::Bold);

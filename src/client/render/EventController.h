@@ -2,8 +2,8 @@
 #ifndef RENDER__EVENTCONTROLLER__H
 #define RENDER__EVENTCONTROLLER__H
 
-#include <memory>
 #include <SFML/Graphics.hpp>
+#include <memory>
 
 namespace engine {
   class GameEngine;
@@ -21,10 +21,13 @@ namespace render {
   class EventController {
     // Associations
     // Attributes
-  public:
+  private:
     bool shiftPressed;
     bool controlPressed;
     bool altPressed;
+    bool dragPressed;
+    bool middleDragPressed;
+    sf::Vector2f mousePosition;
     // Operations
   public:
     EventController ();

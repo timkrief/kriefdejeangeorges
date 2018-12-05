@@ -18,6 +18,9 @@ namespace render {
   unsigned int GState::getTurn(){
     return state->getTurn();
   }
+  unsigned int GState::getPlayerCount(){
+    return state->getPlayerCount();
+  }
   
 };
 

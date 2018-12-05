@@ -9,13 +9,16 @@
 
 #include "TextureManager.h"
 #include "state/Tileset.h"
+#include "state/Unit.h"
 #include <chrono> 
 
 namespace render {
 
+	state::Tileset GFieldObject::buildingsTileset("./res/tilesets/buildings.json");
+	state::Tileset GFieldObject::unitsTileset("./res/tilesets/units.json");
+	
     GFieldObject::GFieldObject (std::shared_ptr<state::FieldObject> fieldObject):
-        fieldObject(fieldObject),
-        buildingsTileset("./res/tilesets/buildings.json"){
+        fieldObject(fieldObject){
     }
 
     void GFieldObject::draw(sf::RenderTarget& target, sf::RenderStates states) const {
@@ -37,6 +40,28 @@ namespace render {
                 sf::Sprite sprite(*(TextureManager::getTexture("buildings")), rectangle);
                 
                 sprite.setPosition(sf::Vector2f(fieldObject->getPosition() * 16));
+                target.draw(sprite);
+            }
+        } else if((int)fieldObject->getObjectType()==5){
+        
+            unsigned int tmpNbTiles = unitsTileset.getColumns() * unitsTileset.getRows();
+            for(unsigned int i = 0; i < tmpNbTiles; i++){
+                std::shared_ptr<state::Tile> tile = unitsTileset.getTile(i);
+                if(tile->attributes["direction"] == (int)fieldObject->getDirection() && tile->attributes["player"] == 1){
+                    tileId = i;
+                    break;
+                }
+            }
+            if(tileId != -1){
+                sf::IntRect rectangle = unitsTileset.getTileIntRect(tileId, time);
+                sf::Sprite sprite(*(TextureManager::getTexture("units")), rectangle);
+                
+                sprite.setPosition(
+                    sf::Vector2f(
+                        fieldObject->getPosition().x * 16,
+                        fieldObject->getPosition().y * 16 - 2
+                    )
+                );
                 target.draw(sprite);
             }
         }

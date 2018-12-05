@@ -30,5 +30,9 @@ namespace state {
     ObjectType FieldObject::getObjectType(){
         return type;
     }
+    Direction FieldObject::getDirection(){
+        return Direction::UP;
+    }
+    void FieldObject::setDirection (Direction dir){}
 
 };

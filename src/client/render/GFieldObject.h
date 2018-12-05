@@ -4,11 +4,11 @@
 
 #include <memory>
 
-namespace state {
-  class Tileset;
-};
 namespace sf {
   class Drawable;
+};
+namespace state {
+  class Tileset;
 }
 
 #include "state/Tileset.h"
@@ -19,9 +19,10 @@ namespace render {
   class GFieldObject : public sf::Drawable {
     // Associations
     // Attributes
-  public:
+  private:
     std::shared_ptr<state::FieldObject> fieldObject;
-    state::Tileset buildingsTileset;
+    static state::Tileset buildingsTileset;
+    static state::Tileset unitsTileset;
     // Operations
   public:
     GFieldObject (std::shared_ptr<state::FieldObject> fieldObject);

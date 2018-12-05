@@ -20,878 +20,878 @@
     {
      "0":
         {
-         "speed":4
+         "moveCost":6
         },
      "1":
         {
-         "speed":7
+         "moveCost":3
         },
      "10":
         {
-         "speed":7
+         "moveCost":3
         },
      "105":
         {
-         "speed":0
+         "moveCost":-1
         },
      "106":
         {
-         "speed":0
+         "moveCost":-1
         },
      "107":
         {
-         "speed":0
+         "moveCost":-1
         },
      "108":
         {
-         "speed":0
+         "moveCost":-1
         },
      "109":
         {
-         "speed":0
+         "moveCost":-1
         },
      "11":
         {
-         "speed":5
+         "moveCost":5
         },
      "110":
         {
-         "speed":0
+         "moveCost":-1
         },
      "118":
         {
-         "speed":0
+         "moveCost":-1
         },
      "119":
         {
-         "speed":0
+         "moveCost":-1
         },
      "12":
         {
-         "speed":5
+         "moveCost":5
         },
      "120":
         {
-         "speed":0
+         "moveCost":-1
         },
      "121":
         {
-         "speed":0
+         "moveCost":-1
         },
      "122":
         {
-         "speed":0
+         "moveCost":-1
         },
      "123":
         {
-         "speed":0
+         "moveCost":-1
         },
      "13":
         {
-         "speed":3
+         "moveCost":7
         },
      "131":
         {
-         "speed":0
+         "moveCost":-1
         },
      "132":
         {
-         "speed":0
+         "moveCost":-1
         },
      "133":
         {
-         "speed":0
+         "moveCost":-1
         },
      "134":
         {
-         "speed":0
+         "moveCost":-1
         },
      "135":
         {
-         "speed":0
+         "moveCost":-1
         },
      "136":
         {
-         "speed":0
+         "moveCost":-1
         },
      "14":
         {
-         "speed":7
+         "moveCost":3
         },
      "144":
         {
-         "speed":0
+         "moveCost":-1
         },
      "145":
         {
-         "speed":0
+         "moveCost":-1
         },
      "146":
         {
-         "speed":0
+         "moveCost":-1
         },
      "147":
         {
-         "speed":0
+         "moveCost":-1
         },
      "148":
         {
-         "speed":0
+         "moveCost":-1
         },
      "149":
         {
-         "speed":0
+         "moveCost":-1
         },
      "15":
         {
-         "speed":7
+         "moveCost":3
         },
      "157":
         {
-         "speed":0
+         "moveCost":-1
         },
      "158":
         {
-         "speed":0
+         "moveCost":-1
         },
      "159":
         {
-         "speed":0
+         "moveCost":-1
         },
      "16":
         {
-         "speed":7
+         "moveCost":3
         },
      "160":
         {
-         "speed":0
+         "moveCost":-1
         },
      "161":
         {
-         "speed":0
+         "moveCost":-1
         },
      "162":
         {
-         "speed":0
+         "moveCost":-1
         },
      "17":
         {
-         "speed":7
+         "moveCost":3
         },
      "18":
         {
-         "speed":7
+         "moveCost":3
         },
      "19":
         {
-         "speed":7
+         "moveCost":3
         },
      "2":
         {
-         "speed":7
+         "moveCost":3
         },
      "20":
         {
-         "speed":7
+         "moveCost":3
         },
      "21":
         {
-         "speed":0
+         "moveCost":-1
         },
      "22":
         {
-         "speed":0
+         "moveCost":-1
         },
      "23":
         {
-         "speed":0
+         "moveCost":-1
         },
      "24":
         {
-         "speed":0
+         "moveCost":-1
         },
      "25":
         {
-         "speed":5
+         "moveCost":5
         },
      "26":
         {
-         "speed":3
+         "moveCost":7
         },
      "27":
         {
-         "speed":10
+         "moveCost":1
         },
      "28":
         {
-         "speed":10
+         "moveCost":1
         },
      "29":
         {
-         "speed":10
+         "moveCost":1
         },
      "3":
         {
-         "speed":7
+         "moveCost":3
         },
      "30":
         {
-         "speed":10
+         "moveCost":1
         },
      "31":
         {
-         "speed":10
+         "moveCost":1
         },
      "32":
         {
-         "speed":10
+         "moveCost":1
         },
      "33":
         {
-         "speed":10
+         "moveCost":1
         },
      "34":
         {
-         "speed":10
+         "moveCost":1
         },
      "35":
         {
-         "speed":10
+         "moveCost":1
         },
      "36":
         {
-         "speed":10
+         "moveCost":1
         },
      "37":
         {
-         "speed":10
+         "moveCost":1
         },
      "38":
         {
-         "speed":5
+         "moveCost":5
         },
      "39":
         {
-         "speed":3
+         "moveCost":7
         },
      "4":
         {
-         "speed":7
+         "moveCost":3
         },
      "40":
         {
-         "speed":10
+         "moveCost":1
         },
      "41":
         {
-         "speed":10
+         "moveCost":1
         },
      "42":
         {
-         "speed":10
+         "moveCost":1
         },
      "43":
         {
-         "speed":10
+         "moveCost":1
         },
      "44":
         {
-         "speed":10
+         "moveCost":1
         },
      "45":
         {
-         "speed":10
+         "moveCost":1
         },
      "46":
         {
-         "speed":10
+         "moveCost":1
         },
      "47":
         {
-         "speed":0
+         "moveCost":-1
         },
      "48":
         {
-         "speed":0
+         "moveCost":-1
         },
      "49":
         {
-         "speed":0
+         "moveCost":-1
         },
      "5":
         {
-         "speed":7
+         "moveCost":3
         },
      "50":
         {
-         "speed":0
+         "moveCost":-1
         },
      "51":
         {
-         "speed":5
+         "moveCost":5
         },
      "53":
         {
-         "speed":0
+         "moveCost":-1
         },
      "54":
         {
-         "speed":0
+         "moveCost":-1
         },
      "55":
         {
-         "speed":0
+         "moveCost":-1
         },
      "56":
         {
-         "speed":0
+         "moveCost":-1
         },
      "57":
         {
-         "speed":0
+         "moveCost":-1
         },
      "58":
         {
-         "speed":0
+         "moveCost":-1
         },
      "59":
         {
-         "speed":3
+         "moveCost":7
         },
      "6":
         {
-         "speed":7
+         "moveCost":3
         },
      "60":
         {
-         "speed":1
+         "moveCost":1
         },
      "64":
         {
-         "speed":5
+         "moveCost":5
         },
      "66":
         {
-         "speed":0
+         "moveCost":-1
         },
      "67":
         {
-         "speed":0
+         "moveCost":-1
         },
      "68":
         {
-         "speed":0
+         "moveCost":-1
         },
      "69":
         {
-         "speed":0
+         "moveCost":-1
         },
      "7":
         {
-         "speed":7
+         "moveCost":3
         },
      "70":
         {
-         "speed":0
+         "moveCost":-1
         },
      "71":
         {
-         "speed":0
+         "moveCost":-1
         },
      "79":
         {
-         "speed":0
+         "moveCost":-1
         },
      "8":
         {
-         "speed":7
+         "moveCost":3
         },
      "80":
         {
-         "speed":0
+         "moveCost":-1
         },
      "81":
         {
-         "speed":0
+         "moveCost":-1
         },
      "82":
         {
-         "speed":0
+         "moveCost":-1
         },
      "83":
         {
-         "speed":0
+         "moveCost":-1
         },
      "84":
         {
-         "speed":0
+         "moveCost":-1
         },
      "9":
         {
-         "speed":7
+         "moveCost":3
         },
      "92":
         {
-         "speed":0
+         "moveCost":-1
         },
      "93":
         {
-         "speed":0
+         "moveCost":-1
         },
      "94":
         {
-         "speed":0
+         "moveCost":-1
         },
      "95":
         {
-         "speed":0
+         "moveCost":-1
         },
      "96":
         {
-         "speed":0
+         "moveCost":-1
         },
      "97":
         {
-         "speed":0
+         "moveCost":-1
         }
     },
  "tilepropertytypes":
     {
      "0":
         {
-         "speed":"int"
+         "moveCost":"int"
         },
      "1":
         {
-         "speed":"int"
+         "moveCost":"int"
         },
      "10":
         {
-         "speed":"int"
+         "moveCost":"int"
         },
      "105":
         {
-         "speed":"int"
+         "moveCost":"int"
         },
      "106":
         {
-         "speed":"int"
+         "moveCost":"int"
         },
      "107":
         {
-         "speed":"int"
+         "moveCost":"int"
         },
      "108":
         {
-         "speed":"int"
+         "moveCost":"int"
         },
      "109":
         {
-         "speed":"int"
+         "moveCost":"int"
         },
      "11":
         {
-         "speed":"int"
+         "moveCost":"int"
         },
      "110":
         {
-         "speed":"int"
+         "moveCost":"int"
         },
      "118":
         {
-         "speed":"int"
+         "moveCost":"int"
         },
      "119":
         {
-         "speed":"int"
+         "moveCost":"int"
         },
      "12":
         {
-         "speed":"int"
+         "moveCost":"int"
         },
      "120":
         {
-         "speed":"int"
+         "moveCost":"int"
         },
      "121":
         {
-         "speed":"int"
+         "moveCost":"int"
         },
      "122":
         {
-         "speed":"int"
+         "moveCost":"int"
         },
      "123":
         {
-         "speed":"int"
+         "moveCost":"int"
         },
      "13":
         {
-         "speed":"int"
+         "moveCost":"int"
         },
      "131":
         {
-         "speed":"int"
+         "moveCost":"int"
         },
      "132":
         {
-         "speed":"int"
+         "moveCost":"int"
         },
      "133":
         {
-         "speed":"int"
+         "moveCost":"int"
         },
      "134":
         {
-         "speed":"int"
+         "moveCost":"int"
         },
      "135":
         {
-         "speed":"int"
+         "moveCost":"int"
         },
      "136":
         {
-         "speed":"int"
+         "moveCost":"int"
         },
      "14":
         {
-         "speed":"int"
+         "moveCost":"int"
         },
      "144":
         {
-         "speed":"int"
+         "moveCost":"int"
         },
      "145":
         {
-         "speed":"int"
+         "moveCost":"int"
         },
      "146":
         {
-         "speed":"int"
+         "moveCost":"int"
         },
      "147":
         {
-         "speed":"int"
+         "moveCost":"int"
         },
      "148":
         {
-         "speed":"int"
+         "moveCost":"int"
         },
      "149":
         {
-         "speed":"int"
+         "moveCost":"int"
         },
      "15":
         {
-         "speed":"int"
+         "moveCost":"int"
         },
      "157":
         {
-         "speed":"int"
+         "moveCost":"int"
         },
      "158":
         {
-         "speed":"int"
+         "moveCost":"int"
         },
      "159":
         {
-         "speed":"int"
+         "moveCost":"int"
         },
      "16":
         {
-         "speed":"int"
+         "moveCost":"int"
         },
      "160":
         {
-         "speed":"int"
+         "moveCost":"int"
         },
      "161":
         {
-         "speed":"int"
+         "moveCost":"int"
         },
      "162":
         {
-         "speed":"int"
+         "moveCost":"int"
         },
      "17":
         {
-         "speed":"int"
+         "moveCost":"int"
         },
      "18":
         {
-         "speed":"int"
+         "moveCost":"int"
         },
      "19":
         {
-         "speed":"int"
+         "moveCost":"int"
         },
      "2":
         {
-         "speed":"int"
+         "moveCost":"int"
         },
      "20":
         {
-         "speed":"int"
+         "moveCost":"int"
         },
      "21":
         {
-         "speed":"int"
+         "moveCost":"int"
         },
      "22":
         {
-         "speed":"int"
+         "moveCost":"int"
         },
      "23":
         {
-         "speed":"int"
+         "moveCost":"int"
         },
      "24":
         {
-         "speed":"int"
+         "moveCost":"int"
         },
      "25":
         {
-         "speed":"int"
+         "moveCost":"int"
         },
      "26":
         {
-         "speed":"int"
+         "moveCost":"int"
         },
      "27":
         {
-         "speed":"int"
+         "moveCost":"int"
         },
      "28":
         {
-         "speed":"int"
+         "moveCost":"int"
         },
      "29":
         {
-         "speed":"int"
+         "moveCost":"int"
         },
      "3":
         {
-         "speed":"int"
+         "moveCost":"int"
         },
      "30":
         {
-         "speed":"int"
+         "moveCost":"int"
         },
      "31":
         {
-         "speed":"int"
+         "moveCost":"int"
         },
      "32":
         {
-         "speed":"int"
+         "moveCost":"int"
         },
      "33":
         {
-         "speed":"int"
+         "moveCost":"int"
         },
      "34":
         {
-         "speed":"int"
+         "moveCost":"int"
         },
      "35":
         {
-         "speed":"int"
+         "moveCost":"int"
         },
      "36":
         {
-         "speed":"int"
+         "moveCost":"int"
         },
      "37":
         {
-         "speed":"int"
+         "moveCost":"int"
         },
      "38":
         {
-         "speed":"int"
+         "moveCost":"int"
         },
      "39":
         {
-         "speed":"int"
+         "moveCost":"int"
         },
      "4":
         {
-         "speed":"int"
+         "moveCost":"int"
         },
      "40":
         {
-         "speed":"int"
+         "moveCost":"int"
         },
      "41":
         {
-         "speed":"int"
+         "moveCost":"int"
         },
      "42":
         {
-         "speed":"int"
+         "moveCost":"int"
         },
      "43":
         {
-         "speed":"int"
+         "moveCost":"int"
         },
      "44":
         {
-         "speed":"int"
+         "moveCost":"int"
         },
      "45":
         {
-         "speed":"int"
+         "moveCost":"int"
         },
      "46":
         {
-         "speed":"int"
+         "moveCost":"int"
         },
      "47":
         {
-         "speed":"int"
+         "moveCost":"int"
         },
      "48":
         {
-         "speed":"int"
+         "moveCost":"int"
         },
      "49":
         {
-         "speed":"int"
+         "moveCost":"int"
         },
      "5":
         {
-         "speed":"int"
+         "moveCost":"int"
         },
      "50":
         {
-         "speed":"int"
+         "moveCost":"int"
         },
      "51":
         {
-         "speed":"int"
+         "moveCost":"int"
         },
      "53":
         {
-         "speed":"int"
+         "moveCost":"int"
         },
      "54":
         {
-         "speed":"int"
+         "moveCost":"int"
         },
      "55":
         {
-         "speed":"int"
+         "moveCost":"int"
         },
      "56":
         {
-         "speed":"int"
+         "moveCost":"int"
         },
      "57":
         {
-         "speed":"int"
+         "moveCost":"int"
         },
      "58":
         {
-         "speed":"int"
+         "moveCost":"int"
         },
      "59":
         {
-         "speed":"int"
+         "moveCost":"int"
         },
      "6":
         {
-         "speed":"int"
+         "moveCost":"int"
         },
      "60":
         {
-         "speed":"int"
+         "moveCost":"int"
         },
      "64":
         {
-         "speed":"int"
+         "moveCost":"int"
         },
      "66":
         {
-         "speed":"int"
+         "moveCost":"int"
         },
      "67":
         {
-         "speed":"int"
+         "moveCost":"int"
         },
      "68":
         {
-         "speed":"int"
+         "moveCost":"int"
         },
      "69":
         {
-         "speed":"int"
+         "moveCost":"int"
         },
      "7":
         {
-         "speed":"int"
+         "moveCost":"int"
         },
      "70":
         {
-         "speed":"int"
+         "moveCost":"int"
         },
      "71":
         {
-         "speed":"int"
+         "moveCost":"int"
         },
      "79":
         {
-         "speed":"int"
+         "moveCost":"int"
         },
      "8":
         {
-         "speed":"int"
+         "moveCost":"int"
         },
      "80":
         {
-         "speed":"int"
+         "moveCost":"int"
         },
      "81":
         {
-         "speed":"int"
+         "moveCost":"int"
         },
      "82":
         {
-         "speed":"int"
+         "moveCost":"int"
         },
      "83":
         {
-         "speed":"int"
+         "moveCost":"int"
         },
      "84":
         {
-         "speed":"int"
+         "moveCost":"int"
         },
      "9":
         {
-         "speed":"int"
+         "moveCost":"int"
         },
      "92":
         {
-         "speed":"int"
+         "moveCost":"int"
         },
      "93":
         {
-         "speed":"int"
+         "moveCost":"int"
         },
      "94":
         {
-         "speed":"int"
+         "moveCost":"int"
         },
      "95":
         {
-         "speed":"int"
+         "moveCost":"int"
         },
      "96":
         {
-         "speed":"int"
+         "moveCost":"int"
         },
      "97":
         {
-         "speed":"int"
+         "moveCost":"int"
         }
     },
  "tiles":

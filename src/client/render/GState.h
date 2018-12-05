@@ -2,20 +2,20 @@
 #ifndef RENDER__GSTATE__H
 #define RENDER__GSTATE__H
 
-#include <vector>
 #include <memory>
+#include <vector>
 
+namespace state {
+  class GameState;
+};
 namespace render {
   class GMap;
   class GPlayer;
-};
-namespace state {
-  class GameState;
 }
 
+#include "state/GameState.h"
 #include "GMap.h"
 #include "GPlayer.h"
-#include "state/GameState.h"
 
 namespace render {
 
@@ -23,17 +23,17 @@ namespace render {
   class GState {
     // Associations
     // Attributes
-  public:
-    GMap gmap;
-    std::vector<GPlayer> gplayers;
   private:
     std::shared_ptr<state::GameState> state;
+    GMap gmap;
+    std::vector<GPlayer> gplayers;
     // Operations
   public:
     GState (std::shared_ptr<state::GameState> state);
     GMap& getGMap ();
     std::vector<GPlayer>& getGPlayers ();
     unsigned int getTurn ();
+    unsigned int getPlayerCount ();
   };
 
 };

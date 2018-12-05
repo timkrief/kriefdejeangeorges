@@ -9,7 +9,10 @@ namespace render {
     EventController::EventController() :
         shiftPressed(false),
         controlPressed(false),
-        altPressed(false){
+        altPressed(false),
+        dragPressed(false),
+        middleDragPressed(false),
+        mousePosition(sf::Vector2f(0,0)){
         
     }
     
@@ -120,8 +123,32 @@ namespace render {
                     
                     break; }
                 case sf::Event::MouseMoved: 
+                    if(dragPressed || middleDragPressed){
+                        sf::View view{ window->getView() };
+                        
+                        view.move(window->mapPixelToCoords(sf::Vector2i(mousePosition)) - window->mapPixelToCoords(sf::Vector2i(event.mouseMove.x, event.mouseMove.y)));
+                        window->setView(view);
+                        
+                    }
                     updateCursor({event.mouseMove.x, event.mouseMove.y}, render);
+                    mousePosition = sf::Vector2f(event.mouseMove.x, event.mouseMove.y);
                     break; 
+                case sf::Event::MouseButtonPressed:
+                    if(controlPressed && event.mouseButton.button == sf::Mouse::Left){
+                        dragPressed = true;
+                    } 
+                    if(event.mouseButton.button == sf::Mouse::Middle){
+                        middleDragPressed = true;
+                    }
+                    break;
+                case sf::Event::MouseButtonReleased:
+                    if(event.mouseButton.button == sf::Mouse::Left){
+                        dragPressed = false;
+                    }
+                    if(event.mouseButton.button == sf::Mouse::Middle){
+                        middleDragPressed = false;
+                    }
+                    break;
                 default:
                     break;
             }

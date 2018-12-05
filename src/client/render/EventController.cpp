@@ -156,8 +156,8 @@ namespace render {
     }
     
     void EventController::updateCursor(sf::Vector2i pixel, std::shared_ptr<GRender> render){
-        float tmpX = render->getWindow()->mapPixelToCoords(pixel).x / 16;
-        float tmpY = render->getWindow()->mapPixelToCoords(pixel).y / 16;
+        unsigned int tmpX = std::max(0, (int)render->getWindow()->mapPixelToCoords(pixel).x / 16);
+        unsigned int tmpY = std::max(0, (int)render->getWindow()->mapPixelToCoords(pixel).y / 16);
         render->setCursor(sf::Vector2u(tmpX, tmpY));
     }
     

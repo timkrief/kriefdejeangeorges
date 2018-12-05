@@ -2,6 +2,7 @@
 #include "TextureManager.h"
 #include "state/Tileset.h"
 #include <chrono> 
+#include <iostream> 
 
 namespace render {
 
@@ -30,5 +31,30 @@ namespace render {
     }
 
   }
+  
+    sf::Sprite GMap::getTile(sf::Vector2u coord) {
+        if(coord.x >= map->getSize().x || coord.y >= map->getSize().y){
+            coord = sf::Vector2u(0, 0);
+        }
+
+        auto time = std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::system_clock::now().time_since_epoch()).count();
+
+        state::Tileset tileset= map->getTileset();
+
+        sf::IntRect rectangle = tileset.getTileIntRect(map->getData(coord), time);
+        return sf::Sprite(*(TextureManager::getTexture("mapTexture")), rectangle);
+    }
+    std::string GMap::getTileDescription(sf::Vector2u coord, std::string attribute) {
+        if(coord.x >= map->getSize().x || coord.y >= map->getSize().y){
+            coord = sf::Vector2u(0, 0);
+        }
+        auto attributes = map->getTile(coord)->attributes;
+        if(attributes.find(attribute) == attributes.end()){
+            return "--";
+        } else {
+            
+            return attributes[attribute] == -1 ? "--" : std::to_string(attributes[attribute]);
+        }
+    }     
 };
 

@@ -3,6 +3,8 @@
 #define RENDER__GMAP__H
 
 #include <memory>
+#include <SFML/Graphics.hpp>
+#include <string>
 
 namespace sf {
   class Drawable;
@@ -25,6 +27,8 @@ namespace render {
   public:
     GMap (std::shared_ptr<state::Map> map);
     void draw (sf::RenderTarget& target, sf::RenderStates states) const;
+    sf::Sprite getTile (sf::Vector2u coord);
+    std::string getTileDescription (sf::Vector2u coord,  std::string);
   };
 
 };

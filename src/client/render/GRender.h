@@ -21,6 +21,9 @@ namespace render {
   class GRender {
     // Associations
     // Attributes
+  public:
+    static sf::Font armyFont;
+    static sf::Font vcrFont;
   private:
     std::shared_ptr<sf::RenderWindow> window;
     sf::Vector2u cursor;

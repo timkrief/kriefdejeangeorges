@@ -57,7 +57,7 @@ namespace state {
         return data[pos.x + size.x * pos.y];
     }
     std::shared_ptr<Tile> Map::getTile(sf::Vector2u pos){
-        return tileset.getTile(data[pos.x + size.x * pos.y]);
+        return tileset.getTile(data[(pos.x + size.x * pos.y)%(size.x*size.y)]);
     }
     Tileset Map::getTileset(){
         return tileset;

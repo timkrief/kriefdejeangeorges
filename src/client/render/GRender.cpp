@@ -12,12 +12,23 @@
 
 namespace render {
 
+    sf::Font GRender::armyFont;
+    sf::Font GRender::vcrFont;
+        
     GRender::GRender():
         window(std::make_shared<sf::RenderWindow>(sf::VideoMode(800, 600), "Until the last barrel")),
         cursor(sf::Vector2u(0, 0)),
         cameraZoom(sf::Vector2f(1.f, 1.f))
     {
         window->setFramerateLimit(60);
+        
+        if (!GRender::armyFont.loadFromFile("./res/font/army1.ttf")){
+            std::cout << "Army1 font not found" << std::endl;
+        }
+
+        if (!GRender::vcrFont.loadFromFile("./res/font/VCR_OSD_MONO.ttf")){
+            std::cout << "VCR OSD MONO font not found" << std::endl;
+        }
     }
 
     void GRender::initTextures(){
@@ -75,24 +86,46 @@ namespace render {
         
         window->setView(gui);
         
+        float uiScale = 0.75f;
         // Display the turn count
-        int height = 14;
+        int height = 16 * uiScale;
 
         sf::Text turnCount;
 
-        sf::Font font;
-
-        if (!font.loadFromFile("res/army1.ttf")){
-            std::cout << "Font not found" << std::endl;
-        }
-
-        turnCount.setFont(font);
+        
+        turnCount.setFont(armyFont);
         turnCount.setString("Turn number " + std::to_string(g.getTurn()/g.getPlayerCount()));
-        turnCount.setCharacterSize(height); 
+        turnCount.setCharacterSize(height);
         //turnCount.setFillColor(sf::Color::White);
         turnCount.setStyle(sf::Text::Bold);
         turnCount.setPosition(10, height * 2);
         window->draw(turnCount);
+        
+        
+        // draw overlay
+        sf::Vector2f guiBottomRightPanelSize(200 * uiScale, 300 * uiScale);
+        float guiFontSize = 18;
+        
+        sf::RectangleShape guiBottomRightPanel(guiBottomRightPanelSize);
+        guiBottomRightPanel.setPosition(gui.getSize() - guiBottomRightPanelSize);
+        guiBottomRightPanel.setFillColor(sf::Color(0,0,0,126));
+        window->draw(guiBottomRightPanel);
+        
+        
+        sf::Sprite hovered(g.getGMap().getTile(cursor));
+        hovered.setScale(8*uiScale,8*uiScale);
+        sf::FloatRect hoveredRect(hovered.getGlobalBounds());
+        hovered.setPosition(guiBottomRightPanel.getPosition() + (sf::Vector2f(guiBottomRightPanelSize.x, guiBottomRightPanelSize.x) - sf::Vector2f(hoveredRect.width, hoveredRect.height))/2.f);
+        window->draw(hovered);
+        
+        sf::Text cursorTileDescription;
+        cursorTileDescription.setFont(vcrFont);
+        cursorTileDescription.setString("Move cost " + g.getGMap().getTileDescription(cursor, "moveCost"));
+        cursorTileDescription.setCharacterSize(guiFontSize * uiScale);
+        //turnCount.setFillColor(sf::Color::White);
+        cursorTileDescription.setPosition(guiBottomRightPanel.getPosition() + (sf::Vector2f(guiBottomRightPanelSize.x, (guiBottomRightPanelSize.x + guiFontSize * 2 * uiScale) * 2) - sf::Vector2f(hoveredRect.width, hoveredRect.height))/2.f);
+        window->draw(cursorTileDescription);
+        
         
         window->setView(view);
         

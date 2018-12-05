@@ -114,6 +114,8 @@ namespace state {
         );
     }
     sf::IntRect Tileset::getTileIntRect(unsigned int id, int time) const{
+        id = abs(id % (columns*rows));
+        
         sf::Vector2u tilePosition = getTilePosition(id, time);
         sf::Vector2u tileSize = getTileSize();
         return sf::IntRect(

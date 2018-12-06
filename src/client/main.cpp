@@ -36,15 +36,16 @@ int main(int argc,char* argv[])
     unit->setPosition(sf::Vector2i(15,25));
     player2->addOwnedFieldObject(unit);
     
-    
-    std::shared_ptr<OilWell> unit2(new OilWell);
-    unit2->setPosition(sf::Vector2i(35,10));
-    player2->addOwnedFieldObject(unit2);
-    
-    
-    std::shared_ptr<Factory> unit3(new Factory);
-    unit3->setPosition(sf::Vector2i(30,20));
-    player2->addOwnedFieldObject(unit3);
+//    
+//    
+//    std::shared_ptr<OilWell> unit2(new OilWell);
+//    unit2->setPosition(sf::Vector2i(35,10));
+//    player2->addOwnedFieldObject(unit2);
+//    
+//    
+//    std::shared_ptr<Factory> unit3(new Factory);
+//    unit3->setPosition(sf::Vector2i(30,20));
+//    player2->addOwnedFieldObject(unit3);
     // end of Creation of players -------
     
     
@@ -60,7 +61,7 @@ int main(int argc,char* argv[])
     
     std::shared_ptr<GameEngine> engine(new GameEngine(state));
     
-    CPU cpu1(state, engine, 1);
+    HeuristicCPU cpu1(state, engine, 1);
     
     std::shared_ptr<GRender> render(new GRender);
     

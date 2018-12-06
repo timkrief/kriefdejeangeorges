@@ -20,13 +20,4 @@ namespace ai {
     playerId(playerId) {
         std::srand(std::time(nullptr));
     }
-    
-    void CPU::run (){
-        int rand = std::rand();
-        if( rand % 9 == 8){
-            engine->addCommand(std::make_shared<engine::CommandEndTurn>(playerId));
-        } else {
-            engine->addCommand(std::make_shared<engine::CommandMove>(rand/2, playerId));
-        }
-    }
 };

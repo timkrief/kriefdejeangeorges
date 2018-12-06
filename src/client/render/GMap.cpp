@@ -1,7 +1,7 @@
 #include "GMap.h"
 #include "TextureManager.h"
 #include "state/Tileset.h"
-#include <chrono> 
+#include <sys/time.h> 
 #include <iostream> 
 
 namespace render {
@@ -14,8 +14,10 @@ namespace render {
 
   void GMap::draw(sf::RenderTarget& target, sf::RenderStates states) const {
     
-  
-    auto time = std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::system_clock::now().time_since_epoch()).count();
+    struct timeval tp;
+    gettimeofday(&tp, NULL);
+    int time = (tp.tv_sec * 1000 + tp.tv_usec / 1000) % 86400000;
+    
     
     state::Tileset tileset= map->getTileset();
 
@@ -37,7 +39,10 @@ namespace render {
             coord = sf::Vector2u(0, 0);
         }
 
-        auto time = std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::system_clock::now().time_since_epoch()).count();
+
+        struct timeval tp;
+        gettimeofday(&tp, NULL);
+        int time = (tp.tv_sec * 1000 + tp.tv_usec / 1000) % 86400000;
 
         state::Tileset tileset= map->getTileset();
 

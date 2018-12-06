@@ -10,7 +10,7 @@
 #include "TextureManager.h"
 #include "state/Tileset.h"
 #include "state/Unit.h"
-#include <chrono> 
+#include <sys/time.h> 
 
 namespace render {
 
@@ -22,7 +22,10 @@ namespace render {
     }
 
     void GFieldObject::draw(sf::RenderTarget& target, sf::RenderStates states) const {
-        auto time = std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::system_clock::now().time_since_epoch()).count();
+        
+        struct timeval tp;
+        gettimeofday(&tp, NULL);
+        int time = (tp.tv_sec * 1000 + tp.tv_usec / 1000) % 86400000;
         
         int tileId = -1;
         

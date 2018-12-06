@@ -32,15 +32,15 @@ int main(int argc,char* argv[])
     
     std::shared_ptr<Player> player2(new Player);
     
-    std::shared_ptr<Unit> unit(new Unit);
-    unit->setPosition(sf::Vector2i(15,25));
-    player2->addOwnedFieldObject(unit);
-    
+//    std::shared_ptr<Unit> unit(new Unit);
+//    unit->setPosition(sf::Vector2i(15,25));
+//    player2->addOwnedFieldObject(unit);
 //    
 //    
-//    std::shared_ptr<OilWell> unit2(new OilWell);
-//    unit2->setPosition(sf::Vector2i(35,10));
-//    player2->addOwnedFieldObject(unit2);
+//    
+    std::shared_ptr<OilWell> unit2(new OilWell);
+    unit2->setPosition(sf::Vector2i(35,10));
+    player2->addOwnedFieldObject(unit2);
 //    
 //    
 //    std::shared_ptr<Factory> unit3(new Factory);

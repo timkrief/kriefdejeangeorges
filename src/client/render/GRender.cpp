@@ -8,7 +8,7 @@
 #include "GMap.h"
 #include <iostream>
 #include <math.h> 
-#include <chrono> 
+#include <sys/time.h>
 
 namespace render {
 
@@ -52,8 +52,9 @@ namespace render {
         view.setViewport(sf::FloatRect(0.f, 0.f, 1.f, 1.f));
         window->setView(view);
         
-        
-        auto time = std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::system_clock::now().time_since_epoch()).count();
+        struct timeval tp;
+        gettimeofday(&tp, NULL);
+        int time = (tp.tv_sec * 1000 + tp.tv_usec / 1000) % 86400000;
     
         window->clear(sf::Color(44, 146, 206));
         

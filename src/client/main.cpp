@@ -17,6 +17,7 @@ int main(int argc,char* argv[])
 {
 
     bool rollback = argc>1 && !strcmp(argv[1],"rollback");
+    bool deep_ai = argc>1 && !strcmp(argv[1],"deep_ai");
 
 
 	testSFML();
@@ -64,27 +65,26 @@ int main(int argc,char* argv[])
     
     
     std::shared_ptr<GameEngine> engine(new GameEngine(state));
-    
-    HeuristicCPU cpu1(state, engine, 0);
-    
-    HeuristicCPU cpu2(state, engine, 1);
-    
-    std::shared_ptr<GRender> render(new GRender);
-    
-    EventController enventController;
-    
-    GState gstate(state);
-    
-    bool displayWindow = true;
-    sf::Event event;
-    
-    render->initTextures();
-    
-    while(displayWindow){
-        enventController.handle(event, engine, render, displayWindow);
+    if(deep_ai){
+        DeepCPU cpu1(state, engine, 0);
         
-        if(rollback){
-            if(state->getTurn() > 30){
+        DeepCPU cpu2(state, engine, 1);
+        
+        std::shared_ptr<GRender> render(new GRender);
+        
+        EventController enventController;
+        
+        GState gstate(state);
+        
+        bool displayWindow = true;
+        sf::Event event;
+        
+        render->initTextures();
+        
+        while(displayWindow){
+            enventController.handle(event, engine, render, displayWindow);
+            
+            if(state->getTurn() > 200){
                 while(state->getTurn() != 0){
                     engine->cancelTurn();
                     render->display(gstate);
@@ -94,16 +94,58 @@ int main(int argc,char* argv[])
             if(state->getPlayerTurnId() == 0){
                 cpu1.run();
             }
-        }
-        
-        if(state->getPlayerTurnId() == 1){
-            cpu2.run();
-        }
-        
-        
-        engine->update();
+            
+            if(state->getPlayerTurnId() == 1){
+                cpu2.run();
+            }
+            
+            
+            engine->update();
 
-        render->display(gstate);
+            render->display(gstate);
+        }
+    } else {
+        HeuristicCPU cpu1(state, engine, 0);
+        
+        HeuristicCPU cpu2(state, engine, 1);
+        
+        std::shared_ptr<GRender> render(new GRender);
+        
+        EventController enventController;
+        
+        GState gstate(state);
+        
+        bool displayWindow = true;
+        sf::Event event;
+        
+        render->initTextures();
+        
+        while(displayWindow){
+            enventController.handle(event, engine, render, displayWindow);
+            
+            if(rollback){
+                if(state->getTurn() > 30){
+                    while(state->getTurn() != 0){
+                        engine->cancelTurn();
+                        render->display(gstate);
+                    }
+                }
+                if(state->getPlayerTurnId() == 0){
+                    cpu1.run();
+                }
+            }
+            
+            if(state->getPlayerTurnId() == 1){
+                cpu2.run();
+            }
+            
+            
+            engine->update();
+
+            render->display(gstate);
+        }
     }
+    
+    
     return 0;
 }

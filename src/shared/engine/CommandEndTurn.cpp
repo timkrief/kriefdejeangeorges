@@ -8,5 +8,8 @@ namespace engine {
     void CommandEndTurn::execute (std::shared_ptr<state::GameState> state){
         state->endTurn();
     }
+    void CommandEndTurn::cancel (std::shared_ptr<state::GameState> state){
+        state->endTurn(true);
+    }
 };
 

@@ -87,7 +87,7 @@ namespace render {
         
         window->setView(gui);
         
-        float uiScale = 0.75f;
+        float uiScale = 1.f;
         // Display the turn count
         int height = 16 * uiScale;
 
@@ -104,7 +104,7 @@ namespace render {
         
         
         // draw overlay
-        sf::Vector2f guiBottomRightPanelSize(200 * uiScale, 300 * uiScale);
+        sf::Vector2f guiBottomRightPanelSize(200 * uiScale, 250 * uiScale);
         float guiFontSize = 18;
         
         sf::RectangleShape guiBottomRightPanel(guiBottomRightPanelSize);
@@ -114,19 +114,30 @@ namespace render {
         
         
         sf::Sprite hovered(g.getGMap().getTile(cursor));
-        hovered.setScale(8*uiScale,8*uiScale);
+        hovered.setScale(10*uiScale,10*uiScale);
         sf::FloatRect hoveredRect(hovered.getGlobalBounds());
         hovered.setPosition(guiBottomRightPanel.getPosition() + (sf::Vector2f(guiBottomRightPanelSize.x, guiBottomRightPanelSize.x) - sf::Vector2f(hoveredRect.width, hoveredRect.height))/2.f);
         window->draw(hovered);
         
         sf::Text cursorTileDescription;
         cursorTileDescription.setFont(vcrFont);
-        cursorTileDescription.setString("Move cost " + g.getGMap().getTileDescription(cursor, "moveCost"));
         cursorTileDescription.setCharacterSize(guiFontSize * uiScale);
+        cursorTileDescription.setString("Move cost " + g.getGMap().getTileDescription(cursor, "moveCost"));
         //turnCount.setFillColor(sf::Color::White);
-        cursorTileDescription.setPosition(guiBottomRightPanel.getPosition() + (sf::Vector2f(guiBottomRightPanelSize.x, (guiBottomRightPanelSize.x + guiFontSize * 2 * uiScale) * 2) - sf::Vector2f(hoveredRect.width, hoveredRect.height))/2.f);
+        cursorTileDescription.setPosition(
+            guiBottomRightPanel.getPosition() +
+            sf::Vector2f(guiBottomRightPanelSize.x / 2.f, guiBottomRightPanelSize.x) +
+            sf::Vector2f(-cursorTileDescription.getLocalBounds().width / 2.f, guiFontSize * 0 * uiScale)
+        );
         window->draw(cursorTileDescription);
         
+        cursorTileDescription.setString("Defense bonus " + g.getGMap().getTileDescription(cursor, "defense"));
+        cursorTileDescription.setPosition(
+            guiBottomRightPanel.getPosition() +
+            sf::Vector2f(guiBottomRightPanelSize.x / 2.f, guiBottomRightPanelSize.x) +
+            sf::Vector2f(-cursorTileDescription.getLocalBounds().width / 2.f, guiFontSize * 1 * uiScale)
+        );
+        window->draw(cursorTileDescription);
         
         window->setView(view);
         

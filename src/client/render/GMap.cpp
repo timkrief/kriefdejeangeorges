@@ -39,7 +39,6 @@ namespace render {
             coord = sf::Vector2u(0, 0);
         }
 
-
         struct timeval tp;
         gettimeofday(&tp, NULL);
         int time = (tp.tv_sec * 1000 + tp.tv_usec / 1000) % 86400000;

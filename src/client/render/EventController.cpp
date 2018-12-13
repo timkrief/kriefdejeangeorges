@@ -49,6 +49,9 @@ namespace render {
                         case sf::Keyboard::Left:
                             engine->addCommand(std::make_shared<engine::CommandMove>(3, 0));
                             break;  
+                        case sf::Keyboard::Delete:
+                            engine->cancelTurn();
+                            break;  
                             
                         case sf::Keyboard::LShift:
                             shiftPressed = true;

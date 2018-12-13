@@ -1487,7 +1487,25 @@
           <dia:attribute name="class_scope">
             <dia:boolean val="false"/>
           </dia:attribute>
-          <dia:attribute name="parameters"/>
+          <dia:attribute name="parameters">
+            <dia:composite type="umlparameter">
+              <dia:attribute name="name">
+                <dia:string>#backInTime#</dia:string>
+              </dia:attribute>
+              <dia:attribute name="type">
+                <dia:string>#bool#</dia:string>
+              </dia:attribute>
+              <dia:attribute name="value">
+                <dia:string>#false#</dia:string>
+              </dia:attribute>
+              <dia:attribute name="comment">
+                <dia:string>##</dia:string>
+              </dia:attribute>
+              <dia:attribute name="kind">
+                <dia:enum val="0"/>
+              </dia:attribute>
+            </dia:composite>
+          </dia:attribute>
         </dia:composite>
       </dia:attribute>
       <dia:attribute name="template">
@@ -7779,7 +7797,7 @@
         <dia:point val="128.905,-61.5688"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="128.155,-62.3515;133.356,-60.7288"/>
+        <dia:rectangle val="128.155,-62.3515;133.357,-60.7288"/>
       </dia:attribute>
       <dia:attribute name="meta">
         <dia:composite type="dict"/>
@@ -7788,7 +7806,7 @@
         <dia:point val="128.905,-61.5688"/>
         <dia:point val="131.456,-61.5688"/>
         <dia:point val="131.456,-61.5915"/>
-        <dia:point val="133.306,-61.5915"/>
+        <dia:point val="133.307,-61.5915"/>
       </dia:attribute>
       <dia:attribute name="orth_orient">
         <dia:enum val="0"/>
@@ -10882,7 +10900,7 @@
         <dia:point val="59.4889,-24.7096"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="58.7389,-25.4596;65.9687,-0.81453"/>
+        <dia:rectangle val="58.7389,-25.4696;65.9687,-1.57453"/>
       </dia:attribute>
       <dia:attribute name="meta">
         <dia:composite type="dict"/>

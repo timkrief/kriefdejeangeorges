@@ -1,5 +1,6 @@
 #include "GameEngine.h"
 #include <unistd.h>
+#include <iostream>
         
 namespace engine {
     GameEngine::GameEngine (std::shared_ptr<state::GameState> state) :
@@ -17,8 +18,22 @@ namespace engine {
             if(commands.front()->getPlayerTriggeringId() == currentState->getPlayerTurnId()){
                 //if(commands.front()->getPlayerTriggeringId() > 0) usleep(100000);
                 commands.front()->execute(currentState);
+                executedCommands.push_back(commands.front());
             }
+            
             commands.pop();
+        }
+    }
+    void GameEngine::cancel () {
+        if (!executedCommands.empty()){
+            executedCommands.back()->cancel(currentState);
+            executedCommands.pop_back();
+        }
+    }
+    void GameEngine::cancelTurn () {
+        int currentTurn = currentState->getTurn();
+        while ((int)currentState->getTurn() > currentTurn -2 && !executedCommands.empty()){
+            cancel();
         }
     }
     void GameEngine::addCommand(std::shared_ptr<Command> command){

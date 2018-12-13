@@ -20,878 +20,1576 @@
     {
      "0":
         {
-         "moveCost":6
+         "defense":1,
+         "moveCost":5
         },
      "1":
         {
-         "moveCost":3
+         "defense":0,
+         "moveCost":2
         },
      "10":
         {
+         "defense":0,
          "moveCost":3
+        },
+     "100":
+        {
+         "defense":0
+        },
+     "101":
+        {
+         "defense":0
+        },
+     "102":
+        {
+         "defense":0
+        },
+     "103":
+        {
+         "defense":0
+        },
+     "104":
+        {
+         "defense":0
         },
      "105":
         {
+         "defense":0,
          "moveCost":-1
         },
      "106":
         {
+         "defense":0,
          "moveCost":-1
         },
      "107":
         {
+         "defense":0,
          "moveCost":-1
         },
      "108":
         {
+         "defense":0,
          "moveCost":-1
         },
      "109":
         {
+         "defense":0,
          "moveCost":-1
         },
      "11":
         {
-         "moveCost":5
+         "defense":0,
+         "moveCost":2
         },
      "110":
         {
+         "defense":0,
          "moveCost":-1
+        },
+     "111":
+        {
+         "defense":0
+        },
+     "112":
+        {
+         "defense":0
+        },
+     "113":
+        {
+         "defense":0
+        },
+     "114":
+        {
+         "defense":0
+        },
+     "115":
+        {
+         "defense":0
+        },
+     "116":
+        {
+         "defense":0
+        },
+     "117":
+        {
+         "defense":0
         },
      "118":
         {
+         "defense":0,
          "moveCost":-1
         },
      "119":
         {
+         "defense":0,
          "moveCost":-1
         },
      "12":
         {
-         "moveCost":5
+         "defense":0,
+         "moveCost":3
         },
      "120":
         {
+         "defense":0,
          "moveCost":-1
         },
      "121":
         {
+         "defense":0,
          "moveCost":-1
         },
      "122":
         {
+         "defense":0,
          "moveCost":-1
         },
      "123":
         {
+         "defense":0,
          "moveCost":-1
+        },
+     "124":
+        {
+         "defense":0
+        },
+     "125":
+        {
+         "defense":0
+        },
+     "126":
+        {
+         "defense":0
+        },
+     "127":
+        {
+         "defense":0
+        },
+     "128":
+        {
+         "defense":0
+        },
+     "129":
+        {
+         "defense":0
         },
      "13":
         {
+         "defense":3,
          "moveCost":7
+        },
+     "130":
+        {
+         "defense":0
         },
      "131":
         {
+         "defense":0,
          "moveCost":-1
         },
      "132":
         {
+         "defense":0,
          "moveCost":-1
         },
      "133":
         {
+         "defense":0,
          "moveCost":-1
         },
      "134":
         {
+         "defense":0,
          "moveCost":-1
         },
      "135":
         {
+         "defense":0,
          "moveCost":-1
         },
      "136":
         {
+         "defense":0,
          "moveCost":-1
+        },
+     "137":
+        {
+         "defense":0
+        },
+     "138":
+        {
+         "defense":0
+        },
+     "139":
+        {
+         "defense":0
         },
      "14":
         {
-         "moveCost":3
+         "defense":0,
+         "moveCost":2
+        },
+     "140":
+        {
+         "defense":0
+        },
+     "141":
+        {
+         "defense":0
+        },
+     "142":
+        {
+         "defense":0
+        },
+     "143":
+        {
+         "defense":0
         },
      "144":
         {
+         "defense":0,
          "moveCost":-1
         },
      "145":
         {
+         "defense":0,
          "moveCost":-1
         },
      "146":
         {
+         "defense":0,
          "moveCost":-1
         },
      "147":
         {
+         "defense":0,
          "moveCost":-1
         },
      "148":
         {
+         "defense":0,
          "moveCost":-1
         },
      "149":
         {
+         "defense":0,
          "moveCost":-1
         },
      "15":
         {
-         "moveCost":3
+         "defense":0,
+         "moveCost":2
+        },
+     "150":
+        {
+         "defense":0
+        },
+     "151":
+        {
+         "defense":0
+        },
+     "152":
+        {
+         "defense":0
+        },
+     "153":
+        {
+         "defense":0
+        },
+     "154":
+        {
+         "defense":0
+        },
+     "155":
+        {
+         "defense":0
+        },
+     "156":
+        {
+         "defense":0
         },
      "157":
         {
+         "defense":0,
          "moveCost":-1
         },
      "158":
         {
+         "defense":0,
          "moveCost":-1
         },
      "159":
         {
+         "defense":0,
          "moveCost":-1
         },
      "16":
         {
-         "moveCost":3
+         "defense":0,
+         "moveCost":2
         },
      "160":
         {
+         "defense":0,
          "moveCost":-1
         },
      "161":
         {
+         "defense":0,
          "moveCost":-1
         },
      "162":
         {
+         "defense":0,
          "moveCost":-1
+        },
+     "163":
+        {
+         "defense":0
+        },
+     "164":
+        {
+         "defense":0
+        },
+     "165":
+        {
+         "defense":0
+        },
+     "166":
+        {
+         "defense":0
+        },
+     "167":
+        {
+         "defense":0
+        },
+     "168":
+        {
+         "defense":0
         },
      "17":
         {
-         "moveCost":3
+         "defense":0,
+         "moveCost":2
         },
      "18":
         {
-         "moveCost":3
+         "defense":0,
+         "moveCost":2
         },
      "19":
         {
-         "moveCost":3
+         "defense":0,
+         "moveCost":2
         },
      "2":
         {
-         "moveCost":3
+         "defense":0,
+         "moveCost":2
         },
      "20":
         {
-         "moveCost":3
+         "defense":0,
+         "moveCost":2
         },
      "21":
         {
+         "defense":0,
          "moveCost":-1
         },
      "22":
         {
+         "defense":0,
          "moveCost":-1
         },
      "23":
         {
+         "defense":0,
          "moveCost":-1
         },
      "24":
         {
+         "defense":0,
          "moveCost":-1
         },
      "25":
         {
-         "moveCost":5
+         "defense":0,
+         "moveCost":3
         },
      "26":
         {
+         "defense":3,
          "moveCost":7
         },
      "27":
         {
+         "defense":0,
          "moveCost":1
         },
      "28":
         {
+         "defense":0,
          "moveCost":1
         },
      "29":
         {
+         "defense":0,
          "moveCost":1
         },
      "3":
         {
-         "moveCost":3
+         "defense":0,
+         "moveCost":2
         },
      "30":
         {
+         "defense":0,
          "moveCost":1
         },
      "31":
         {
+         "defense":0,
          "moveCost":1
         },
      "32":
         {
+         "defense":0,
          "moveCost":1
         },
      "33":
         {
-         "moveCost":1
+         "defense":0,
+         "moveCost":2
         },
      "34":
         {
-         "moveCost":1
+         "defense":0,
+         "moveCost":2
         },
      "35":
         {
-         "moveCost":1
+         "defense":0,
+         "moveCost":2
         },
      "36":
         {
-         "moveCost":1
+         "defense":0,
+         "moveCost":2
         },
      "37":
         {
-         "moveCost":1
+         "defense":0,
+         "moveCost":2
         },
      "38":
         {
-         "moveCost":5
+         "defense":0,
+         "moveCost":3
         },
      "39":
         {
+         "defense":3,
          "moveCost":7
         },
      "4":
         {
-         "moveCost":3
+         "defense":0,
+         "moveCost":2
         },
      "40":
         {
+         "defense":0,
          "moveCost":1
         },
      "41":
         {
+         "defense":0,
          "moveCost":1
         },
      "42":
         {
+         "defense":0,
          "moveCost":1
         },
      "43":
         {
+         "defense":0,
          "moveCost":1
         },
      "44":
         {
+         "defense":0,
          "moveCost":1
         },
      "45":
         {
+         "defense":0,
          "moveCost":1
         },
      "46":
         {
+         "defense":0,
          "moveCost":1
         },
      "47":
         {
+         "defense":0,
          "moveCost":-1
         },
      "48":
         {
+         "defense":0,
          "moveCost":-1
         },
      "49":
         {
+         "defense":0,
          "moveCost":-1
         },
      "5":
         {
-         "moveCost":3
+         "defense":0,
+         "moveCost":2
         },
      "50":
         {
+         "defense":0,
          "moveCost":-1
         },
      "51":
         {
-         "moveCost":5
+         "defense":0,
+         "moveCost":3
+        },
+     "52":
+        {
+         "defense":0
         },
      "53":
         {
+         "defense":0,
          "moveCost":-1
         },
      "54":
         {
+         "defense":0,
          "moveCost":-1
         },
      "55":
         {
+         "defense":0,
          "moveCost":-1
         },
      "56":
         {
+         "defense":0,
          "moveCost":-1
         },
      "57":
         {
+         "defense":0,
          "moveCost":-1
         },
      "58":
         {
+         "defense":0,
          "moveCost":-1
         },
      "59":
         {
+         "defense":3,
          "moveCost":7
         },
      "6":
         {
-         "moveCost":3
+         "defense":0,
+         "moveCost":2
         },
      "60":
         {
-         "moveCost":1
+         "defense":4,
+         "moveCost":10
+        },
+     "61":
+        {
+         "defense":0
+        },
+     "62":
+        {
+         "defense":0
+        },
+     "63":
+        {
+         "defense":0
         },
      "64":
         {
+         "defense":0,
          "moveCost":5
+        },
+     "65":
+        {
+         "defense":0
         },
      "66":
         {
+         "defense":0,
          "moveCost":-1
         },
      "67":
         {
+         "defense":0,
          "moveCost":-1
         },
      "68":
         {
+         "defense":0,
          "moveCost":-1
         },
      "69":
         {
+         "defense":0,
          "moveCost":-1
         },
      "7":
         {
+         "defense":0,
          "moveCost":3
         },
      "70":
         {
+         "defense":0,
          "moveCost":-1
         },
      "71":
         {
+         "defense":0,
          "moveCost":-1
+        },
+     "72":
+        {
+         "defense":0
+        },
+     "73":
+        {
+         "defense":0
+        },
+     "74":
+        {
+         "defense":0
+        },
+     "75":
+        {
+         "defense":0
+        },
+     "76":
+        {
+         "defense":0
+        },
+     "77":
+        {
+         "defense":0
+        },
+     "78":
+        {
+         "defense":0
         },
      "79":
         {
+         "defense":0,
          "moveCost":-1
         },
      "8":
         {
+         "defense":0,
          "moveCost":3
         },
      "80":
         {
+         "defense":0,
          "moveCost":-1
         },
      "81":
         {
+         "defense":0,
          "moveCost":-1
         },
      "82":
         {
+         "defense":0,
          "moveCost":-1
         },
      "83":
         {
+         "defense":0,
          "moveCost":-1
         },
      "84":
         {
+         "defense":0,
          "moveCost":-1
+        },
+     "85":
+        {
+         "defense":0
+        },
+     "86":
+        {
+         "defense":0
+        },
+     "87":
+        {
+         "defense":0
+        },
+     "88":
+        {
+         "defense":0
+        },
+     "89":
+        {
+         "defense":0
         },
      "9":
         {
+         "defense":0,
          "moveCost":3
+        },
+     "90":
+        {
+         "defense":0
+        },
+     "91":
+        {
+         "defense":0
         },
      "92":
         {
+         "defense":0,
          "moveCost":-1
         },
      "93":
         {
+         "defense":0,
          "moveCost":-1
         },
      "94":
         {
+         "defense":0,
          "moveCost":-1
         },
      "95":
         {
+         "defense":0,
          "moveCost":-1
         },
      "96":
         {
+         "defense":0,
          "moveCost":-1
         },
      "97":
         {
+         "defense":0,
          "moveCost":-1
+        },
+     "98":
+        {
+         "defense":0
+        },
+     "99":
+        {
+         "defense":0
         }
     },
  "tilepropertytypes":
     {
      "0":
         {
+         "defense":"int",
          "moveCost":"int"
         },
      "1":
         {
+         "defense":"int",
          "moveCost":"int"
         },
      "10":
         {
+         "defense":"int",
          "moveCost":"int"
+        },
+     "100":
+        {
+         "defense":"int"
+        },
+     "101":
+        {
+         "defense":"int"
+        },
+     "102":
+        {
+         "defense":"int"
+        },
+     "103":
+        {
+         "defense":"int"
+        },
+     "104":
+        {
+         "defense":"int"
         },
      "105":
         {
+         "defense":"int",
          "moveCost":"int"
         },
      "106":
         {
+         "defense":"int",
          "moveCost":"int"
         },
      "107":
         {
+         "defense":"int",
          "moveCost":"int"
         },
      "108":
         {
+         "defense":"int",
          "moveCost":"int"
         },
      "109":
         {
+         "defense":"int",
          "moveCost":"int"
         },
      "11":
         {
+         "defense":"int",
          "moveCost":"int"
         },
      "110":
         {
+         "defense":"int",
          "moveCost":"int"
+        },
+     "111":
+        {
+         "defense":"int"
+        },
+     "112":
+        {
+         "defense":"int"
+        },
+     "113":
+        {
+         "defense":"int"
+        },
+     "114":
+        {
+         "defense":"int"
+        },
+     "115":
+        {
+         "defense":"int"
+        },
+     "116":
+        {
+         "defense":"int"
+        },
+     "117":
+        {
+         "defense":"int"
         },
      "118":
         {
+         "defense":"int",
          "moveCost":"int"
         },
      "119":
         {
+         "defense":"int",
          "moveCost":"int"
         },
      "12":
         {
+         "defense":"int",
          "moveCost":"int"
         },
      "120":
         {
+         "defense":"int",
          "moveCost":"int"
         },
      "121":
         {
+         "defense":"int",
          "moveCost":"int"
         },
      "122":
         {
+         "defense":"int",
          "moveCost":"int"
         },
      "123":
         {
+         "defense":"int",
          "moveCost":"int"
+        },
+     "124":
+        {
+         "defense":"int"
+        },
+     "125":
+        {
+         "defense":"int"
+        },
+     "126":
+        {
+         "defense":"int"
+        },
+     "127":
+        {
+         "defense":"int"
+        },
+     "128":
+        {
+         "defense":"int"
+        },
+     "129":
+        {
+         "defense":"int"
         },
      "13":
         {
+         "defense":"int",
          "moveCost":"int"
+        },
+     "130":
+        {
+         "defense":"int"
         },
      "131":
         {
+         "defense":"int",
          "moveCost":"int"
         },
      "132":
         {
+         "defense":"int",
          "moveCost":"int"
         },
      "133":
         {
+         "defense":"int",
          "moveCost":"int"
         },
      "134":
         {
+         "defense":"int",
          "moveCost":"int"
         },
      "135":
         {
+         "defense":"int",
          "moveCost":"int"
         },
      "136":
         {
+         "defense":"int",
          "moveCost":"int"
+        },
+     "137":
+        {
+         "defense":"int"
+        },
+     "138":
+        {
+         "defense":"int"
+        },
+     "139":
+        {
+         "defense":"int"
         },
      "14":
         {
+         "defense":"int",
          "moveCost":"int"
+        },
+     "140":
+        {
+         "defense":"int"
+        },
+     "141":
+        {
+         "defense":"int"
+        },
+     "142":
+        {
+         "defense":"int"
+        },
+     "143":
+        {
+         "defense":"int"
         },
      "144":
         {
+         "defense":"int",
          "moveCost":"int"
         },
      "145":
         {
+         "defense":"int",
          "moveCost":"int"
         },
      "146":
         {
+         "defense":"int",
          "moveCost":"int"
         },
      "147":
         {
+         "defense":"int",
          "moveCost":"int"
         },
      "148":
         {
+         "defense":"int",
          "moveCost":"int"
         },
      "149":
         {
+         "defense":"int",
          "moveCost":"int"
         },
      "15":
         {
+         "defense":"int",
          "moveCost":"int"
+        },
+     "150":
+        {
+         "defense":"int"
+        },
+     "151":
+        {
+         "defense":"int"
+        },
+     "152":
+        {
+         "defense":"int"
+        },
+     "153":
+        {
+         "defense":"int"
+        },
+     "154":
+        {
+         "defense":"int"
+        },
+     "155":
+        {
+         "defense":"int"
+        },
+     "156":
+        {
+         "defense":"int"
         },
      "157":
         {
+         "defense":"int",
          "moveCost":"int"
         },
      "158":
         {
+         "defense":"int",
          "moveCost":"int"
         },
      "159":
         {
+         "defense":"int",
          "moveCost":"int"
         },
      "16":
         {
+         "defense":"int",
          "moveCost":"int"
         },
      "160":
         {
+         "defense":"int",
          "moveCost":"int"
         },
      "161":
         {
+         "defense":"int",
          "moveCost":"int"
         },
      "162":
         {
+         "defense":"int",
          "moveCost":"int"
+        },
+     "163":
+        {
+         "defense":"int"
+        },
+     "164":
+        {
+         "defense":"int"
+        },
+     "165":
+        {
+         "defense":"int"
+        },
+     "166":
+        {
+         "defense":"int"
+        },
+     "167":
+        {
+         "defense":"int"
+        },
+     "168":
+        {
+         "defense":"int"
         },
      "17":
         {
+         "defense":"int",
          "moveCost":"int"
         },
      "18":
         {
+         "defense":"int",
          "moveCost":"int"
         },
      "19":
         {
+         "defense":"int",
          "moveCost":"int"
         },
      "2":
         {
+         "defense":"int",
          "moveCost":"int"
         },
      "20":
         {
+         "defense":"int",
          "moveCost":"int"
         },
      "21":
         {
+         "defense":"int",
          "moveCost":"int"
         },
      "22":
         {
+         "defense":"int",
          "moveCost":"int"
         },
      "23":
         {
+         "defense":"int",
          "moveCost":"int"
         },
      "24":
         {
+         "defense":"int",
          "moveCost":"int"
         },
      "25":
         {
+         "defense":"int",
          "moveCost":"int"
         },
      "26":
         {
+         "defense":"int",
          "moveCost":"int"
         },
      "27":
         {
+         "defense":"int",
          "moveCost":"int"
         },
      "28":
         {
+         "defense":"int",
          "moveCost":"int"
         },
      "29":
         {
+         "defense":"int",
          "moveCost":"int"
         },
      "3":
         {
+         "defense":"int",
          "moveCost":"int"
         },
      "30":
         {
+         "defense":"int",
          "moveCost":"int"
         },
      "31":
         {
+         "defense":"int",
          "moveCost":"int"
         },
      "32":
         {
+         "defense":"int",
          "moveCost":"int"
         },
      "33":
         {
+         "defense":"int",
          "moveCost":"int"
         },
      "34":
         {
+         "defense":"int",
          "moveCost":"int"
         },
      "35":
         {
+         "defense":"int",
          "moveCost":"int"
         },
      "36":
         {
+         "defense":"int",
          "moveCost":"int"
         },
      "37":
         {
+         "defense":"int",
          "moveCost":"int"
         },
      "38":
         {
+         "defense":"int",
          "moveCost":"int"
         },
      "39":
         {
+         "defense":"int",
          "moveCost":"int"
         },
      "4":
         {
+         "defense":"int",
          "moveCost":"int"
         },
      "40":
         {
+         "defense":"int",
          "moveCost":"int"
         },
      "41":
         {
+         "defense":"int",
          "moveCost":"int"
         },
      "42":
         {
+         "defense":"int",
          "moveCost":"int"
         },
      "43":
         {
+         "defense":"int",
          "moveCost":"int"
         },
      "44":
         {
+         "defense":"int",
          "moveCost":"int"
         },
      "45":
         {
+         "defense":"int",
          "moveCost":"int"
         },
      "46":
         {
+         "defense":"int",
          "moveCost":"int"
         },
      "47":
         {
+         "defense":"int",
          "moveCost":"int"
         },
      "48":
         {
+         "defense":"int",
          "moveCost":"int"
         },
      "49":
         {
+         "defense":"int",
          "moveCost":"int"
         },
      "5":
         {
+         "defense":"int",
          "moveCost":"int"
         },
      "50":
         {
+         "defense":"int",
          "moveCost":"int"
         },
      "51":
         {
+         "defense":"int",
          "moveCost":"int"
+        },
+     "52":
+        {
+         "defense":"int"
         },
      "53":
         {
+         "defense":"int",
          "moveCost":"int"
         },
      "54":
         {
+         "defense":"int",
          "moveCost":"int"
         },
      "55":
         {
+         "defense":"int",
          "moveCost":"int"
         },
      "56":
         {
+         "defense":"int",
          "moveCost":"int"
         },
      "57":
         {
+         "defense":"int",
          "moveCost":"int"
         },
      "58":
         {
+         "defense":"int",
          "moveCost":"int"
         },
      "59":
         {
+         "defense":"int",
          "moveCost":"int"
         },
      "6":
         {
+         "defense":"int",
          "moveCost":"int"
         },
      "60":
         {
+         "defense":"int",
          "moveCost":"int"
+        },
+     "61":
+        {
+         "defense":"int"
+        },
+     "62":
+        {
+         "defense":"int"
+        },
+     "63":
+        {
+         "defense":"int"
         },
      "64":
         {
+         "defense":"int",
          "moveCost":"int"
+        },
+     "65":
+        {
+         "defense":"int"
         },
      "66":
         {
+         "defense":"int",
          "moveCost":"int"
         },
      "67":
         {
+         "defense":"int",
          "moveCost":"int"
         },
      "68":
         {
+         "defense":"int",
          "moveCost":"int"
         },
      "69":
         {
+         "defense":"int",
          "moveCost":"int"
         },
      "7":
         {
+         "defense":"int",
          "moveCost":"int"
         },
      "70":
         {
+         "defense":"int",
          "moveCost":"int"
         },
      "71":
         {
+         "defense":"int",
          "moveCost":"int"
+        },
+     "72":
+        {
+         "defense":"int"
+        },
+     "73":
+        {
+         "defense":"int"
+        },
+     "74":
+        {
+         "defense":"int"
+        },
+     "75":
+        {
+         "defense":"int"
+        },
+     "76":
+        {
+         "defense":"int"
+        },
+     "77":
+        {
+         "defense":"int"
+        },
+     "78":
+        {
+         "defense":"int"
         },
      "79":
         {
+         "defense":"int",
          "moveCost":"int"
         },
      "8":
         {
+         "defense":"int",
          "moveCost":"int"
         },
      "80":
         {
+         "defense":"int",
          "moveCost":"int"
         },
      "81":
         {
+         "defense":"int",
          "moveCost":"int"
         },
      "82":
         {
+         "defense":"int",
          "moveCost":"int"
         },
      "83":
         {
+         "defense":"int",
          "moveCost":"int"
         },
      "84":
         {
+         "defense":"int",
          "moveCost":"int"
+        },
+     "85":
+        {
+         "defense":"int"
+        },
+     "86":
+        {
+         "defense":"int"
+        },
+     "87":
+        {
+         "defense":"int"
+        },
+     "88":
+        {
+         "defense":"int"
+        },
+     "89":
+        {
+         "defense":"int"
         },
      "9":
         {
+         "defense":"int",
          "moveCost":"int"
+        },
+     "90":
+        {
+         "defense":"int"
+        },
+     "91":
+        {
+         "defense":"int"
         },
      "92":
         {
+         "defense":"int",
          "moveCost":"int"
         },
      "93":
         {
+         "defense":"int",
          "moveCost":"int"
         },
      "94":
         {
+         "defense":"int",
          "moveCost":"int"
         },
      "95":
         {
+         "defense":"int",
          "moveCost":"int"
         },
      "96":
         {
+         "defense":"int",
          "moveCost":"int"
         },
      "97":
         {
+         "defense":"int",
          "moveCost":"int"
+        },
+     "98":
+        {
+         "defense":"int"
+        },
+     "99":
+        {
+         "defense":"int"
         }
     },
  "tiles":

@@ -30,7 +30,7 @@ namespace state {
   unsigned int GameState::getPlayerTurnId(){
     return getTurn() % getPlayerCount();
   }
-  void GameState::endTurn(){
-    turn++;
+  void GameState::endTurn(bool backInTime){
+    turn+= backInTime ? -1 : 1;
   }
 };

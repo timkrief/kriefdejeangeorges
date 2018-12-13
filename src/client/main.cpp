@@ -4,6 +4,7 @@
 #include "render.h"
 #include "engine.h"
 #include "ai.h"
+#include <string.h>
 
 using namespace std;
 using namespace state;
@@ -14,6 +15,10 @@ using namespace ai;
 
 int main(int argc,char* argv[]) 
 {
+
+    bool rollback = argc>1 && !strcmp(argv[1],"rollback");
+
+
 	testSFML();
 	
 	Cards cards("./res/cards.yaml","fr");
@@ -21,8 +26,7 @@ int main(int argc,char* argv[])
 	//testPlayer();
 	
     
-    // Creation of players -------
-    
+// Creation of players -------
     std::shared_ptr<Player> player1(new Player);
     
     std::shared_ptr<Unit> unit0(new Unit);
@@ -61,7 +65,9 @@ int main(int argc,char* argv[])
     
     std::shared_ptr<GameEngine> engine(new GameEngine(state));
     
-    HeuristicCPU cpu1(state, engine, 1);
+    HeuristicCPU cpu1(state, engine, 0);
+    
+    HeuristicCPU cpu2(state, engine, 1);
     
     std::shared_ptr<GRender> render(new GRender);
     
@@ -77,9 +83,23 @@ int main(int argc,char* argv[])
     while(displayWindow){
         enventController.handle(event, engine, render, displayWindow);
         
-        if(state->getPlayerTurnId() == 1){
-            cpu1.run();
+        if(rollback){
+            if(state->getTurn() > 30){
+                while(state->getTurn() != 0){
+                    engine->cancelTurn();
+                    render->display(gstate);
+                }
+            }
+            
+            if(state->getPlayerTurnId() == 0){
+                cpu1.run();
+            }
         }
+        
+        if(state->getPlayerTurnId() == 1){
+            cpu2.run();
+        }
+        
         
         engine->update();
 

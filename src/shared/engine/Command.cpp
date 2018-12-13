@@ -7,6 +7,9 @@ namespace engine {
     void Command::execute (std::shared_ptr<state::GameState> state){
 
     }
+    void Command::cancel (std::shared_ptr<state::GameState> state){
+
+    }
     unsigned int Command::getPlayerTriggeringId(){
         return playerTriggeringId;
     }

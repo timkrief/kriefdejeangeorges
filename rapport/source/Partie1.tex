@@ -246,11 +246,9 @@ Via la souris il peut:
 
 \begin{tabularx}{15 cm}{|X|X|}
 \hline
-\textbf{GameState} \newline A pour but de décrire l'état du jeu & Attributs: map, players, existingCards, turn, allFieldObjects \newline Méthodes: GameState, getMap, EndTurn, Newturn, GenerateRessource, getPlayer\\ 
+\textbf{GameState} \newline A pour but de décrire l'état du jeu & Attributs: map, players, existingCards, turn \newline Méthodes: GameState, getMap, addPlayer, getPlayer, endTurn, getTurn, GenerateRessource, getPlayerTurnId\\ 
 \hline
-\textbf{FieldObjects} \newline C'est la liste qui contient tout les objets du champs de bataille & Attribut: fieldObjects(vecteur de FieldObject) \\
-\hline
-\textbf{FieldObject} \newline C'est la classe qui décrit tout les objets du champs de bataille: leur emplacement, l'image associée, le propriétaire et le type  & Attributs: position, sprite, owner, type \newline Méthodes: FieldObject, setOwner, getPosition, setObjectType\\
+\textbf{FieldObject} \newline C'est la classe qui décrit tout les objets du champs de bataille: leur emplacement, l'image associée, le propriétaire et le type  & Attributs: position, sprite, owner, type \newline Méthodes: FieldObject, setOwner, getPosition, setPosition, setObjectType\\
 \hline
 \textbf{Building} \newline Un bâtiment peut être capturé par des unités afin qu'un joueur en prenne le contrôle & Attribut: health \newline Méthode: Building, captured\\
 \hline
@@ -267,7 +265,7 @@ Via la souris il peut:
 \hline
 \textbf{Installation} & Attribut: sourceCard \newline\\
 \hline
-\textbf{Unit} & Attributs: equipments, headcount, sourceCard \newline Méthodes:getHeadCount, move, attack, defence, capture\\
+\textbf{Unit} & Attributs: equipments, headcount, sourceCard, direction, lastUpdate \newline Méthodes:getHeadCount, move, attack, defence, capture, getDirection\\
 
 \hline
 \textbf{Direction} \newline C'est une classe d'énumation qui permettra de changer les sprites en fonction des mouvements des unités & Attributs: UP, RIGHT, DOWN, LEFT \newline \\
@@ -279,14 +277,13 @@ Via la souris il peut:
 
 \begin{tabularx}{15 cm}{|X|X|}
 \hline
-\textbf{Map} & Attributs: tiles, size  \newline Méthodes: Map, Map (un deuxième constructeur)\\
+\textbf{Map} & Attributs: tileset, size, data  \newline Méthodes: Map, getSize, getdata, getTile, getTileset\\
 \hline
-\textbf{Tile} & Attributs: Speed  \newline Méthodes: Tile\\
+\textbf{Tileset} & Attributs: tiles, ressourcePath, columns, tileSize, resourceSize  \newline Méthodes: Tileset, getTile, getResourcePath, getColumns, getTileheight, getTileSize, getTilePosition, getTileIntRect\\
 \hline
-\textbf{Tiles} & Attributs: tiles  \newline Méthodes: Tiles\\
-
+\textbf{Tile} & Attributs: speed  \newline Méthodes: Tile, getSpeed\\
 \hline
-\textbf{Player} & Attributs: deck, hand, money, oil, name, ownedFieldObjects, id, count  \newline Méthodes: Player, getMoney, setMoney, getOil, setOil, getId, addOwnedFieldObject, removeOwnedFieldObject\\
+\textbf{Player} & Attributs: deck, hand, money, oil, name, ownedFieldObjects, id, count  \newline Méthodes: Player, InitPlayer,  getMoney, setMoney, getOil, setOil, getId, getName, addOwnedFieldObject, removeOwnedFieldObject, getOwnedFieldObject, getCount\\
 \hline
 \textbf{Deck} & Attributs: cards  \newline Méthodes: Deck, Deck (deuxième constructeurs), pull, remove\\
 \hline
@@ -308,18 +305,92 @@ Via la souris il peut:
 
 \newpage
 
+\clearpage
+
 \begin{figure}[h]
     \centering
-    \includegraphics[angle=270,origin=c,scale =0.12]{images/state.jpeg}
+    \includegraphics[angle=270,origin=c,scale =0.5]{images/state.png}
     \caption{Diagramme UML de l'état}
     \label{fig:Advance Wars}
 \end{figure}
 
-%\paragraph{Test pour voir la mise en page si je ré-écris du test en dessous  }
-%et du coup ça marche
+\clearpage
+
+\section{L'affichage graphique}
+
+\subsection{Premiers rendus}
+L'affichage de la carte fonctionne grâce à l'implémentation d'un render. La carte est donc définie sous la forme de tileset dans le state, et importée dans le render afin de l'afficher.
+Ainsi on constate qu'on a l'affichage dans une fenêtre de la carte ainsi que de fieldobject. 
+
+\subsection{Descripteur de Tile}
+
+Un affichage en bas à droite permet en lisant la position de la souris de donner les informations sur une case comme sa texture, son coût en déplacement et sa défense.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[angle=0,origin=c,scale =0.5]{images/demorender.png}
+    \caption{Démonstration du render}
+    \label{fig:Advance Wars}
+\end{figure}
 
 \newpage
 
+\phantom{Texte invisible parce que j'ai pas trouvé d'autre méthode pour mettre le tableau à la ligne.}
+
+\begin{tabularx}{15 cm}{|X|X|}
+\hline
+\textbf{Gstate} \newline A pour but de décrire l'état du jeu pour l'affichage & Attributs: gmap, gplayers, state \newline Méthodes: GState, getGmap, getGPlayers, getTurn, GePlayerCount,\\ 
+\hline
+\textbf{GRender} \newline C'est la classe qui décrit la fenêtre  & Attributs: window, cursor, cameraPosition, cameraZoom, armyFont, vcrFont \newline Méthodes: GRender, initTextures, getWindow, setCursor, display, getCameraPosition, updateCameraPostion, get CameraZoom, updateCameraZoom\\
+\hline
+\textbf{GPlayer} \newline Permet de déterminer quel objets de quels joueurs afficher & Attribut:  \newline Méthode: GPlayer, draw\\
+\hline
+\textbf{GMAP} \newline C'est une classe ayant pour but d'afficher la carte & Attributs: map
+\newline Méthodes: GMap, draw, getTile, getTileDescription\\
+\hline
+
+\textbf{TextureManager} \newline Permet de gérer les textures & Attribut: textures, order \newline Méthode: TextureManager (constructeur et destructeur), getLength, GetTexture, loadTexture\\
+\hline
+
+\end{tabularx}
+
+\newpage
+
+
+
+
+
+\section{Le moteur}
+
+Les mouvements ont été implémentés via un moteur. L'appui permet de modifier l'état en cours vers un nouvel état. En faisant ainsi on sépare l'affichage qui ne fait que lire, du moteur qui permet à la fois de lire l'état et de le modifier.
+
+\subsection{Les commandes}
+
+Il existe deux commandes: 
+\begin{itemize}
+    \item les commandes de direction qui permettent le mouvement des unités.
+    \item la commande de fin de tour.
+\end{itemize}
+
+\newpage
+
+\phantom{Texte invisible parce que j'ai pas trouvé d'autre méthode pour mettre le tableau à la ligne.}
+
+\begin{tabularx}{15 cm}{|X|X|}
+\hline
+\textbf{GameEngine} \newline A pour but de gérer les commandes du joueur afin de modifier l'état du jeu & Attributs: currentState, commands, executedCommands \newline Méthodes: GameEngine(constructeur et desctructeur), getState, update, cancel, cancelTurn, addCommand\\ 
+\hline
+\textbf{Command} \newline C'est la classe qui décrit les commandes disponibles  & Attributs: playerTriggeringId,  \newline Méthodes: Command, execute, cancel, getPlayerTriggeringId\\
+\hline
+\textbf{CommandEndTurn} \newline Permet de finir le tour en cours & Attribut:  \newline Méthode: CommandEndTurn, execute, cancel\\
+\hline
+\textbf{CommandMove} \newline C'est une classe ayant pour but de commander les mouvement & Attributs: direction
+\newline Méthodes: CommandMove, execute, cancel\\
+\hline
+
+\end{tabularx}
+
+\newpage
 
 
 

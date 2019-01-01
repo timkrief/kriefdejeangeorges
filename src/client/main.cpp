@@ -19,7 +19,7 @@ int main(int argc,char* argv[])
     bool rollback = argc>1 && !strcmp(argv[1],"rollback");
     bool deep_ai = argc>1 && !strcmp(argv[1],"deep_ai");
 
-
+    
 	testSFML();
 	
 	Cards cards("./res/cards.yaml","fr");

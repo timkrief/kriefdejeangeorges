@@ -29,7 +29,7 @@ namespace render {
         
         int tileId = -1;
         
-        if((int)fieldObject->getObjectType()<4){
+        if((int)fieldObject->getObjectType()<4){/*le field object est un building*/
             unsigned int tmpNbTiles = buildingsTileset.getColumns() * buildingsTileset.getRows();
             for(unsigned int i = 0; i < tmpNbTiles; i++){
                 std::shared_ptr<state::Tile> tile = buildingsTileset.getTile(i);
@@ -45,7 +45,7 @@ namespace render {
                 sprite.setPosition(sf::Vector2f(fieldObject->getPosition() * 16));
                 target.draw(sprite);
             }
-        } else if((int)fieldObject->getObjectType()==5){
+        } else if((int)fieldObject->getObjectType()==5){/*le fieldobject est une unit*/
         
             unsigned int tmpNbTiles = unitsTileset.getColumns() * unitsTileset.getRows();
             for(unsigned int i = 0; i < tmpNbTiles; i++){

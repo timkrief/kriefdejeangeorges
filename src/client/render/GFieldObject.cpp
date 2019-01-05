@@ -33,7 +33,7 @@ namespace render {
             unsigned int tmpNbTiles = buildingsTileset.getColumns() * buildingsTileset.getRows();
             for(unsigned int i = 0; i < tmpNbTiles; i++){
                 std::shared_ptr<state::Tile> tile = buildingsTileset.getTile(i);
-                if(tile->attributes["objectType"] == (int)fieldObject->getObjectType() && tile->attributes["player"] == 1){
+                if(tile->attributes["objectType"] == (int)fieldObject->getObjectType() && tile->attributes["player"] == fieldObject->getPlayerId() ){
                     tileId = i;
                     break;
                 }
@@ -50,7 +50,7 @@ namespace render {
             unsigned int tmpNbTiles = unitsTileset.getColumns() * unitsTileset.getRows();
             for(unsigned int i = 0; i < tmpNbTiles; i++){
                 std::shared_ptr<state::Tile> tile = unitsTileset.getTile(i);
-                if(tile->attributes["direction"] == (int)fieldObject->getDirection() && tile->attributes["player"] == 1){
+                if(tile->attributes["direction"] == (int)fieldObject->getDirection() && tile->attributes["player"] == fieldObject->getPlayerId()){
                     tileId = i;
                     break;
                 }

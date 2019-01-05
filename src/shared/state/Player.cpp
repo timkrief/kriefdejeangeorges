@@ -6,10 +6,12 @@
 
 namespace state {
 	unsigned int Player::count = 0;	
-	
+
 	void Player::InitPlayer(){
-		id = count;
+		
 		count++;
+		id = count;
+		
 		oil = 0.f;
 		money = 0.f;
 		name = "Player "+std::to_string(count);
@@ -69,6 +71,7 @@ namespace state {
   		} 
 		else {
 			ownedFieldObjects.push_back(newFieldObject);
+			newFieldObject->setOwner(id);
   		}
 	}
 	

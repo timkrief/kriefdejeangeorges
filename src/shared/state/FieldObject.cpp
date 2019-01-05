@@ -27,6 +27,10 @@ namespace state {
         owner = playerId;
     }
 
+
+    int FieldObject::getPlayerId(){
+        return(owner);
+    }
     ObjectType FieldObject::getObjectType(){
         return type;
     }

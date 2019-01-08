@@ -364,13 +364,22 @@ Un affichage en bas à droite permet en lisant la position de la souris de donne
 
 Les mouvements ont été implémentés via un moteur. L'appui permet de modifier l'état en cours vers un nouvel état. En faisant ainsi on sépare l'affichage qui ne fait que lire, du moteur qui permet à la fois de lire l'état et de le modifier.
 
-\subsection{Les commandes}
+\subsection{Les commandes de jeu}
 
-Il existe deux commandes: 
+Il existe deux commandes afin d'agir sur le jeu: 
 \begin{itemize}
     \item les commandes de direction qui permettent le mouvement des unités.
     \item la commande de fin de tour.
 \end{itemize}
+
+\subsection{Les commandes d'affichage}
+Pour modifier l'affichage de la carte ainsi que déplacer la vision du joueur, on peut utiliser le pad ou la souris.
+\begin{itemize}
+    \item L'aggrandissement de la carte est modifiable en étirant la fenêtre.
+    \item shift+molette(scroll sur pad) permet de faire défiler la carte horizontalement.
+    \item ctrl+molette (zoom sur pad) permet de zoomer ou dézoomer.
+\end{itemize}
+
 
 \newpage
 
@@ -394,6 +403,10 @@ Il existe deux commandes:
 
 
 
+\section{Les IA}
 
+Deux types d'IA ont été crées.
+La première euristique diminiue la distance de Manhattan avec les unités adverses sans tenir compte des obstacles.
+La seconde essaiera que chacune de ses unités attaque les unités adverses les plus proches d'elles. 
 
 

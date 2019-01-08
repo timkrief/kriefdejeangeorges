@@ -33,4 +33,25 @@ namespace state {
   void GameState::endTurn(bool backInTime){
     turn+= backInTime ? -1 : 1;
   }
+  int GameState::getDistance(sf::Vector2u coordA, sf::Vector2u coordB){
+    int manathan = (abs(coordA.x-coordB.x) + abs(coordA.y-coordB.y));
+    
+    if(manathan <= 10){
+        float weight = 0;
+        std::cout << "AX: "<< coordA.x << "; AY: "<< coordA.y << std::endl;
+        std::cout << "BX: "<< coordB.x << "; BY: "<< coordB.y << std::endl;
+        for(int x = std::min(coordA.x, coordB.x); x <= std::max(coordA.x, coordB.x); x++){
+            for(int y = std::min(coordA.y, coordB.y); y <= std::max(coordA.y, coordB.y); y++){
+                float tmp_weight = map->getTile(sf::Vector2u(x, y))->attributes["moveCost"];
+                tmp_weight = tmp_weight < 0 ? 2 : 1;
+                weight += tmp_weight;
+            }
+        }
+        std::cout << weight << std::endl;
+        
+        return weight/((abs(coordA.x-coordB.x)+1)*(abs(coordA.y-coordB.y)+1))*manathan;
+    } else {
+        return manathan;
+    }
+  }
 };

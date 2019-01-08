@@ -8,22 +8,22 @@ namespace engine {
     
     void CommandMove::execute (std::shared_ptr<state::GameState> state){
         for(auto objet: state->getPlayer(playerTriggeringId)->getOwnedFieldObjects()){
-            sf::Vector2i pos(objet->getPosition());
+            sf::Vector2u pos(objet->getPosition());
             
-            sf::Vector2i newpos;
+            sf::Vector2u newpos;
             
             switch(direction){
                 case 0: 
-                    newpos = pos + sf::Vector2i(0, -1);
+                    newpos = pos + sf::Vector2u(0, -1);
                     break;
                 case 1: 
-                    newpos = pos + sf::Vector2i(1, 0);
+                    newpos = pos + sf::Vector2u(1, 0);
                     break;
                 case 2: 
-                    newpos = pos + sf::Vector2i(0, 1);
+                    newpos = pos + sf::Vector2u(0, 1);
                     break;
                 case 3: 
-                    newpos = pos + sf::Vector2i(-1, 0);
+                    newpos = pos + sf::Vector2u(-1, 0);
                     break;
                 default: 
                     newpos = pos;

@@ -21,7 +21,6 @@ namespace ai {
         targetedPlayerId = rand % (state->getPlayerCount() - 1); 
         if(targetedPlayerId >= playerId){
             targetedPlayerId++;
-            
         }
     }
     
@@ -33,8 +32,8 @@ namespace ai {
             
             int rand = std::rand();
         
-            sf::Vector2i playerPos = state->getPlayer(targetedPlayerId)->getOwnedFieldObjects()[0]->getPosition();
-            sf::Vector2i cpuPos = state->getPlayer(playerId)->getOwnedFieldObjects()[0]->getPosition();
+            sf::Vector2u playerPos = state->getPlayer(targetedPlayerId)->getOwnedFieldObjects()[0]->getPosition();
+            sf::Vector2u cpuPos = state->getPlayer(playerId)->getOwnedFieldObjects()[0]->getPosition();
             int direction = -1;
             
             if(rand%2){

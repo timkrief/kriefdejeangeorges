@@ -33,7 +33,7 @@ namespace render {
             unsigned int tmpNbTiles = buildingsTileset.getColumns() * buildingsTileset.getRows();
             for(unsigned int i = 0; i < tmpNbTiles; i++){
                 std::shared_ptr<state::Tile> tile = buildingsTileset.getTile(i);
-                if(tile->attributes["objectType"] == (int)fieldObject->getObjectType() && tile->attributes["player"] == fieldObject->getPlayerId() ){
+                if(tile->attributes["objectType"] == (int)fieldObject->getObjectType() && tile->attributes["player"] == fieldObject->getOwner() ){
                     tileId = i;
                     break;
                 }
@@ -42,7 +42,7 @@ namespace render {
                 sf::IntRect rectangle = buildingsTileset.getTileIntRect(tileId, time);
                 sf::Sprite sprite(*(TextureManager::getTexture("buildings")), rectangle);
                 
-                sprite.setPosition(sf::Vector2f(fieldObject->getPosition() * 16));
+                sprite.setPosition(sf::Vector2f(fieldObject->getPosition()) * 16.f);
                 target.draw(sprite);
             }
         } else if((int)fieldObject->getObjectType()==5){/*le fieldobject est une unit*/
@@ -50,7 +50,7 @@ namespace render {
             unsigned int tmpNbTiles = unitsTileset.getColumns() * unitsTileset.getRows();
             for(unsigned int i = 0; i < tmpNbTiles; i++){
                 std::shared_ptr<state::Tile> tile = unitsTileset.getTile(i);
-                if(tile->attributes["direction"] == (int)fieldObject->getDirection() && tile->attributes["player"] == fieldObject->getPlayerId()){
+                if(tile->attributes["direction"] == (int)fieldObject->getDirection() && tile->attributes["player"] == fieldObject->getOwner()){
                     tileId = i;
                     break;
                 }
@@ -70,7 +70,7 @@ namespace render {
         }
         if(tileId == -1){
             sf::RectangleShape rect(sf::Vector2f(16,16));
-            rect.setPosition(sf::Vector2f(fieldObject->getPosition() * 16));
+            rect.setPosition(sf::Vector2f(fieldObject->getPosition()) * 16.f);
             rect.setFillColor(sf::Color::Blue);
             target.draw(rect);
         }

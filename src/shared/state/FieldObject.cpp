@@ -4,7 +4,7 @@
 namespace state {
 
     FieldObject::FieldObject(){
-        position = sf::Vector2i(0, 0);
+        position = sf::Vector2u(0, 0);
         owner = -1;
     }
 
@@ -14,11 +14,11 @@ namespace state {
         type = selectedType;//associated type
     }
 
-    sf::Vector2i FieldObject::getPosition(){
+    sf::Vector2u FieldObject::getPosition(){
         return position;
     }
 
-    void FieldObject::setPosition(sf::Vector2i pos){
+    void FieldObject::setPosition(sf::Vector2u pos){
         position = pos;
     }
 
@@ -28,9 +28,6 @@ namespace state {
     }
 
 
-    int FieldObject::getPlayerId(){
-        return(owner);
-    }
     ObjectType FieldObject::getObjectType(){
         return type;
     }
@@ -39,4 +36,7 @@ namespace state {
     }
     void FieldObject::setDirection (Direction dir){}
 
+    int FieldObject::getOwner(){
+        return(owner);
+    }
 };

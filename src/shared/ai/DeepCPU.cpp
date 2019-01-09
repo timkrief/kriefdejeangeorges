@@ -8,6 +8,33 @@
 #include <cstdlib>
 #include <iostream>
 #include <ctime>
+#include <unistd.h>
+#include <set>
+#include <sstream> 
+#include <string> 
+
+std::string vec2str(sf::Vector2u vec){
+    std::stringstream str;
+    str << vec.x << ';' << vec.y;
+    return str.str();
+}
+
+sf::Vector2u str2vec(std::string str){
+    std::stringstream bufferX;
+    std::stringstream bufferY;
+	sf::Vector2u vec;
+	int cursor = 0;
+	bool writingX = true;
+	char character;
+	while(character = str[cursor++]){
+	    if(character == ';') writingX = false;
+	    else {
+	        if(writingX) bufferX << character;
+	        else bufferY << character;
+	    }
+	}
+	return sf::Vector2u( std::stoi( bufferX.str() ), std::stoi( bufferY.str() ) );
+}
 
 namespace ai {
     DeepCPU::DeepCPU (
@@ -29,50 +56,84 @@ namespace ai {
         sf::Vector2u playerPos = state->getPlayer(targetedPlayerId)->getOwnedFieldObjects()[0]->getPosition();
         sf::Vector2u cpuPos = state->getPlayer(playerId)->getOwnedFieldObjects()[0]->getPosition();
         int dist = state->getDistance(playerPos, cpuPos);
+        int lastdist;
         
-        int playedSteps = 5;
-        int steps = dist * 2;
-        int samples = dist*dist*4<5000 ? dist*dist*4 : 5000;
-        std::vector<std::vector<int>> paths(samples, std::vector<int>(steps));
-        std::vector<std::vector<sf::Vector2u>> coord(samples, std::vector<sf::Vector2u>(steps));
-        int bestPath = 0;
-        int bestDist = 10000;
+        int deepness = 100;
+        int authorizedCost = 10;
+        int samples = dist*dist*10<20000 ? dist*dist*10 : 20000;
+        std::map<std::string, std::vector<int>> paths;
+        std::map<std::string, std::vector<int>> pathsLimited;
+        std::map<std::string, int> pathsMoveCost;
+        std::map<std::string, int> pathsDistance;
+        
+        paths[vec2str(cpuPos)] = std::vector<int>();
+        pathsLimited[vec2str(cpuPos)] = std::vector<int>();
+        pathsMoveCost[vec2str(cpuPos)] = 0;
+        pathsDistance[vec2str(cpuPos)] = dist;
+        
+        std::set<std::string> pathsToCheck;
+        pathsToCheck.insert(vec2str(cpuPos));
+        
+        std::string bestPath = vec2str(cpuPos);
+        int bestDist = dist;
         bool targetFound = false;
         
         if(dist != 0){
-            for(int i=0; i<samples; i++){
-                for(int j=0; j<steps; j++){
-                    int rand = std::rand();
-                    // Choose a random direction, but don't go back'
-                    if(j==0){
-                        paths[i][j] = rand % 4;
-                    } else {
-                        paths[i][j] = (rand % 3 >= (paths[i][j-1] + 2) % 4) ? rand % 3 + 1 : rand % 3 ;
-                    }
-                    engine->addCommand(std::make_shared<engine::CommandMove>(paths[i][j], playerId));
-                    engine->update();
-                    cpuPos = state->getPlayer(playerId)->getOwnedFieldObjects()[0]->getPosition();
-                    coord[i][j] = sf::Vector2u(cpuPos);
-                }
+            while(!pathsToCheck.empty()){
+            
+                std::string coord = *pathsToCheck.begin();
+                sf::Vector2u vecCoord = str2vec(coord);
+                pathsToCheck.erase(pathsToCheck.begin());
                 
-                dist = state->getDistance(playerPos, cpuPos);
-                if(dist == 0 && i<playedSteps){
-                    break;
-                    targetFound = true;
-                }
-                if(dist<bestDist){
-                    bestDist = dist;
-                    bestPath = i;
-                }
-                for(int j=0; j<steps; j++){
-                    engine->cancel();
+                std::vector<int> path = paths[coord];
+                
+                for(int dir=0; dir < 4; dir++){
+                    sf::Vector2u vecNewCoord = vecCoord;
+                    switch(dir){
+                        case 0:
+                            vecNewCoord.y --;
+                            break;
+                        case 1:
+                            vecNewCoord.x ++;
+                            break;
+                        case 2:
+                            vecNewCoord.y ++;
+                            break;
+                        case 3:
+                            vecNewCoord.x --;
+                            break;
+                    }
+                    std::string newCoord = vec2str(vecNewCoord);
+                    int costToMove = state->getMap()->getTile(vecNewCoord)->attributes["moveCost"];
+                    if(costToMove >= 0){
+                    
+                        int newPathMoveCost = pathsMoveCost[coord] + costToMove;
+                        int newPathDistance = state->getDistance(vecNewCoord, playerPos);
+                        
+                        if(newPathMoveCost <= deepness && (paths.find(newCoord) == paths.end() || newPathMoveCost < pathsMoveCost[newCoord])){
+                        
+                            pathsToCheck.insert(newCoord);
+                            
+                            paths[newCoord] = paths[coord];
+                            paths[newCoord].push_back(dir);
+                            pathsLimited[newCoord] = pathsLimited[coord];
+                            if(newPathMoveCost <= authorizedCost){
+                                pathsLimited[newCoord].push_back(dir);
+                            }
+                            pathsMoveCost[newCoord] = newPathMoveCost;
+                            pathsDistance[newCoord] = newPathDistance;
+                            
+                            if(newPathDistance < bestDist){
+                                bestDist = newPathDistance;
+                                bestPath = newCoord;
+                            }
+                        }
+                    }
                 }
             }
             
-            if(!targetFound){
-                for(int j=0; j<playedSteps; j++){
-                    engine->addCommand(std::make_shared<engine::CommandMove>(paths[bestPath][j], playerId));
-                }
+            for(int j=0; j<pathsLimited[bestPath].size(); j++){
+                engine->addCommand(std::make_shared<engine::CommandMove>(pathsLimited[bestPath][j], playerId));
             }
         }
         engine->addCommand(std::make_shared<engine::CommandEndTurn>(playerId));

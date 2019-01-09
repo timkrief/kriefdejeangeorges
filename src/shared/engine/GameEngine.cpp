@@ -16,7 +16,6 @@ namespace engine {
     void GameEngine::update () {
         while (!commands.empty()){
             if(commands.front()->getPlayerTriggeringId() == currentState->getPlayerTurnId()){
-                //if(commands.front()->getPlayerTriggeringId() > 0) usleep(100000);
                 commands.front()->execute(currentState);
                 executedCommands.push_back(commands.front());
             }

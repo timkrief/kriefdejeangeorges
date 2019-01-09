@@ -5,6 +5,7 @@
 #include "engine.h"
 #include "ai.h"
 #include <string.h>
+#include <unistd.h>
 
 using namespace std;
 using namespace state;
@@ -91,15 +92,18 @@ int main(int argc,char* argv[])
                 while(state->getTurn() != 0){
                     engine->cancelTurn();
                     render->display(gstate);
+                    usleep(10000);
                 }
             }
             
             if(state->getPlayerTurnId() == 0){
                 cpu1.run();
+                usleep(50000);
             }
             
             if(state->getPlayerTurnId() == 1){
                 cpu2.run();
+                usleep(50000);
             }
             
             
@@ -108,9 +112,9 @@ int main(int argc,char* argv[])
             render->display(gstate);
         }
     } else {
-        HeuristicCPU cpu1(state, engine, 0);
+        DeepCPU cpu1(state, engine, 0);
         
-        HeuristicCPU cpu2(state, engine, 1);
+        DeepCPU cpu2(state, engine, 1);
         
         std::shared_ptr<GRender> render(new GRender);
         

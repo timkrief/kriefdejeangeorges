@@ -19,6 +19,8 @@ int main(int argc,char* argv[])
 
     bool rollback = argc>1 && !strcmp(argv[1],"rollback");
     bool deep_ai = argc>1 && !strcmp(argv[1],"deep_ai");
+    bool record = argc>1 && !strcmp(argv[1],"record");
+    bool play = argc>1 && !strcmp(argv[1],"play");
 
     
 	testSFML();
@@ -69,6 +71,11 @@ int main(int argc,char* argv[])
     
     
     std::shared_ptr<GameEngine> engine(new GameEngine(state));
+    
+    if(play){
+        engine->loadHistory();
+    }
+    
     if(deep_ai){
         DeepCPU cpu1(state, engine, 0);
         
@@ -153,6 +160,8 @@ int main(int argc,char* argv[])
         }
     }
     
-    
+    if(record){
+        engine->saveHistory();
+    }
     return 0;
 }

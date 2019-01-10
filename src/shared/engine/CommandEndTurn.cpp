@@ -16,5 +16,12 @@ namespace engine {
     void CommandEndTurn::cancel (std::shared_ptr<state::GameState> state){
         state->endTurn(true);
     }
+    void CommandEndTurn::save(YAML::Emitter& saveData){
+        std::map <std::string, int> attributes;
+        attributes["commandType"] = (int)commandType;
+        attributes["playerTriggeringId"] = playerTriggeringId;
+
+        saveData << attributes;
+    }
 };
 

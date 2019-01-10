@@ -18,7 +18,7 @@ namespace state {
 		level(level), 
 		strengths(strengths),
 		headCount(headCount)
-	{ 
+	{ /*
 		std::cout << std::endl << "---------" << std::endl;
 		std::cout << "title: " << title << std::endl;
 		std::cout << "cost: " << cost << std::endl;
@@ -26,6 +26,7 @@ namespace state {
 		std::cout << "level: " << level << std::endl;
 		std::cout << "headCount: " << headCount << std::endl;
 		std::cout << "---------" << std::endl << std::endl;
+		*/
 	}
 	
     void EquipmentCard::playCard () { } 

@@ -45,7 +45,7 @@ exec_program(${DIA2CODE} ARGS -ns ai     -d ../src/shared -t cpp ../src/ai.dia)
 
 # Sources
 file(GLOB_RECURSE client_sources src/client/*.cpp)
-#file(GLOB_RECURSE server_sources src/server/*.cpp)
+file(GLOB_RECURSE server_sources src/server/*.cpp)
 file(GLOB_RECURSE shared_sources src/shared/*.cpp)
 
 #jsoncpp
@@ -63,7 +63,8 @@ if(NOT YAML_CPP_LIB)
 endif()
 target_link_libraries(client ${YAML_CPP_LIB})
 
-#add_executable(server ${server_sources} ${shared_sources} ${yamlcpp_sources})
+add_executable(server ${server_sources} ${shared_sources})
+target_link_libraries(server ${YAML_CPP_LIB})
 
 
 # SFML
@@ -81,6 +82,7 @@ find_package(SFML 2 COMPONENTS graphics window system network)
 if(SFML_FOUND)
   include_directories(${SFML_INCLUDE_DIR})
   target_link_libraries(client sfml-graphics sfml-window sfml-system sfml-network)
+  target_link_libraries(server sfml-graphics sfml-window sfml-system sfml-network)
 endif()
 
 # libmicrohttpd

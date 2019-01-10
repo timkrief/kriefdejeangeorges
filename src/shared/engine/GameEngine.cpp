@@ -63,7 +63,7 @@ namespace engine {
         
         saveData << YAML::EndSeq;
         
-        std::ofstream saveFileOut("./savefile.json");
+        std::ofstream saveFileOut("./savefile.json"); // replay.txt
         saveFileOut << saveData.c_str();
     }
     

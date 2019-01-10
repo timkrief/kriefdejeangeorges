@@ -25,7 +25,7 @@ namespace state {
 		moneyGain(moneyGain), 
 		oilLoss(oilLoss), 
 		oilGain(oilGain)
-	{ 
+	{ /*
 		std::cout << std::endl << "---------" << std::endl;
 		std::cout << "title: " << title << std::endl;
 		std::cout << "cost: " << cost << std::endl;
@@ -37,6 +37,7 @@ namespace state {
 		std::cout << "oilLoss: " << oilLoss << std::endl;
 		std::cout << "oilGain: " << oilGain << std::endl;
 		std::cout << "---------" << std::endl << std::endl;
+		*/
 	}
 	
 	

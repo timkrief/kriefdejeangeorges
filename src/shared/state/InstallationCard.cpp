@@ -18,7 +18,7 @@ namespace state {
 		stopOpponent(stopOpponent), 
 		damage(damage), 	
 		iterations(iterations)
-	{ 
+	{ /*
 		std::cout << std::endl << "---------" << std::endl;
 		std::cout << "title: " << title << std::endl;
 		std::cout << "cost: " << cost << std::endl;
@@ -27,6 +27,7 @@ namespace state {
 		std::cout << "damage: " << damage << std::endl;
 		std::cout << "iterations: " << iterations << std::endl;
 		std::cout << "---------" << std::endl << std::endl;
+		*/
 	}
 	
     void InstallationCard::playCard () { }

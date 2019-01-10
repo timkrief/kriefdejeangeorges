@@ -1,4 +1,5 @@
 #include "GameEngine.h"
+#include "CommandType.h"
 #include <unistd.h>
 #include <iostream>
         
@@ -16,8 +17,9 @@ namespace engine {
     void GameEngine::update () {
         while (!commands.empty()){
             if(commands.front()->getPlayerTriggeringId() == currentState->getPlayerTurnId()){
-                commands.front()->execute(currentState);
-                executedCommands.push_back(commands.front());
+                if(commands.front()->execute(currentState)){
+                    executedCommands.push_back(commands.front());
+                }
             }
             
             commands.pop();
@@ -27,6 +29,14 @@ namespace engine {
         if (!executedCommands.empty()){
             executedCommands.back()->cancel(currentState);
             executedCommands.pop_back();
+        }
+    }
+    void GameEngine::cancelFromPlayer(int playerId) {
+        if (!executedCommands.empty()){
+            if (executedCommands.back()->getPlayerTriggeringId() == playerId && executedCommands.back()->getCommandType()!=CommandType::ENDTURN){
+                executedCommands.back()->cancel(currentState);
+                executedCommands.pop_back();
+            }
         }
     }
     void GameEngine::cancelTurn () {

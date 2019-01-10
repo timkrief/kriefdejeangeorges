@@ -58,8 +58,8 @@ namespace ai {
         int dist = state->getDistance(playerPos, cpuPos);
         int lastdist;
         
-        int deepness = 100;
-        int authorizedCost = 10;
+        int deepness = dist*4;
+        int authorizedCost = state->getPlayer(playerId)->getOwnedFieldObjects()[0]->getMovePoints();
         int samples = dist*dist*10<20000 ? dist*dist*10 : 20000;
         std::map<std::string, std::vector<int>> paths;
         std::map<std::string, std::vector<int>> pathsLimited;

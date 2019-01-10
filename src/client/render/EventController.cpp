@@ -52,6 +52,11 @@ namespace render {
                         case sf::Keyboard::Delete:
                             engine->cancelTurn();
                             break;  
+                        case sf::Keyboard::Z:
+                            if(controlPressed){
+                                engine->cancelFromPlayer(0);
+                            }
+                            break;  
                             
                         case sf::Keyboard::LShift:
                             shiftPressed = true;

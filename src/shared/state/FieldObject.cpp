@@ -3,11 +3,14 @@
 
 namespace state {
 
-    FieldObject::FieldObject(){
-        position = sf::Vector2u(0, 0);
-        owner = -1;
+    FieldObject::FieldObject() : 
+        position(sf::Vector2u(0, 0)), 
+        owner(-1), 
+        normalMovePoints(10),
+        movePoints(10){
+        
     }
-
+    
     void FieldObject::setObjectType (ObjectType selectedType){
         //sprite = ;//associated sprite
 
@@ -38,5 +41,14 @@ namespace state {
 
     int FieldObject::getOwner(){
         return(owner);
+    }
+    int FieldObject::getMovePoints(){
+        return(movePoints);
+    }
+    void FieldObject::setMovePoints(int newMovePoints){
+        movePoints = newMovePoints;
+    }
+    void FieldObject::resetMovePoints(){
+        movePoints = normalMovePoints;
     }
 };

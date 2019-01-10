@@ -364,12 +364,14 @@ Un affichage en bas à droite permet en lisant la position de la souris de donne
 
 Les mouvements ont été implémentés via un moteur. L'appui permet de modifier l'état en cours vers un nouvel état. En faisant ainsi on sépare l'affichage qui ne fait que lire, du moteur qui permet à la fois de lire l'état et de le modifier.
 
+
 \subsection{Les commandes de jeu}
 
 Il existe deux commandes afin d'agir sur le jeu: 
 \begin{itemize}
-    \item les commandes de direction qui permettent le mouvement des unités.
-    \item la commande de fin de tour.
+    \item les commandes de direction qui permettent le mouvement des unités avec les touches directionnelles.
+    \item Ctrl+Z permet d'annuler les déplacements du tour en cours.
+    \item la commande de fin de tour avec la touche entrée.
 \end{itemize}
 
 \subsection{Les commandes d'affichage}
@@ -387,14 +389,14 @@ Pour modifier l'affichage de la carte ainsi que déplacer la vision du joueur, o
 
 \begin{tabularx}{15 cm}{|X|X|}
 \hline
-\textbf{GameEngine} \newline A pour but de gérer les commandes du joueur afin de modifier l'état du jeu & Attributs: currentState, commands, executedCommands \newline Méthodes: GameEngine(constructeur et desctructeur), getState, update, cancel, cancelTurn, addCommand\\ 
+\textbf{GameEngine} \newline A pour but de gérer les commandes du joueur afin de modifier l'état du jeu & Attributs: currentState, commands, executedCommands \newline Méthodes: GameEngine(constructeur et desctructeur), getState, update, cancel, CancelFromPlayer, cancelTurn, addCommand, saveHistory, loadHistory\\ 
 \hline
-\textbf{Command} \newline C'est la classe qui décrit les commandes disponibles  & Attributs: playerTriggeringId,  \newline Méthodes: Command, execute, cancel, getPlayerTriggeringId\\
+\textbf{Command} \newline C'est la classe qui décrit les commandes disponibles  & Attributs: playerTriggeringId, commandType (qui peut prendre deux valeurs 0 pour fin de tour et 1 pour les mouvements) \newline Méthodes: Command, execute, cancel, getPlayerTriggeringId, getCommandType, save\\
 \hline
-\textbf{CommandEndTurn} \newline Permet de finir le tour en cours & Attribut:  \newline Méthode: CommandEndTurn, execute, cancel\\
+\textbf{CommandEndTurn} \newline Permet de finir le tour en cours & Attribut:  \newline Méthode: CommandEndTurn, execute, cancel, save\\
 \hline
 \textbf{CommandMove} \newline C'est une classe ayant pour but de commander les mouvement & Attributs: direction
-\newline Méthodes: CommandMove, execute, cancel\\
+\newline Méthodes: CommandMove, execute, cancel, save\\
 \hline
 
 \end{tabularx}
@@ -408,5 +410,41 @@ Pour modifier l'affichage de la carte ainsi que déplacer la vision du joueur, o
 Deux types d'IA ont été crées.
 La première euristique diminiue la distance de Manhattan avec les unités adverses sans tenir compte des obstacles.
 La seconde essaiera que chacune de ses unités attaque les unités adverses les plus proches d'elles. 
+\newline
+
+
+
+\begin{tabularx}{15 cm}{|X|X|}
+\hline
+\textbf{CPU} \newline A pour but de gérer les IA pour générer les mouvements des joueurs non-humains & Attributs: state, engine, playerId, targetedPlayerId   \newline Méthodes: CPU, run\\ 
+\hline
+\textbf{RandomCPU} \newline C'est une IA dont les déplacements aléatoires & Attributs: playerTriggeringId,  \newline Méthodes: run, RandomCPU\\
+\hline
+\textbf{HeuristicCPU} \newline IA qui cherche à diminuer la distance de manhattan avec sa cible & Attribut: turnSteps \newline Méthode: run, HeurisitcCPU\\
+\hline
+\textbf{DeepCPU} \newline C'est une IA plus intelligente qui est capable de trouvé un chemin optimisé pour atteindre les unités adverses & 
+\newline Méthodes: run, DeepCPU\\
+\hline
+
+\end{tabularx}
+
+
+
+
+
+\section{Modularisation}
+
+La mise en place de thread permet au moteur de fonctionner en parallèle du reste du jeu, notamment de l'affichage.
+Le fichier replay.txt a été renommé pour devenir savefile.json.
+
+\section{Progression}
+
+Suite au développement nous avons décidé de ne pas implémenter la méchanique de carte pour le rendu final mais les fichiers nécessaire à sa création sont déjà présents.
+
+
+
+
+
+
 
 

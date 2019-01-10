@@ -1,7 +1,11 @@
 #include "GameEngine.h"
 #include "CommandType.h"
+#include "CommandEndTurn.h"
+#include "CommandMove.h"
 #include <unistd.h>
 #include <iostream>
+#include <fstream>
+#include "yaml-cpp/yaml.h"
         
 namespace engine {
     GameEngine::GameEngine (std::shared_ptr<state::GameState> state) :
@@ -47,6 +51,39 @@ namespace engine {
     }
     void GameEngine::addCommand(std::shared_ptr<Command> command){
         commands.push(command);
+    }
+    void GameEngine::saveHistory() {
+
+        YAML::Emitter saveData;
+        saveData << YAML:: DoubleQuoted << YAML::Flow << YAML::BeginSeq;
+        
+        for (auto & executedCommand : executedCommands) {
+            executedCommand->save(saveData);
+        }
+        
+        saveData << YAML::EndSeq;
+        
+        std::ofstream saveFileOut("./savefile.json");
+        saveFileOut << saveData.c_str();
+    }
+    
+    void GameEngine::loadHistory() {
+		YAML::Node parsedSaveFile = YAML::LoadFile("./savefile.json"); // Parse the file
+
+        for(unsigned int i=0; i<parsedSaveFile.size(); i++) {
+
+            switch (parsedSaveFile[i]["commandType"].as<int>()){
+                case (int)CommandType::ENDTURN:
+                    addCommand(std::make_shared<CommandEndTurn>(parsedSaveFile[i]["playerTriggeringId"].as<int>()));
+                    break;
+                case (int)CommandType::MOVE:
+                    addCommand(std::make_shared<CommandMove>(parsedSaveFile[i]["direction"].as<int>(), parsedSaveFile[i]["playerTriggeringId"].as<int>()));
+                    break;
+                default:
+                    break;
+            }
+		}
+		
     }
     
 };

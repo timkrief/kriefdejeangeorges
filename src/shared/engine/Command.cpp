@@ -16,4 +16,7 @@ namespace engine {
     CommandType Command::getCommandType(){
         return commandType;
     }
+    void Command::save(YAML::Emitter& saveData){
+    
+    }
 };

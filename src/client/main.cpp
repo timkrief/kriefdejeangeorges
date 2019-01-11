@@ -64,8 +64,6 @@ int main(int argc,char* argv[])
         engine->loadHistory();
     }
     
-    remove( "./savefile.json" );
-    
     if(deep_ai){
         DeepCPU cpu1(state, engine, 0);
         DeepCPU cpu2(state, engine, 1);

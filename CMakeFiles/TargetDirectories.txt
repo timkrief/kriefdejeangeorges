@@ -1,4 +1,0 @@
-/home/timkrief/Nextcloud/Ordinateur/Documents/ENSEA/3A/projet/kriefdejeangeorges/CMakeFiles/edit_cache.dir
-/home/timkrief/Nextcloud/Ordinateur/Documents/ENSEA/3A/projet/kriefdejeangeorges/CMakeFiles/client.dir
-/home/timkrief/Nextcloud/Ordinateur/Documents/ENSEA/3A/projet/kriefdejeangeorges/CMakeFiles/rebuild_cache.dir
-/home/timkrief/Nextcloud/Ordinateur/Documents/ENSEA/3A/projet/kriefdejeangeorges/CMakeFiles/server.dir

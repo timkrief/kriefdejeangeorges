@@ -21,7 +21,6 @@ void engineThreadFunc(std::shared_ptr<GameEngine> engine, bool* gameRunning){
 int main(int argc,char* argv[]) 
 {
     bool record = argc>1 && !strcmp(argv[1],"record");
-    remove( "./savefile.json" );
     
 	// Create Player 1
     std::shared_ptr<Player> player1(new Player);

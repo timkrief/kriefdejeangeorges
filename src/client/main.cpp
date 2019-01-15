@@ -65,8 +65,8 @@ int main(int argc,char* argv[])
     }
     
     if(deep_ai){
-        DeepCPU cpu1(state, engine, 0);
-        DeepCPU cpu2(state, engine, 1);
+        DeepCPU_2 cpu1(state, engine, 0);
+        DeepCPU_2 cpu2(state, engine, 1);
         
         std::shared_ptr<GRender> render(new GRender);
         
@@ -110,8 +110,8 @@ int main(int argc,char* argv[])
         gameRunning = true;
         std::thread engineThread(engineThreadFunc, engine, &gameRunning);
         
-        DeepCPU cpu1(state, engine, 0);
-        DeepCPU cpu2(state, engine, 1);
+        DeepCPU_2 cpu1(state, engine, 0);
+        DeepCPU_2 cpu2(state, engine, 1);
         
         std::shared_ptr<GRender> render(new GRender);
         
@@ -149,8 +149,8 @@ int main(int argc,char* argv[])
         gameRunning = false;
         engineThread.join();
     } else { 
-        DeepCPU cpu1(state, engine, 0);
-        DeepCPU cpu2(state, engine, 1);
+        DeepCPU_2 cpu1(state, engine, 0);
+        DeepCPU_2 cpu2(state, engine, 1);
         
         std::shared_ptr<GRender> render(new GRender);
         

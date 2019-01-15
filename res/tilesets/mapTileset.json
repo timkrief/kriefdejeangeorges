@@ -600,8 +600,8 @@
         },
      "59":
         {
-         "defense":3,
-         "moveCost":7
+         "defense":4,
+         "moveCost":"10"
         },
      "6":
         {
@@ -611,19 +611,22 @@
      "60":
         {
          "defense":4,
-         "moveCost":10
+         "moveCost":"10"
         },
      "61":
         {
-         "defense":0
+         "defense":4,
+         "moveCost":"10"
         },
      "62":
         {
-         "defense":0
+         "defense":4,
+         "moveCost":"10"
         },
      "63":
         {
-         "defense":0
+         "defense":4,
+         "moveCost":"10"
         },
      "64":
         {
@@ -1389,7 +1392,7 @@
      "59":
         {
          "defense":"int",
-         "moveCost":"int"
+         "moveCost":"string"
         },
      "6":
         {
@@ -1399,19 +1402,22 @@
      "60":
         {
          "defense":"int",
-         "moveCost":"int"
+         "moveCost":"string"
         },
      "61":
         {
-         "defense":"int"
+         "defense":"int",
+         "moveCost":"string"
         },
      "62":
         {
-         "defense":"int"
+         "defense":"int",
+         "moveCost":"string"
         },
      "63":
         {
-         "defense":"int"
+         "defense":"int",
+         "moveCost":"string"
         },
      "64":
         {
@@ -1596,6 +1602,15 @@
     {
      "0":
         {
+         "animation":[
+                {
+                 "duration":400,
+                 "tileid":0
+                }, 
+                {
+                 "duration":400,
+                 "tileid":52
+                }],
          "terrain":[0, 0, 0, 0]
         },
      "11":
@@ -1610,19 +1625,19 @@
         {
          "animation":[
                 {
-                 "duration":200,
+                 "duration":300,
                  "tileid":13
                 }, 
                 {
-                 "duration":200,
+                 "duration":300,
                  "tileid":26
                 }, 
                 {
-                 "duration":200,
+                 "duration":300,
                  "tileid":39
                 }, 
                 {
-                 "duration":200,
+                 "duration":300,
                  "tileid":26
                 }]
         },
@@ -1666,6 +1681,62 @@
         {
          "probability":0.100000001490116
         },
+     "59":
+        {
+         "animation":[
+                {
+                 "duration":100,
+                 "tileid":59
+                }, 
+                {
+                 "duration":600,
+                 "tileid":61
+                }, 
+                {
+                 "duration":100,
+                 "tileid":59
+                }, 
+                {
+                 "duration":700,
+                 "tileid":61
+                }, 
+                {
+                 "duration":100,
+                 "tileid":59
+                }, 
+                {
+                 "duration":500,
+                 "tileid":61
+                }, 
+                {
+                 "duration":100,
+                 "tileid":59
+                }, 
+                {
+                 "duration":100,
+                 "tileid":63
+                }, 
+                {
+                 "duration":100,
+                 "tileid":62
+                }, 
+                {
+                 "duration":100,
+                 "tileid":60
+                }, 
+                {
+                 "duration":5000,
+                 "tileid":60
+                }, 
+                {
+                 "duration":100,
+                 "tileid":62
+                }, 
+                {
+                 "duration":100,
+                 "tileid":63
+                }]
+        },
      "79":
         {
          "terrain":[0, 1, 0, 1]
@@ -1700,6 +1771,31 @@
         },
      "94":
         {
+         "animation":[
+                {
+                 "duration":300,
+                 "tileid":94
+                }, 
+                {
+                 "duration":200,
+                 "tileid":71
+                }, 
+                {
+                 "duration":200,
+                 "tileid":97
+                }, 
+                {
+                 "duration":200,
+                 "tileid":123
+                }, 
+                {
+                 "duration":200,
+                 "tileid":149
+                }, 
+                {
+                 "duration":200,
+                 "tileid":122
+                }],
          "terrain":[1, 1, 1, 1]
         }
     },

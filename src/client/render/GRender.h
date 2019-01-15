@@ -2,16 +2,18 @@
 #ifndef RENDER__GRENDER__H
 #define RENDER__GRENDER__H
 
-#include <memory>
 #include <SFML/Graphics.hpp>
+#include <memory>
 
 namespace render {
+  class GFieldObject;
   class GState;
 };
 namespace state {
   class GameState;
 }
 
+#include "GFieldObject.h"
 #include "GState.h"
 #include "state/GameState.h"
 
@@ -24,6 +26,12 @@ namespace render {
   public:
     static sf::Font armyFont;
     static sf::Font vcrFont;
+    float uiScale;
+    sf::Vector2u selectedTile;
+    int selectedPlayer;
+    int selectedFieldObject;
+    bool newSelection;
+    GFieldObject selectedUnit;
   private:
     std::shared_ptr<sf::RenderWindow> window;
     sf::Vector2u cursor;
@@ -35,11 +43,17 @@ namespace render {
     void initTextures ();
     std::shared_ptr<sf::RenderWindow> getWindow ();
     void setCursor (sf::Vector2u newCursor);
+    sf::Vector2u getCursor ();
     void display (GState& g);
     sf::Vector2f getCameraPosition ();
     void updateCameraPosition (sf::Vector2f position);
     sf::Vector2f getCameraZoom ();
     void updateCameraZoom (sf::Vector2f zoom);
+    float getUiScale ();
+    void updateUiScale (float newUiScale);
+    void selectTile ();
+    int getSelectedPlayer ();
+    int getSelectedFieldObject ();
   };
 
 };

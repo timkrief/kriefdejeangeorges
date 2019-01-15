@@ -3,6 +3,7 @@
 
 #include "Tile.h"
 #include <iostream>
+#include <stdlib.h>
 
 namespace state {
     Tileset::Tileset (){
@@ -114,7 +115,7 @@ namespace state {
         );
     }
     sf::IntRect Tileset::getTileIntRect(unsigned int id, int time) const{
-        id = abs(id % (columns*rows));
+        id %= (columns*rows);
         
         sf::Vector2u tilePosition = getTilePosition(id, time);
         sf::Vector2u tileSize = getTileSize();

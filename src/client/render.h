@@ -9,4 +9,5 @@
 #include "render/GRender.h"
 #include "render/TextureManager.h"
 #include "render/EventController.h"
+#include "render/Cursor.h"
 #endif

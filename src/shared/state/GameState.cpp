@@ -38,8 +38,8 @@ namespace state {
     
     if(manathan <= 10){
         float weight = 0;
-        for(int x = std::min(coordA.x, coordB.x); x <= std::max(coordA.x, coordB.x); x++){
-            for(int y = std::min(coordA.y, coordB.y); y <= std::max(coordA.y, coordB.y); y++){
+        for(unsigned int x = std::min(coordA.x, coordB.x); x <= std::max(coordA.x, coordB.x); x++){
+            for(unsigned int y = std::min(coordA.y, coordB.y); y <= std::max(coordA.y, coordB.y); y++){
                 float tmp_weight = map->getTile(sf::Vector2u(x, y))->attributes["moveCost"];
                 tmp_weight = tmp_weight < 0 ? 2 : 1;
                 weight += tmp_weight;

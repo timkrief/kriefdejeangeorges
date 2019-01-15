@@ -1,4 +1,4 @@
-﻿#include "DeepCPU_2.h"
+#include "DeepCPU_2.h"
 #include "Noeud.h"
 #include "state/GameState.h"
 #include "engine/GameEngine.h"
@@ -92,7 +92,7 @@ void DeepCPU_2::run (){
             }
 
 
-            engine->addCommand(std::make_shared<engine::CommandMove>(dir,playerId));
+            engine->addCommand(std::make_shared<engine::CommandMove>(dir,0,playerId));
             
         }
         
@@ -283,5 +283,6 @@ std::vector< std::shared_ptr<Noeud> > DeepCPU_2::getNeighboursOf(const std::shar
 }
 
 }
+
 
 

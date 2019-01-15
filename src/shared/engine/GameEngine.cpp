@@ -78,7 +78,13 @@ namespace engine {
                     addCommand(std::make_shared<CommandEndTurn>(parsedSaveFile[i]["playerTriggeringId"].as<int>()));
                     break;
                 case (int)CommandType::MOVE:
-                    addCommand(std::make_shared<CommandMove>(parsedSaveFile[i]["direction"].as<int>(), parsedSaveFile[i]["playerTriggeringId"].as<int>()));
+                    addCommand(
+                    	std::make_shared<CommandMove>(
+                    		parsedSaveFile[i]["direction"].as<int>(),
+                    		parsedSaveFile[i]["fieldObjectId"].as<int>(), 
+                    		parsedSaveFile[i]["playerTriggeringId"].as<int>()
+                    	)
+                    );
                     break;
                 default:
                     break;

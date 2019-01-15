@@ -15,7 +15,7 @@ distclean: clean
 extern: bin/dia2code
 
 bin/dia2code:
-	@make -s -j4 -C extern dia2code
+	@make -s -j8 -C extern dia2code
 
 configure:
 	@mkdir -p build 
@@ -24,10 +24,10 @@ configure:
 build: bin/client 
 
 bin/client:
-	@make -s -j4 -C build client
+	@make -s -j8 -C build client
 
 bin/server:
-	@make -s -j4 -C build server
+	@make -s -j8 -C build server
 
 test:
 	docker build -t plt-initial -f docker/plt-initial .

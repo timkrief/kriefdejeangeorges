@@ -3,15 +3,16 @@
 #define RENDER__GPLAYER__H
 
 #include <memory>
+#include <SFML/Graphics.hpp>
 
+namespace render {
+  class GFieldObject;
+};
 namespace sf {
   class Drawable;
 };
 namespace state {
   class GameState;
-};
-namespace render {
-  class GFieldObject;
 }
 
 #include "state/GameState.h"
@@ -29,6 +30,8 @@ namespace render {
   public:
     GPlayer (std::shared_ptr<state::Player> player);
     void draw (sf::RenderTarget& target, sf::RenderStates states) const;
+    void getSelection (sf::Vector2u selectedTile, int& selectedPlayer, int& selectedFieldObject, GFieldObject& selectedUnit);
+    sf::Vector2u getSelectionPosition (int selectedFieldObject);
   };
 
 };

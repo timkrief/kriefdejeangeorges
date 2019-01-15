@@ -22,7 +22,7 @@ namespace ai {
         if( rand % 9 == 8){
             engine->addCommand(std::make_shared<engine::CommandEndTurn>(playerId));
         } else {
-            engine->addCommand(std::make_shared<engine::CommandMove>(rand/2, playerId));
+            engine->addCommand(std::make_shared<engine::CommandMove>(rand/2, 0, playerId));
         }
     }
 };

@@ -24,7 +24,8 @@ namespace render {
     for(unsigned int x = 0; x < map->getSize().x; x++){
       for(unsigned int y = 0; y < map->getSize().y; y++){
         
-        sf::IntRect rectangle = tileset.getTileIntRect(map->getData(sf::Vector2u(x,y)), time);
+        sf::IntRect rectangle = tileset.getTileIntRect(map->getData(sf::Vector2u(x,y)), time + x*44 + y*33);
+        // x*44 + y*33 are used to simulate a wind effect on animations
         sf::Sprite sprite(*(TextureManager::getTexture("mapTexture")), rectangle);
         
         sprite.setPosition(x*tileset.getTileSize().x, y*tileset.getTileSize().y);

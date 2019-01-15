@@ -13,7 +13,6 @@ namespace render {
         dragPressed(false),
         middleDragPressed(false),
         mousePosition(sf::Vector2f(0,0)){
-        
     }
     
     void EventController::handle (sf::Event& event, std::shared_ptr<engine::GameEngine> engine, std::shared_ptr<GRender> render, bool& displayWindow){
@@ -38,16 +37,20 @@ namespace render {
                             engine->addCommand(std::make_shared<engine::CommandEndTurn>(0));
                             break;  
                         case sf::Keyboard::Up:
-                            engine->addCommand(std::make_shared<engine::CommandMove>(0, 0));
+                        	if(render->getSelectedPlayer() == 0)
+                            	engine->addCommand(std::make_shared<engine::CommandMove>(0, render->getSelectedFieldObject(), 0));
                             break;  
                         case sf::Keyboard::Right:
-                            engine->addCommand(std::make_shared<engine::CommandMove>(1, 0));
+                        	if(render->getSelectedPlayer() == 0)
+                            	engine->addCommand(std::make_shared<engine::CommandMove>(1, render->getSelectedFieldObject(), 0));
                             break;  
                         case sf::Keyboard::Down:
-                            engine->addCommand(std::make_shared<engine::CommandMove>(2, 0));
+                        	if(render->getSelectedPlayer() == 0)
+                            	engine->addCommand(std::make_shared<engine::CommandMove>(2, render->getSelectedFieldObject(), 0));
                             break;  
                         case sf::Keyboard::Left:
-                            engine->addCommand(std::make_shared<engine::CommandMove>(3, 0));
+                        	if(render->getSelectedPlayer() == 0)
+                            	engine->addCommand(std::make_shared<engine::CommandMove>(3, render->getSelectedFieldObject(), 0));
                             break;  
                         case sf::Keyboard::Delete:
                             engine->cancelTurn();
@@ -97,9 +100,9 @@ namespace render {
                     window->setView(view);
                     break; }
                 case sf::Event::MouseWheelScrolled: {
+                    
+                    float zoomAmount = event.mouseWheelScroll.delta > 0 ? 0.951234f : 1.051234f;
                     if(controlPressed){
-                        float zoomAmount = event.mouseWheelScroll.delta > 0 ? 0.951234f : 1.051234f;
-                        
                          // function zoomat found here: https://github.com/SFML/SFML/wiki/Source:-Zoom-View-At-(specified-pixel)
                         const sf::Vector2f beforeCoord{ window->mapPixelToCoords({ event.mouseWheelScroll.x, event.mouseWheelScroll.y }) };
                         sf::View view{ window->getView() };
@@ -114,6 +117,8 @@ namespace render {
                         
                         window->setView(view);
 	    
+                    } else if(altPressed){
+                        render->updateUiScale(zoomAmount);
                     } else {
                         float sensibility = 5.1234f;
                         sf::Vector2f move;
@@ -155,11 +160,16 @@ namespace render {
                     break;
                 case sf::Event::MouseButtonReleased:
                     if(event.mouseButton.button == sf::Mouse::Left){
-                        dragPressed = false;
+                        if(dragPressed){
+                            dragPressed = false;
+                        } else {
+                    		render->selectTile();
+                        }
                     }
                     if(event.mouseButton.button == sf::Mouse::Middle){
                         middleDragPressed = false;
                     }
+                    
                     break;
                 default:
                     break;

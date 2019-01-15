@@ -51,4 +51,8 @@ namespace state {
     void FieldObject::resetMovePoints(){
         movePoints = normalMovePoints;
     }
+    
+    int FieldObject::getNormalMovePoints(){
+		return normalMovePoints;
+	}
 };

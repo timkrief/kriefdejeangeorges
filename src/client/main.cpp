@@ -40,15 +40,28 @@ int main(int argc,char* argv[])
 
 	// Create Player 1
     std::shared_ptr<Player> player1(new Player);
+    std::shared_ptr<Unit> unit0(new Unit);
+    unit0->setPosition(sf::Vector2u(10,20));
+    player1->addOwnedFieldObject(unit0);
+    
     std::shared_ptr<Unit> unit1(new Unit);
-    unit1->setPosition(sf::Vector2u(10,20));
+    unit1->setPosition(sf::Vector2u(12,20));
     player1->addOwnedFieldObject(unit1);
+    
+    std::shared_ptr<Unit> unit2(new Unit);
+    unit2->setPosition(sf::Vector2u(10,22));
+    player1->addOwnedFieldObject(unit2);
+    
+    std::shared_ptr<Unit> unit3(new Unit);
+    unit3->setPosition(sf::Vector2u(12,22));
+    player1->addOwnedFieldObject(unit3);
+    
 
 	// Create Player 2
     std::shared_ptr<Player> player2(new Player);
-    std::shared_ptr<Unit> unit2(new Unit);
-    unit2->setPosition(sf::Vector2u(35,10));
-    player2->addOwnedFieldObject(unit2);
+    std::shared_ptr<Unit> unit4(new Unit);
+    unit4->setPosition(sf::Vector2u(35,10));
+    player2->addOwnedFieldObject(unit4);
     
     
     // Create State

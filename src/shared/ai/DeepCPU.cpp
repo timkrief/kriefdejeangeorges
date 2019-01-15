@@ -133,7 +133,7 @@ namespace ai {
             }
             
             for(int j=0; j<pathsLimited[bestPath].size(); j++){
-                engine->addCommand(std::make_shared<engine::CommandMove>(pathsLimited[bestPath][j], playerId));
+                engine->addCommand(std::make_shared<engine::CommandMove>(pathsLimited[bestPath][j], 0, playerId));
             }
         }
         engine->addCommand(std::make_shared<engine::CommandEndTurn>(playerId));

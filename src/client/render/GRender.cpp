@@ -29,11 +29,11 @@ namespace render {
         window->setFramerateLimit(60);
         
         if (!GRender::armyFont.loadFromFile("./res/font/army1.ttf")){
-            std::cout << "Army1 font not found" << std::endl;
+            //std::cout << "Army1 font not found" << std::endl;
         }
 
         if (!GRender::vcrFont.loadFromFile("./res/font/VCR_OSD_MONO.ttf")){
-            std::cout << "VCR OSD MONO font not found" << std::endl;
+            //std::cout << "VCR OSD MONO font not found" << std::endl;
         }
     }
 
@@ -177,7 +177,7 @@ namespace render {
         vignetteSprite.setPosition(0, 0);
         window->draw(vignetteSprite);
         
-        //std::cout << distance << std::endl;
+        ////std::cout << distance << std::endl;
         
         sf::Vector2u lightEffectSize = TextureManager::getTexture("lightEffect")->getSize();
         sf::IntRect lightEffect(0, 0, lightEffectSize.x, lightEffectSize.y);

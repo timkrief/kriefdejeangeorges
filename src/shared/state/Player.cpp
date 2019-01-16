@@ -67,7 +67,7 @@ namespace state {
 		auto match = std::find(ownedFieldObjects.begin(), ownedFieldObjects.end(), newFieldObject);
  
   		if(match != ownedFieldObjects.end()) {
-    		std::cout << "This FieldObject already belong to this player" << std::endl;
+    		//std::cout << "This FieldObject already belong to this player" << std::endl;
   		} 
 		else {
 			ownedFieldObjects.push_back(newFieldObject);
@@ -82,7 +82,7 @@ namespace state {
     		ownedFieldObjects.erase(match);
   		} 
 		else {
-    		std::cout << "This FieldObject does not belong to this player" << std::endl;
+    		//std::cout << "This FieldObject does not belong to this player" << std::endl;
   		}
 
 	}

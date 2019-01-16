@@ -62,7 +62,7 @@ namespace ai {
                 }
             }
             
-            //std::cout<<"player"<<playerId<<" is going to player"<<targetedPlayerId<<" with direction"<<direction<<"."<<std::endl;
+            ////std::cout<<"player"<<playerId<<" is going to player"<<targetedPlayerId<<" with direction"<<direction<<"."<<std::endl;
             if(direction>=0){
                 engine->addCommand(std::make_shared<engine::CommandMove>(direction, 0, playerId));
             } else{

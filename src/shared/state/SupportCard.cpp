@@ -26,17 +26,17 @@ namespace state {
 		oilLoss(oilLoss), 
 		oilGain(oilGain)
 	{ /*
-		std::cout << std::endl << "---------" << std::endl;
-		std::cout << "title: " << title << std::endl;
-		std::cout << "cost: " << cost << std::endl;
-		std::cout << "description: " << description << std::endl;
-		std::cout << "damage: " << damage << std::endl;
-		std::cout << "heal: " << heal << std::endl;
-		std::cout << "moneyLoss: " << moneyLoss << std::endl;
-		std::cout << "moneyGain: " << moneyGain << std::endl;
-		std::cout << "oilLoss: " << oilLoss << std::endl;
-		std::cout << "oilGain: " << oilGain << std::endl;
-		std::cout << "---------" << std::endl << std::endl;
+		//std::cout << std::endl << "---------" << std::endl;
+		//std::cout << "title: " << title << std::endl;
+		//std::cout << "cost: " << cost << std::endl;
+		//std::cout << "description: " << description << std::endl;
+		//std::cout << "damage: " << damage << std::endl;
+		//std::cout << "heal: " << heal << std::endl;
+		//std::cout << "moneyLoss: " << moneyLoss << std::endl;
+		//std::cout << "moneyGain: " << moneyGain << std::endl;
+		//std::cout << "oilLoss: " << oilLoss << std::endl;
+		//std::cout << "oilGain: " << oilGain << std::endl;
+		//std::cout << "---------" << std::endl << std::endl;
 		*/
 	}
 	

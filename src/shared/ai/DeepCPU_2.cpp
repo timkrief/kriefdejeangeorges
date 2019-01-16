@@ -36,56 +36,51 @@ DeepCPU_2::DeepCPU_2 (
 void DeepCPU_2::run (){
     for (int objCpuCount = 0 ; objCpuCount < state->getPlayer(playerId)->getOwnedFieldObjects().size() ; objCpuCount++)
     {
-        std::cout<< "Le nombre d'objet du joueur "<< playerId<< " est "<< state->getPlayer(playerId)->getOwnedFieldObjects().size() << std::endl;
-        std::cout << "On sélectionne actuellement l'objet"<< objCpuCount<< std::endl;
-        // init the var
-        std::vector< std::shared_ptr<Noeud> > bestPath;
-        int minSize = state->getMap()->getSize().x * state->getMap()->getSize().y; // on prend un min qui est egal au nombre de case de la map pour être sure d'avoir moins
-        int noMove = 0;
-        std::vector< std::shared_ptr<Noeud> > newPath;
+        // check if need to move
+        bool enemiCac=false;
         for (int playerCount = 0 ; playerCount < state->getPlayerCount() ; playerCount ++)
             if (playerCount != playerId)
                 for (int objTargetCount = 0 ; objTargetCount < state->getPlayer(playerCount)->getOwnedFieldObjects().size() ; objTargetCount++ )
                 {
-                    // init map
-                    initMap();
-                    std::cout<< "\n";
-                    std::cout<< "\n";
-                    displayMap();
-                    std::cout<< "\n";
-                    // chercher le chemin
                     sf::Vector2u cpuPos = state->getPlayer(playerId)->getOwnedFieldObjects().at(objCpuCount)->getPosition();
                     sf::Vector2u targetPos = state->getPlayer(playerCount)->getOwnedFieldObjects().at(objTargetCount)->getPosition();
-                    auto origin = getNoeudAt(cpuPos.x, cpuPos.y);
-                    auto dest = getNoeudAt(targetPos.x, targetPos.y);
-                    std::cout<< "L'unité "<< objCpuCount  << " du joueur: "<< playerId << 
-                    " cherche à atteindre l'unité " << objTargetCount<< " du joueur "<<playerCount  <<std::endl;
-                    std::cout<< "\n";
-                    std::cout<< "On cherche donc à aller depuis "<< cpuPos.x<< "," <<cpuPos.y << " vers "<< targetPos.x<< "," <<targetPos.y  <<std::endl;
-                    
+                    int diffX = cpuPos.x - targetPos.x;
+                    int diffY = cpuPos.y - targetPos.y;
+                    if ( (diffX == 1 || diffX == -1 ) && diffY == 0)
+                        enemiCac = true;
+                    if ( (diffY == 1 || diffY == -1 ) && diffX == 0)
+                        enemiCac = true;
 
-                    auto voisins = getNeighboursOf(dest); // vue que la case est innacessible on cherche a atteindre ses voisins
-                    
-                    for (int i = 0 ; i < voisins.size() ; i++)
-                    {
-                        if(origin == voisins.at(i)){
-                            noMove=1;
-                            break;
-                        }
-                        else
-                        {                        
-                           newPath = getPathFromTo ( origin, voisins.at(i) );
-                        }
-                        
-                        // regarder si le cout du chemin est inferieur au cout minimal
-                        if (minSize > newPath.back()->getCout()){
-                            minSize = newPath.back()->getCout();
-                            bestPath = newPath;
-                        }
-                    }
                 }
-        // move
-        if (noMove !=1){
+        if (!enemiCac)
+        {
+            std::vector< std::shared_ptr<Noeud> > bestPath;
+            int minSize = state->getMap()->getSize().x * state->getMap()->getSize().y; // on prend un min qui est egal au nombre de case de la map pour être sure d'avoir moins
+            std::vector< std::shared_ptr<Noeud> > newPath;
+            for (int playerCount = 0 ; playerCount < state->getPlayerCount() ; playerCount ++)
+                if (playerCount != playerId)
+                    for (int objTargetCount = 0 ; objTargetCount < state->getPlayer(playerCount)->getOwnedFieldObjects().size() ; objTargetCount++ )
+                    {
+                        initMap();
+                        sf::Vector2u cpuPos = state->getPlayer(playerId)->getOwnedFieldObjects().at(objCpuCount)->getPosition();
+                        sf::Vector2u targetPos = state->getPlayer(playerCount)->getOwnedFieldObjects().at(objTargetCount)->getPosition();
+                        auto origin = getNoeudAt(cpuPos.x, cpuPos.y);
+                        auto dest = getNoeudAt(targetPos.x, targetPos.y);
+
+                        auto voisins = getNeighboursOf(dest); // vue que la case est innacessible on cherche a atteindre ses voisins
+                        for (int i = 0 ; i < voisins.size() ; i++)
+                            if (voisins.at(i)->getValue() > 0)
+                            {
+                                newPath = getPathFromTo ( origin, voisins.at(i) );
+
+                                // regarder si le cout du chemin est inferieur au cout minimal
+                                if (minSize > newPath.back()->getCout()){
+                                    minSize = newPath.back()->getCout();
+                                    bestPath = newPath;
+                                }
+                            }
+                    }
+            // move
             int diffX = bestPath.at(0)->getX() - state->getPlayer(playerId)->getOwnedFieldObjects()[objCpuCount]->getPosition().x ;
             int diffY = bestPath.at(0)->getY() - state->getPlayer(playerId)->getOwnedFieldObjects()[objCpuCount]->getPosition().y ;
             move(diffX,diffY,objCpuCount);
@@ -99,7 +94,7 @@ void DeepCPU_2::run (){
                     move(diffX,diffY, objCpuCount);
                 }
             }
-        }    
+        }
     }
     engine->addCommand(std::make_shared<engine::CommandEndTurn>(playerId));
 }
@@ -109,28 +104,28 @@ void DeepCPU_2::move(int diffX, int diffY, int objMoving)
     int dir;
     if (diffX>0)
     {
-        dir = 1;    
-        std::cout<<"L'unité " <<objMoving << " effectue un mouvement vers la droite " <<std::endl;
-    
-    
+        dir = 1;
+        //std::cout<<"L'unité " <<objMoving << " effectue un mouvement vers la droite " <<std::endl;
+
+
     }
     else if (diffX<0)
     {
         dir = 3;
-        std::cout<<"L'unité " <<objMoving << " effectue un mouvement vers la gauche " <<std::endl;
-    
+        //std::cout<<"L'unité " <<objMoving << " effectue un mouvement vers la gauche " <<std::endl;
+
     }
 
     if (diffY>0)
     {
         dir = 2;
-        std::cout<<"L'unité " <<objMoving << " effectue un mouvement vers le bas " <<std::endl;
-    
+        //std::cout<<"L'unité " <<objMoving << " effectue un mouvement vers le bas " <<std::endl;
+
     }
     else if (diffY<0)
     {
         dir = 0;
-        std::cout<<"L'unité " <<objMoving << " effectue un mouvement vers le haut " <<std::endl;
+        //std::cout<<"L'unité " <<objMoving << " effectue un mouvement vers le haut " <<std::endl;
     }
     engine->addCommand(std::make_shared<engine::CommandMove>(dir, objMoving,playerId));
 }
@@ -145,21 +140,21 @@ void DeepCPU_2::displayMap()
         value = m_listNoeud.at(i)->getValue();
         if (value<10 && value>0)
         {
-            std::cout<< "0"<<value;
+            //std::cout<< "0"<<value;
         }
         else if(value ==0 )
         {
-            std::cout<<"--";
+            //std::cout<<"--";
 
         }
         else
         {
-            std::cout<< value;
+            //std::cout<< value;
         }
-        std::cout<< "  ";
+        //std::cout<< "  ";
         if (previousX +1 == m_listNoeud.at(i)->getX())
         {
-            std::cout<< "\n";
+            //std::cout<< "\n";
 
 
         }
@@ -196,14 +191,14 @@ void DeepCPU_2::initMap()
         {
             
             m_listNoeud.push_back(std::shared_ptr<Noeud>(new Noeud(0,
-                                                                m_listNoeudRaw.at(i)->getX(),
-                                                                m_listNoeudRaw.at(i)->getY())));
+                                                                   m_listNoeudRaw.at(i)->getX(),
+                                                                   m_listNoeudRaw.at(i)->getY())));
         }
         else
         {
             m_listNoeud.push_back(std::shared_ptr<Noeud>(new Noeud(m_listNoeudRaw.at(i)->getValue(),
-                                                                    m_listNoeudRaw.at(i)->getX(),
-                                                                    m_listNoeudRaw.at(i)->getY())));
+                                                                   m_listNoeudRaw.at(i)->getX(),
+                                                                   m_listNoeudRaw.at(i)->getY())));
         }
 
     for (int i = 0 ; i < state->getPlayerCount() ; i ++)

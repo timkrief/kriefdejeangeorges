@@ -19,7 +19,7 @@ namespace state {
         std::string pathRelativeToTileset = parsedTilesetFile["image"].as<std::string>();
         resourcePath = tilesetDirectoryPath + "/" + pathRelativeToTileset;
 	   
-		//std::cout << resourcePath << std::endl;
+		////std::cout << resourcePath << std::endl;
 		
 		columns = parsedTilesetFile["columns"].as<int>();
 		rows = parsedTilesetFile["imageheight"].as<int>() / parsedTilesetFile["tileheight"].as<int>();

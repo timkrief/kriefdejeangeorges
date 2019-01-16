@@ -20,12 +20,15 @@ namespace ai {
      /*------------------------------------------------------------------------------------------------------------------------------------------------------*/
     /*Methodes et constructeur*/
     Noeud::Noeud(int value, int x, int y):
-        m_value(value), m_x(x), m_y(y), m_cout(0), m_heuristique(0), m_isAssign(false)
+        m_x(x), m_y(y), m_cout(0), m_heuristique(0), m_isAssign(false)
     {
-
+        if (value < 0)
+            m_value = 0;
+        else
+            m_value = value;
     }
 
-    int Noeud::getValue() const
+    unsigned int Noeud::getValue() const
     {
         return m_value;
     }
@@ -48,7 +51,11 @@ namespace ai {
     {
         return m_heuristique;
     }
-        
+    void Noeud::setValue(unsigned int value)
+    {
+        m_value = value;
+
+    }
     void Noeud::setCout(int cout)
     {
         m_cout = cout;
@@ -92,5 +99,10 @@ namespace ai {
         if (m_heuristique == noeud->getHeuristique())
             return 0;
         return -1;
+    }
+
+    bool Noeud::equal(const std::shared_ptr<Noeud> &noeud) const
+    {
+        return m_x == noeud->getX() && m_y == noeud->getY();
     }
 }

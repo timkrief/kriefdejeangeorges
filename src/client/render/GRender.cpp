@@ -43,6 +43,9 @@ namespace render {
         TextureManager::loadTexture("units", "./res/sprites/units.png");
         TextureManager::loadTexture("vignette", "./res/vignette.png");
         TextureManager::loadTexture("lightEffect", "./res/lightEffect.png");
+        TextureManager::loadTexture("planet", "./res/planet.png");
+        TextureManager::loadTexture("sky", "./res/sky.png");
+        TextureManager::loadTexture("moon", "./res/moon.png");
     }
     
     std::shared_ptr<sf::RenderWindow> GRender::getWindow(){
@@ -60,51 +63,86 @@ namespace render {
     
     void GRender::display (GState& g){
     
-        sf::View view = window->getView();
-        
-        view.setViewport(sf::FloatRect(0.f, 0.f, 1.f, 1.f));
-        window->setView(view);
-        
-        // Time
-        struct timeval tp;
-        gettimeofday(&tp, NULL);
-        int time = (tp.tv_sec * 1000 + tp.tv_usec / 1000) % 86400000;
-    	
-        window->clear(sf::Color(44, 146, 206));
-        window->draw(g.getGMap());
+	    sf::View view = window->getView();
+	    
+	    view.setViewport(sf::FloatRect(0.f, 0.f, 1.f, 1.f));
+	    window->setView(view);
+	    
+	    // Time
+	    struct timeval tp;
+	    gettimeofday(&tp, NULL);
+	    int time = (tp.tv_sec * 1000 + tp.tv_usec / 1000) % 86400000;
 		
-        std::vector<GPlayer> players = g.getGPlayers();
+		
+        sf::Vector2f absPosition = sf::Vector2f((view.getCenter().x - 400) * cameraZoom.x, (view.getCenter().y-300) * cameraZoom.y);
+        // TODO: 400 and 300 must be replaced dynamicaly with half the size of the map
         
-        if(newSelection){
-		    selectedPlayer = -1;
-		    selectedFieldObject = -1;
+    	if(cameraZoom.x > 0.01f){
+		    
+		    window->clear(sf::Color(44, 146, 206));
+		    window->draw(g.getGMap());
+			
+		    std::vector<GPlayer> players = g.getGPlayers();
+		    
+		    if(newSelection){
+				selectedPlayer = -1;
+				selectedFieldObject = -1;
+				
+				for(auto player: players){
+					player.getSelection(selectedTile, selectedPlayer, selectedFieldObject, selectedUnit);
+					selectedPlayer;
+					if(selectedFieldObject>=0){
+		    			newSelection = false;
+						break;
+					}
+				}
+		    } else {
+		    	selectedTile = players[selectedPlayer].getSelectionPosition(selectedFieldObject);
+		    }
 		    
 		    for(auto player: players){
-		    	player.getSelection(selectedTile, selectedPlayer, selectedFieldObject, selectedUnit);
-		    	selectedPlayer;
-		    	if(selectedFieldObject>=0){
-        			newSelection = false;
-		    		break;
-		    	}
+		        window->draw(player);
 		    }
-        } else {
-        	selectedTile = players[selectedPlayer].getSelectionPosition(selectedFieldObject);
-        }
+		    
+		    // Display cursor
+		    Cursor gCursor(16, cursor);
+		    window->draw(gCursor);
+		    // Display selectedTileCursor
+		    if(selectedFieldObject>=0){
+				Cursor gSelectedTile(16, selectedTile, sf::Color::Black);
+				window->draw(gSelectedTile);
+		    }
+    	} else {
+		    window->clear(sf::Color(15,22,28));
+		    
+		    sf::Vector2u skySize = TextureManager::getTexture("sky")->getSize();
+		    sf::Sprite skySprite(*(TextureManager::getTexture("sky")), sf::IntRect(0, 0, skySize.x, skySize.y));
+			skySprite.setOrigin(skySize.x/2, skySize.y/2);
+			skySprite.setColor(sf::Color(255,255,255,200));
+			skySprite.setScale(1/cameraZoom.x, 1/cameraZoom.y);
+			skySprite.setPosition(view.getCenter().x, view.getCenter().y);
+        	window->draw(skySprite);
+        	
+		    sf::Vector2u moonSize = TextureManager::getTexture("moon")->getSize();
+		    sf::Sprite moonSprite(*(TextureManager::getTexture("moon")), sf::IntRect(0, 0, moonSize.x, moonSize.y));
+			moonSprite.setOrigin(moonSize.x/2, moonSize.y/2);
+			
+        	/*
+			moonSprite.setScale(1200, 1200);
+			moonSprite.setPosition(-700000 + view.getCenter().x*.5, -300000 + view.getCenter().y*.5);
+        	window->draw(moonSprite);
+        	*/
+		    sf::Vector2u planetSize = TextureManager::getTexture("planet")->getSize();
+		    sf::Sprite planetSprite(*(TextureManager::getTexture("planet")), sf::IntRect(0, 0, planetSize.x, planetSize.y));
+			planetSprite.setOrigin(planetSize.x/2, planetSize.y/2);
+			planetSprite.setScale(1200, 1200);
+        	window->draw(planetSprite);
         
-        for(auto player: players){
-            window->draw(player);
-        }
-        
-        // Display cursor
-        Cursor gCursor(16, cursor);
-        window->draw(gCursor);
-        // Display selectedTileCursor
-        if(selectedFieldObject>=0){
-		    Cursor gSelectedTile(16, selectedTile, sf::Color::Black);
-		    window->draw(gSelectedTile);
-        }
-        
-        
+			moonSprite.setScale(20000, 20000);
+			moonSprite.setPosition(-(view.getCenter().x-400) * cameraZoom.x * 100000 , 12000000 + -(view.getCenter().y-300) * cameraZoom.y * 100000);
+        	window->draw(moonSprite);
+		}
+		    
         
         
 
@@ -114,9 +152,20 @@ namespace render {
         
         
         
-        
-		auto angle = atan2(view.getCenter().x+500,view.getCenter().y+500) + atan2(view.getCenter().x-2000,view.getCenter().y-2000);
-		float intensity = (sin(angle*50)+1.f)*80+70;
+		auto angle = 	atan2(absPosition.x + 1500, absPosition.y + 1500 ) + 
+						atan2(absPosition.x - 2500, absPosition.y - 2500 );
+		
+		float distance = (cos(
+			std::min(
+				(
+					absPosition.x * absPosition.x + 
+					absPosition.y * absPosition.y
+				)/(1000.f*1000.f*2.f),
+				1.f
+			) * 3.1416f
+		) + 1.f)/2.f;
+		
+		float intensity = ((sin(angle*50)+1.f)*80+70)*distance;
 		
         sf::IntRect vignette(0, 0, 1920, 1080);
         sf::Sprite vignetteSprite(*(TextureManager::getTexture("vignette")), vignette);
@@ -127,6 +176,8 @@ namespace render {
 		vignetteSprite.setColor(sf::Color(0, 0, 0, 230-intensity));
         vignetteSprite.setPosition(0, 0);
         window->draw(vignetteSprite);
+        
+        //std::cout << distance << std::endl;
         
         sf::Vector2u lightEffectSize = TextureManager::getTexture("lightEffect")->getSize();
         sf::IntRect lightEffect(0, 0, lightEffectSize.x, lightEffectSize.y);

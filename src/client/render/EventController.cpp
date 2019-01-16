@@ -97,6 +97,7 @@ namespace render {
                 case sf::Event::Resized: {
                     sf::View view{ window->getView() };
                     view.setSize(event.size.width, event.size.height);
+                    view.zoom(1/render->getCameraZoom().x);
                     window->setView(view);
                     break; }
                 case sf::Event::MouseWheelScrolled: {

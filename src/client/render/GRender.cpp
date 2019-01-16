@@ -29,11 +29,11 @@ namespace render {
         window->setFramerateLimit(60);
         
         if (!GRender::armyFont.loadFromFile("./res/font/army1.ttf")){
-            //std::cout << "Army1 font not found" << std::endl;
+            std::cout << "Army1 font not found" << std::endl;
         }
 
         if (!GRender::vcrFont.loadFromFile("./res/font/VCR_OSD_MONO.ttf")){
-            //std::cout << "VCR OSD MONO font not found" << std::endl;
+            std::cout << "VCR OSD MONO font not found" << std::endl;
         }
     }
 
@@ -77,7 +77,23 @@ namespace render {
         sf::Vector2f absPosition = sf::Vector2f((view.getCenter().x - 400) * cameraZoom.x, (view.getCenter().y-300) * cameraZoom.y);
         // TODO: 400 and 300 must be replaced dynamicaly with half the size of the map
         
-    	if(cameraZoom.x > 0.01f){
+        double squareDistance = 
+        	(view.getCenter().x - 400) * (view.getCenter().x - 400) + 
+        	(view.getCenter().y - 300) * (view.getCenter().y - 300);
+        
+		float absDistance = (cos(
+			std::min(
+				(
+					absPosition.x * absPosition.x + 
+					absPosition.y * absPosition.y
+				)/(1000.f*1000.f*2.f),
+				1.f
+			) * 3.1416f
+		) + 1.f)/2.f;
+		
+		int maxWindowEdge = std::max(window->getSize().x, window->getSize().y); 
+		
+    	if(cameraZoom.x > 0.013f && squareDistance < maxWindowEdge * maxWindowEdge / cameraZoom.x / cameraZoom.x){
 		    
 		    window->clear(sf::Color(44, 146, 206));
 		    window->draw(g.getGMap());
@@ -119,8 +135,12 @@ namespace render {
 		    sf::Sprite skySprite(*(TextureManager::getTexture("sky")), sf::IntRect(0, 0, skySize.x, skySize.y));
 			skySprite.setOrigin(skySize.x/2, skySize.y/2);
 			skySprite.setColor(sf::Color(255,255,255,200));
-			skySprite.setScale(1/cameraZoom.x, 1/cameraZoom.y);
+			float skyZoom = 1.41*
+				maxWindowEdge/
+				std::min(skySize.x, skySize.y);
+			skySprite.setScale(skyZoom/cameraZoom.x, skyZoom/cameraZoom.y);
 			skySprite.setPosition(view.getCenter().x, view.getCenter().y);
+			skySprite.setRotation(time/2000.f);
         	window->draw(skySprite);
         	
 		    sf::Vector2u moonSize = TextureManager::getTexture("moon")->getSize();
@@ -155,17 +175,8 @@ namespace render {
 		auto angle = 	atan2(absPosition.x + 1500, absPosition.y + 1500 ) + 
 						atan2(absPosition.x - 2500, absPosition.y - 2500 );
 		
-		float distance = (cos(
-			std::min(
-				(
-					absPosition.x * absPosition.x + 
-					absPosition.y * absPosition.y
-				)/(1000.f*1000.f*2.f),
-				1.f
-			) * 3.1416f
-		) + 1.f)/2.f;
 		
-		float intensity = ((sin(angle*50)+1.f)*80+70)*distance;
+		float intensity = ((sin(angle*50)+1.f)*80+70)*absDistance;
 		
         sf::IntRect vignette(0, 0, 1920, 1080);
         sf::Sprite vignetteSprite(*(TextureManager::getTexture("vignette")), vignette);

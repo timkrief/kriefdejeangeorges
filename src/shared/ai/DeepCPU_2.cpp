@@ -34,69 +34,71 @@ DeepCPU_2::DeepCPU_2 (
     completeMap();
 }
 void DeepCPU_2::run (){
-    for (int objCpuCount = 0 ; objCpuCount < state->getPlayer(playerId)->getOwnedFieldObjects().size() ; objCpuCount++)
-    {
-        // check if need to move
-        bool enemiCac=false;
-        for (int playerCount = 0 ; playerCount < state->getPlayerCount() ; playerCount ++)
-            if (playerCount != playerId)
-                for (int objTargetCount = 0 ; objTargetCount < state->getPlayer(playerCount)->getOwnedFieldObjects().size() ; objTargetCount++ )
-                {
-                    sf::Vector2u cpuPos = state->getPlayer(playerId)->getOwnedFieldObjects().at(objCpuCount)->getPosition();
-                    sf::Vector2u targetPos = state->getPlayer(playerCount)->getOwnedFieldObjects().at(objTargetCount)->getPosition();
-                    int diffX = cpuPos.x - targetPos.x;
-                    int diffY = cpuPos.y - targetPos.y;
-                    if ( (diffX == 1 || diffX == -1 ) && diffY == 0)
-                        enemiCac = true;
-                    if ( (diffY == 1 || diffY == -1 ) && diffX == 0)
-                        enemiCac = true;
+	if(state->getPlayerTurnId() == playerId){
+		for (int objCpuCount = 0 ; objCpuCount < state->getPlayer(playerId)->getOwnedFieldObjects().size() ; objCpuCount++)
+		{
+		    // check if need to move
+		    bool enemiCac=false;
+		    for (int playerCount = 0 ; playerCount < state->getPlayerCount() ; playerCount ++)
+		        if (playerCount != playerId)
+		            for (int objTargetCount = 0 ; objTargetCount < state->getPlayer(playerCount)->getOwnedFieldObjects().size() ; objTargetCount++ )
+		            {
+		                sf::Vector2u cpuPos = state->getPlayer(playerId)->getOwnedFieldObjects().at(objCpuCount)->getPosition();
+		                sf::Vector2u targetPos = state->getPlayer(playerCount)->getOwnedFieldObjects().at(objTargetCount)->getPosition();
+		                int diffX = cpuPos.x - targetPos.x;
+		                int diffY = cpuPos.y - targetPos.y;
+		                if ( (diffX == 1 || diffX == -1 ) && diffY == 0)
+		                    enemiCac = true;
+		                if ( (diffY == 1 || diffY == -1 ) && diffX == 0)
+		                    enemiCac = true;
 
-                }
-        if (!enemiCac)
-        {
-            std::vector< std::shared_ptr<Noeud> > bestPath;
-            int minSize = state->getMap()->getSize().x * state->getMap()->getSize().y; // on prend un min qui est egal au nombre de case de la map pour être sure d'avoir moins
-            std::vector< std::shared_ptr<Noeud> > newPath;
-            for (int playerCount = 0 ; playerCount < state->getPlayerCount() ; playerCount ++)
-                if (playerCount != playerId)
-                    for (int objTargetCount = 0 ; objTargetCount < state->getPlayer(playerCount)->getOwnedFieldObjects().size() ; objTargetCount++ )
-                    {
-                        initMap();
-                        sf::Vector2u cpuPos = state->getPlayer(playerId)->getOwnedFieldObjects().at(objCpuCount)->getPosition();
-                        sf::Vector2u targetPos = state->getPlayer(playerCount)->getOwnedFieldObjects().at(objTargetCount)->getPosition();
-                        auto origin = getNoeudAt(cpuPos.x, cpuPos.y);
-                        auto dest = getNoeudAt(targetPos.x, targetPos.y);
+		            }
+		    if (!enemiCac)
+		    {
+		        std::vector< std::shared_ptr<Noeud> > bestPath;
+		        int minSize = state->getMap()->getSize().x * state->getMap()->getSize().y; // on prend un min qui est egal au nombre de case de la map pour être sure d'avoir moins
+		        std::vector< std::shared_ptr<Noeud> > newPath;
+		        for (int playerCount = 0 ; playerCount < state->getPlayerCount() ; playerCount ++)
+		            if (playerCount != playerId)
+		                for (int objTargetCount = 0 ; objTargetCount < state->getPlayer(playerCount)->getOwnedFieldObjects().size() ; objTargetCount++ )
+		                {
+		                    initMap();
+		                    sf::Vector2u cpuPos = state->getPlayer(playerId)->getOwnedFieldObjects().at(objCpuCount)->getPosition();
+		                    sf::Vector2u targetPos = state->getPlayer(playerCount)->getOwnedFieldObjects().at(objTargetCount)->getPosition();
+		                    auto origin = getNoeudAt(cpuPos.x, cpuPos.y);
+		                    auto dest = getNoeudAt(targetPos.x, targetPos.y);
 
-                        auto voisins = getNeighboursOf(dest); // vue que la case est innacessible on cherche a atteindre ses voisins
-                        for (int i = 0 ; i < voisins.size() ; i++)
-                            if (voisins.at(i)->getValue() > 0)
-                            {
-                                newPath = getPathFromTo ( origin, voisins.at(i) );
+		                    auto voisins = getNeighboursOf(dest); // vue que la case est innacessible on cherche a atteindre ses voisins
+		                    for (int i = 0 ; i < voisins.size() ; i++)
+		                        if (voisins.at(i)->getValue() > 0)
+		                        {
+		                            newPath = getPathFromTo ( origin, voisins.at(i) );
 
-                                // regarder si le cout du chemin est inferieur au cout minimal
-                                if (minSize > newPath.back()->getCout()){
-                                    minSize = newPath.back()->getCout();
-                                    bestPath = newPath;
-                                }
-                            }
-                    }
-            // move
-            int diffX = bestPath.at(0)->getX() - state->getPlayer(playerId)->getOwnedFieldObjects()[objCpuCount]->getPosition().x ;
-            int diffY = bestPath.at(0)->getY() - state->getPlayer(playerId)->getOwnedFieldObjects()[objCpuCount]->getPosition().y ;
-            move(diffX,diffY,objCpuCount);
-            for (int i = 0; i<(bestPath.size()-1); i++)
-            {
-                if (state->getPlayer(playerId)->getOwnedFieldObjects()[objCpuCount]->getMovePoints() >= bestPath.at(i+1)->getValue() )
-                {
-                    //Test to know if there still enough move point to make a legal move
-                    diffX = bestPath.at(i+1)->getX() - bestPath.at(i)->getX();
-                    diffY = bestPath.at(i+1)->getY() - bestPath.at(i)->getY();
-                    move(diffX,diffY, objCpuCount);
-                }
-            }
-        }
-    }
-    engine->addCommand(std::make_shared<engine::CommandEndTurn>(playerId));
+		                            // regarder si le cout du chemin est inferieur au cout minimal
+		                            if (minSize > newPath.back()->getCout()){
+		                                minSize = newPath.back()->getCout();
+		                                bestPath = newPath;
+		                            }
+		                        }
+		                }
+		        // move
+		        int diffX = bestPath.at(0)->getX() - state->getPlayer(playerId)->getOwnedFieldObjects()[objCpuCount]->getPosition().x ;
+		        int diffY = bestPath.at(0)->getY() - state->getPlayer(playerId)->getOwnedFieldObjects()[objCpuCount]->getPosition().y ;
+		        move(diffX,diffY,objCpuCount);
+		        for (int i = 0; i<(bestPath.size()-1); i++)
+		        {
+		            if (state->getPlayer(playerId)->getOwnedFieldObjects()[objCpuCount]->getMovePoints() >= bestPath.at(i+1)->getValue() )
+		            {
+		                //Test to know if there still enough move point to make a legal move
+		                diffX = bestPath.at(i+1)->getX() - bestPath.at(i)->getX();
+		                diffY = bestPath.at(i+1)->getY() - bestPath.at(i)->getY();
+		                move(diffX,diffY, objCpuCount);
+		            }
+		        }
+		    }
+		}
+		engine->addCommand(std::make_shared<engine::CommandEndTurn>(playerId));
+	}
 }
 
 void DeepCPU_2::move(int diffX, int diffY, int objMoving)

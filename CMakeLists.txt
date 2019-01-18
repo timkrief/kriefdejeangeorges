@@ -41,7 +41,7 @@ exec_program(${DIA2CODE} ARGS -ns render -d ../src/client -t cpp ../src/render.d
 exec_program(${DIA2CODE} ARGS -ns engine -d ../src/shared -t cpp ../src/engine.dia)
 exec_program(${DIA2CODE} ARGS -ns ai     -d ../src/shared -t cpp ../src/ai.dia)
 #exec_program(${DIA2CODE} ARGS -ns client -d ../src/client -t cpp ../src/module.dia)
-#exec_program(${DIA2CODE} ARGS -ns server -d ../src/server -t cpp ../src/module.dia)
+exec_program(${DIA2CODE} ARGS -ns rest -d ../src/server -t cpp ../src/rest.dia)
 
 # Sources
 file(GLOB_RECURSE client_sources src/client/*.cpp)
@@ -49,8 +49,8 @@ file(GLOB_RECURSE server_sources src/server/*.cpp)
 file(GLOB_RECURSE shared_sources src/shared/*.cpp)
 
 #jsoncpp
-#include_directories ("${PROJECT_SOURCE_DIR}/extern/jsoncpp-1.8.0")
-#file(GLOB_RECURSE jsoncpp_sources extern/jsoncpp-1.8.0/*.cpp)
+include_directories ("${PROJECT_SOURCE_DIR}/extern/jsoncpp-1.8.0")
+file(GLOB_RECURSE jsoncpp_sources extern/jsoncpp-1.8.0/*.cpp)
 
 add_executable(client ${client_sources} ${shared_sources})
 
@@ -64,7 +64,7 @@ endif()
 target_link_libraries(client ${YAML_CPP_LIB})
 
 add_executable(server ${server_sources} ${shared_sources})
-target_link_libraries(server ${YAML_CPP_LIB})
+target_link_libraries(server ${YAML_CPP_LIB} ${jsoncpp_sources})
 
 
 # SFML

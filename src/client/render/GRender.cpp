@@ -93,7 +93,7 @@ namespace render {
 		
 		int maxWindowEdge = std::max(window->getSize().x, window->getSize().y); 
 		
-    	if(cameraZoom.x > 0.013f && squareDistance < maxWindowEdge * maxWindowEdge / cameraZoom.x / cameraZoom.x){
+    	if(cameraZoom.x > 0.013f && (cameraZoom.x >= 1 || squareDistance < maxWindowEdge * maxWindowEdge / (cameraZoom.x * cameraZoom.x))){
 		    
 		    window->clear(sf::Color(44, 146, 206));
 		    window->draw(g.getGMap());

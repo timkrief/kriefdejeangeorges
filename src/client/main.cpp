@@ -14,9 +14,7 @@ using namespace std;
 using namespace state;
 using namespace render;
 using namespace ai;
-
-#include "tests.h"
-
+using namespace engine;
 
 void engineThreadFunc(std::shared_ptr<GameEngine> engine, bool* gameRunning){
     while(*gameRunning){
@@ -39,7 +37,7 @@ int main(int argc,char* argv[])
     bool record = argc>1 && !strcmp(argv[1],"record");
     bool play = argc>1 && !strcmp(argv[1],"play");
     bool network = argc>1 && !strcmp(argv[1],"network");
-    
+    	
     
     if(network){
     	std::cout << "I'm supposed to make things right now!" << std::endl;

@@ -365,10 +365,18 @@ Un affichage en bas à droite permet en lisant la position de la souris de donne
 Les mouvements ont été implémentés via un moteur. L'appui permet de modifier l'état en cours vers un nouvel état. En faisant ainsi on sépare l'affichage qui ne fait que lire, du moteur qui permet à la fois de lire l'état et de le modifier.
 
 
+\begin{figure}[h]
+    \centering
+    \includegraphics[scale =0.25]{images/engine.png}
+    \caption{Rendu final}
+    \label{fig:Advance Wars}
+\end{figure}
+
 \subsection{Les commandes de jeu}
 
 Il existe deux commandes afin d'agir sur le jeu: 
 \begin{itemize}
+    \item Un clic souris permet de sélectionner l'unité que l'on désire bouger. Cela provoque l'appararition d'un ATH indiquant le nombre de coup restant à l'unité.
     \item les commandes de direction qui permettent le mouvement des unités avec les touches directionnelles.
     \item Ctrl+Z permet d'annuler les déplacements du tour en cours.
     \item la commande de fin de tour avec la touche entrée.
@@ -421,8 +429,18 @@ La quatrième suis l'algorithme Astar afin de déterminer le plus court chemin d
     \label{fig:Advance Wars}
 \end{figure}
 
+\newline
+Voici le rendu tel qu'il est au lancement. On constate par ailleurs une ATH qui permet de voir les informations d'une case lorsqu'on passe le curseur dessus.
 
 \newline
+
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[scale =0.25]{images/ia.png}
+    \caption{Rendu final}
+    \label{fig:Advance Wars}
+\end{figure}
 
 \phantom{Texte invisible parce que j'ai pas trouvé d'autre méthode pour mettre le tableau à la ligne.}
 \begin{tabularx}{15 cm}{|X|X|}
@@ -449,10 +467,11 @@ La quatrième suis l'algorithme Astar afin de déterminer le plus court chemin d
 
 
 
-\section{Modularisation}
+\section{Modularisation et network}
 
-La mise en place de thread permet au moteur de fonctionner en parallèle du reste du jeu, notamment de l'affichage.
-Le fichier replay.txt a été renommé pour devenir savefile.json.
+La mise en place de thread permet au moteur, à l'IA ainsi qu'au render de fonctionner parallèlement. On a donc la possiblité de faire fonctionner les animations, les changements d'affichage en même temps sans que cela n'imapcte la fluidité du jeu.
+Le fichier replay.txt demandé pour le livrable de modules a été renommé pour devenir savefile.json.
+La possiblité de jouer en ligne sur un serveur.
 
 
 

@@ -81,8 +81,8 @@ int main(int argc,char* argv[])
 		std::shared_ptr<Unit> unit6(new Unit);
 		unit6->setPosition(sf::Vector2u(38,13));
 		player2->addOwnedFieldObject(unit6);
-		
-		
+
+
 		// Create State
 		std::shared_ptr<GameState> state(new GameState("./res/maps/map.json", "fr"));
 		

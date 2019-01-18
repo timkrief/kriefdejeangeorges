@@ -246,9 +246,9 @@ Via la souris il peut:
 
 \begin{tabularx}{15 cm}{|X|X|}
 \hline
-\textbf{GameState} \newline A pour but de décrire l'état du jeu & Attributs: map, players, existingCards, turn \newline Méthodes: GameState, getMap, addPlayer, getPlayer, endTurn, getTurn, GenerateRessource, getPlayerTurnId\\ 
+\textbf{GameState} \newline A pour but de décrire l'état du jeu & Attributs: map, players, existingCards, turn \newline Méthodes: GameState, getMap, addPlayer, getPlayer, endTurn, getTurn, GenerateRessource, getPlayerTurnId, getDistance\\ 
 \hline
-\textbf{FieldObject} \newline C'est la classe qui décrit tout les objets du champs de bataille: leur emplacement, l'image associée, le propriétaire et le type  & Attributs: position, sprite, owner, type \newline Méthodes: FieldObject, setOwner, getPosition, setPosition, setObjectType\\
+\textbf{FieldObject} \newline C'est la classe qui décrit tout les objets du champs de bataille: leur emplacement, l'image associée, le propriétaire et le type  & Attributs: position, sprite, owner, type \newline Méthodes: FieldObject, setOwner, getPosition, setPosition, setObjectType, getDirection, setDirection, getOwner, getMovePoints, setMovePoints, resetMovePoints, getNormalMovePoints\\
 \hline
 \textbf{Building} \newline Un bâtiment peut être capturé par des unités afin qu'un joueur en prenne le contrôle & Attribut: health \newline Méthode: Building, captured\\
 \hline
@@ -277,11 +277,11 @@ Via la souris il peut:
 
 \begin{tabularx}{15 cm}{|X|X|}
 \hline
-\textbf{Map} & Attributs: tileset, size, data  \newline Méthodes: Map, getSize, getdata, getTile, getTileset\\
+\textbf{Map} & Attributs: tileset, size, data  \newline Méthodes: Map, getSize, getData, getTile, getTileset\\
 \hline
 \textbf{Tileset} & Attributs: tiles, ressourcePath, columns, tileSize, resourceSize  \newline Méthodes: Tileset, getTile, getResourcePath, getColumns, getTileheight, getTileSize, getTilePosition, getTileIntRect\\
 \hline
-\textbf{Tile} & Attributs: speed  \newline Méthodes: Tile, getSpeed\\
+\textbf{Tile} & Attributs: attributes, animationDuration, frameDuration, frameTileId  \newline Méthodes: Tile\\
 \hline
 \textbf{Player} & Attributs: deck, hand, money, oil, name, ownedFieldObjects, id, count  \newline Méthodes: Player, InitPlayer,  getMoney, setMoney, getOil, setOil, getId, getName, addOwnedFieldObject, removeOwnedFieldObject, getOwnedFieldObject, getCount\\
 \hline
@@ -407,13 +407,24 @@ Pour modifier l'affichage de la carte ainsi que déplacer la vision du joueur, o
 
 \section{Les IA}
 
-Deux types d'IA ont été crées.
-La première euristique diminiue la distance de Manhattan avec les unités adverses sans tenir compte des obstacles.
-La seconde essaiera que chacune de ses unités attaque les unités adverses les plus proches d'elles. 
+Plusieurs types d'IA ont été crées afin de rendre simuler des joueurs.\newline
+La première est aléatoire et exécute donc une commande parmi celles auxquelle elle a accès.\newline
+La deuxième euristique diminiue la distance de Manhattan avec les unités adverses sans tenir compte des obstacles.\newline
+La troisième essaiera que chacune de ses unités attaque les unités adverses les plus proches d'elles. \newline
+La quatrième suis l'algorithme Astar afin de déterminer le plus court chemin dans un graphe de noeuds. Elle est capable de gérer chacune des unités de chaque joueur en prenant en compte l'existence des autres unités et de ce fait savoir qu'elles sont blocantes.
+
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[scale =0.45]{images/rendufinal.png}
+    \caption{Rendu final}
+    \label{fig:Advance Wars}
+\end{figure}
+
+
 \newline
 
-
-
+\phantom{Texte invisible parce que j'ai pas trouvé d'autre méthode pour mettre le tableau à la ligne.}
 \begin{tabularx}{15 cm}{|X|X|}
 \hline
 \textbf{CPU} \newline A pour but de gérer les IA pour générer les mouvements des joueurs non-humains & Attributs: state, engine, playerId, targetedPlayerId   \newline Méthodes: CPU, run\\ 
@@ -424,6 +435,12 @@ La seconde essaiera que chacune de ses unités attaque les unités adverses les 
 \hline
 \textbf{DeepCPU} \newline C'est une IA plus intelligente qui est capable de trouvé un chemin optimisé pour atteindre les unités adverses & 
 \newline Méthodes: run, DeepCPU\\
+\hline
+\textbf{DeepCPU\_2} \newline C'est une IA qui suit l'algorithme A* pour trouver un chemin optimisé & Attributs: m\_listNoeud, m\_listNoeudRaw
+\newline Méthodes: run, DeepCPU\_2, completeMap, noeudPrioritaire, getPathFromTo, clearMap, getNoeudAt, getNeighbourOf, bestCaseNear, displayMap, displayMap, initMap, move\\
+\hline
+\textbf{Noeud} \newline C'est une IA qui suit l'algorithme A* pour trouver un chemin optimisé & Attributs: m\_x, m\_y, m\_value, m\_cout, m\_heuristique, m\_isAssign
+\newline Méthodes: Noeud, getValue, getX, getY, getCout, getHeuristique, setCout, setHeuristique, isAssigned, clear, isNeighbourOf, compareWith, setValue, equal\\
 \hline
 
 \end{tabularx}
@@ -436,6 +453,8 @@ La seconde essaiera que chacune de ses unités attaque les unités adverses les 
 
 La mise en place de thread permet au moteur de fonctionner en parallèle du reste du jeu, notamment de l'affichage.
 Le fichier replay.txt a été renommé pour devenir savefile.json.
+
+
 
 \section{Progression}
 
